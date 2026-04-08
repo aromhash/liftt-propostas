@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIFTT Fitness Club - Eventos Corporativos | Proposta de Parceria</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brown-primary: #5b5444;
+    --brown-medium: #5a4a3b;
+    --cream: #dfddd1;
+    --black: #1a1816;
+    --surface: #242220;
+    --surface-elevated: #2e2c29;
+    --charcoal: #373634;
+    --gray-muted: #8a8783;
+    --white: #ffffff;
+    --gold: #c4a265;
+    --gold-light: #d4b87a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--black);
+    color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ========== UTILITIES ========== */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.15;
+    max-width: 700px;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+  }
+
+  .section-title strong { font-weight: 700; }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ========== SLIDE 1: HERO ========== */
+  .slide-hero {
+    background: var(--black);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+
+  .slide-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 60%, rgba(196, 162, 101, 0.06) 0%, transparent 60%);
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 48px;
+    animation: fadeInUp 1s ease 0.2s both;
+  }
+
+  .hero-eyebrow .line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-eyebrow span {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .hero-title {
+    font-size: clamp(44px, 6.5vw, 88px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    animation: fadeInUp 1s ease 0.4s both;
+    max-width: 900px;
+    padding: 0 20px;
+  }
+
+  .hero-title strong {
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-desc {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--gray-muted);
+    margin-top: 32px;
+    max-width: 550px;
+    line-height: 1.6;
+    animation: fadeInUp 1s ease 0.6s both;
+    padding: 0 20px;
+  }
+
+  .hero-stats-row {
+    display: flex;
+    gap: 48px;
+    margin-top: 60px;
+    animation: fadeInUp 1s ease 0.8s both;
+  }
+
+  .hero-stat {
+    text-align: center;
+  }
+
+  .hero-stat-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--cream);
+  }
+
+  .hero-stat-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--gray-muted);
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+
+  .hero-stat-divider {
+    width: 1px;
+    height: 50px;
+    background: rgba(223, 221, 209, 0.1);
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: fadeInUp 1s ease 1.2s both;
+  }
+
+  .scroll-hint .chevron {
+    width: 20px;
+    height: 20px;
+    border-right: 1px solid var(--gold);
+    border-bottom: 1px solid var(--gold);
+    transform: rotate(45deg);
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 0.4; }
+    50% { transform: rotate(45deg) translate(4px, 4px); opacity: 1; }
+  }
+
+  /* ========== SLIDE 2: CONCEITO ========== */
+  .slide-concept {
+    background: var(--white);
+    color: var(--charcoal);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+
+  .concept-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    max-width: 1100px;
+    margin-top: 20px;
+  }
+
+  .concept-block {
+    padding: 40px;
+    border-radius: 20px;
+    background: rgba(91, 84, 68, 0.03);
+    border: 1px solid rgba(91, 84, 68, 0.08);
+  }
+
+  .concept-block-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--brown-primary);
+    color: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .concept-block h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--brown-primary);
+    margin-bottom: 12px;
+  }
+
+  .concept-block p {
+    font-size: 15px;
+    color: var(--gray-muted);
+    line-height: 1.7;
+  }
+
+  .concept-highlight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--brown-primary);
+  }
+
+  .concept-highlight .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+
+  /* ========== SLIDE 3: EXPERIENCIA ========== */
+  .slide-experience {
+    background: var(--brown-primary);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+
+  .experience-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin-top: 20px;
+  }
+
+  .exp-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(223, 221, 209, 0.08);
+    border-radius: 20px;
+    padding: 40px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  .exp-card:hover {
+    transform: translateY(-6px);
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .exp-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .exp-card:hover::after { opacity: 1; }
+
+  .exp-number {
+    font-size: 56px;
+    font-weight: 800;
+    color: rgba(223, 221, 209, 0.08);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .exp-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .exp-desc {
+    font-size: 14px;
+    color: var(--gray-muted);
+    line-height: 1.7;
+  }
+
+  .exp-badge {
+    display: inline-block;
+    background: rgba(196, 162, 101, 0.15);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-top: 20px;
+  }
+
+  /* ========== SLIDE 4: TIMELINE ========== */
+  .slide-timeline {
+    background: var(--black);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+
+  .timeline {
+    max-width: 800px;
+    margin-top: 20px;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 24px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold), rgba(196, 162, 101, 0.1));
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 32px;
+    padding: 32px 0;
+    position: relative;
+  }
+
+  .timeline-dot {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--gold);
+    flex-shrink: 0;
+    z-index: 1;
+  }
+
+  .timeline-content {
+    flex: 1;
+    padding-top: 8px;
+  }
+
+  .timeline-time {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .timeline-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 6px;
+  }
+
+  .timeline-desc {
+    font-size: 14px;
+    color: var(--gray-muted);
+    line-height: 1.6;
+  }
+
+  .timeline-duration {
+    display: inline-block;
+    background: rgba(196, 162, 101, 0.1);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-top: 8px;
+  }
+
+  /* ========== SLIDE 5: INCLUSO ========== */
+  .slide-included {
+    background: var(--white);
+    color: var(--charcoal);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin-top: 20px;
+  }
+
+  .included-item {
+    background: rgba(91, 84, 68, 0.04);
+    border: 1px solid rgba(91, 84, 68, 0.08);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+
+  .included-item:hover { transform: translateY(-3px); }
+
+  .included-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .included-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--brown-primary);
+    margin-bottom: 4px;
+  }
+
+  .included-detail {
+    font-size: 12px;
+    color: var(--gray-muted);
+    line-height: 1.4;
+  }
+
+  /* ========== SLIDE 6: PROPOSTA DE VALOR ========== */
+  .slide-value {
+    background: linear-gradient(135deg, var(--black) 0%, #2a2520 100%);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .value-price-block {
+    margin: 40px 0;
+    padding: 48px 64px;
+    background: var(--surface);
+    border: 1px solid rgba(196, 162, 101, 0.2);
+    border-radius: 24px;
+    position: relative;
+  }
+
+  .value-price-block::before {
+    content: 'INVESTIMENTO UNICO';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 6px 20px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .value-price {
+    font-size: clamp(56px, 8vw, 80px);
+    font-weight: 800;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .value-price .currency {
+    font-size: 0.35em;
+    font-weight: 400;
+    vertical-align: top;
+    margin-right: 4px;
+    color: var(--gold);
+  }
+
+  .value-per {
+    font-size: 16px;
+    color: var(--gray-muted);
+  }
+
+  .value-includes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 40px;
+    max-width: 800px;
+  }
+
+  .value-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(196, 162, 101, 0.08);
+    border: 1px solid rgba(196, 162, 101, 0.15);
+    color: var(--cream);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 100px;
+  }
+
+  .value-tag .check {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .value-comparison {
+    margin-top: 48px;
+    padding: 24px 40px;
+    background: rgba(122, 158, 107, 0.08);
+    border-radius: 12px;
+    max-width: 600px;
+  }
+
+  .value-comparison p {
+    font-size: 15px;
+    color: var(--cream);
+    line-height: 1.6;
+  }
+
+  .value-comparison strong {
+    color: var(--gold);
+  }
+
+  /* ========== SLIDE 7: PORQUE FUNCIONA ========== */
+  .slide-proof {
+    background: var(--brown-primary);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    max-width: 1000px;
+    margin-top: 20px;
+  }
+
+  .proof-card {
+    text-align: center;
+    padding: 40px 24px;
+  }
+
+  .proof-value {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .proof-label {
+    font-size: 14px;
+    color: var(--gray-muted);
+    line-height: 1.5;
+  }
+
+  .proof-divider {
+    width: 30px;
+    height: 2px;
+    background: var(--gold);
+    margin: 16px auto 0;
+  }
+
+  .proof-testimonial {
+    grid-column: 1 / -1;
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 16px;
+    text-align: center;
+  }
+
+  .proof-testimonial blockquote {
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--cream);
+    max-width: 600px;
+    margin: 0 auto 16px;
+  }
+
+  .proof-testimonial cite {
+    font-size: 13px;
+    font-style: normal;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  /* ========== SLIDE 8: CLOSING ========== */
+  .slide-closing {
+    background: var(--black);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+  }
+
+  .slide-closing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(196, 162, 101, 0.05) 0%, transparent 60%);
+  }
+
+  .closing-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid rgba(196, 162, 101, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .closing-icon svg {
+    width: 36px;
+    height: 27px;
+    fill: var(--gold);
+  }
+
+  .closing-headline {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 300;
+    line-height: 1.2;
+    max-width: 700px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .closing-headline strong {
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .closing-sub {
+    font-size: 16px;
+    color: var(--gray-muted);
+    max-width: 500px;
+    line-height: 1.6;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .closing-cta-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 48px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+  }
+
+  .closing-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(196, 162, 101, 0.3);
+  }
+
+  .closing-info {
+    margin-top: 40px;
+    font-size: 13px;
+    color: var(--gray-muted);
+    line-height: 2;
+    position: relative;
+    z-index: 1;
+  }
+
+  .closing-info a {
+    color: var(--gold);
+    text-decoration: none;
+  }
+
+  .closing-scarcity {
+    margin-top: 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+  }
+
+  .closing-scarcity .pulse-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: pulseDot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseDot {
+    0%, 100% { opacity: 0.4; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+
+  /* ========== NAV DOTS ========== */
+  .nav-dots {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+  }
+
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(223, 221, 209, 0.2);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .nav-dot.active {
+    background: var(--gold);
+    transform: scale(1.3);
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 768px) {
+    .concept-grid { grid-template-columns: 1fr; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .hero-stats-row { flex-direction: column; gap: 24px; }
+    .hero-stat-divider { width: 40px; height: 1px; }
+    .value-price-block { padding: 40px 24px; }
+  }
+
+  @media print {
+    .slide { page-break-after: always; }
+    .nav-dots, .scroll-hint { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-dots">
+  <button class="nav-dot active" onclick="scrollTo(0)"></button>
+  <button class="nav-dot" onclick="scrollTo(1)"></button>
+  <button class="nav-dot" onclick="scrollTo(2)"></button>
+  <button class="nav-dot" onclick="scrollTo(3)"></button>
+  <button class="nav-dot" onclick="scrollTo(4)"></button>
+  <button class="nav-dot" onclick="scrollTo(5)"></button>
+  <button class="nav-dot" onclick="scrollTo(6)"></button>
+  <button class="nav-dot" onclick="scrollTo(7)"></button>
+</nav>
+
+<!-- SLIDE 1: HERO -->
+<section class="slide slide-hero" id="s0">
+  <div class="hero-eyebrow">
+    <div class="line"></div>
+    <span>LIFTT Fitness Club</span>
+    <div class="line"></div>
+  </div>
+  <h1 class="hero-title">Eventos que sua equipe <strong>nunca vai esquecer</strong></h1>
+  <p class="hero-desc">Experiencias corporativas exclusivas com tecnologia Technogym, em um dos espacos fitness mais sofisticados de Vitoria.</p>
+  <div class="hero-stats-row">
+    <div class="hero-stat">
+      <div class="hero-stat-value">16</div>
+      <div class="hero-stat-label">Convidados</div>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-value">2</div>
+      <div class="hero-stat-label">Aulas exclusivas</div>
+    </div>
+    <div class="hero-stat-divider"></div>
+    <div class="hero-stat">
+      <div class="hero-stat-value">3h</div>
+      <div class="hero-stat-label">Experiencia completa</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="chevron"></div>
+  </div>
+</section>
+
+<!-- SLIDE 2: CONCEITO -->
+<section class="slide slide-concept" id="s1">
+  <div class="section-label fade-in">O Conceito</div>
+  <h2 class="section-title fade-in" style="color: var(--charcoal)">Duas experiencias unicas em uma <strong>manha inesquecivel</strong></h2>
+  <div class="concept-grid">
+    <div class="concept-block fade-in">
+      <div class="concept-block-icon">&#9829;</div>
+      <h3>Teambeats</h3>
+      <p>Treino coletivo com monitoramento de frequencia cardiaca em tempo real, desenvolvido pela Technogym. Cada participante treina na sua intensidade ideal, com feedback visual ao vivo.</p>
+      <div class="concept-highlight">
+        <span class="dot"></span>
+        <span>8 vagas por aula &bull; 30 minutos &bull; Personalizado</span>
+      </div>
+    </div>
+    <div class="concept-block fade-in">
+      <div class="concept-block-icon">&#9889;</div>
+      <h3>Group Cycle</h3>
+      <p>Cycling indoor com intensidade, musica envolvente e luzes dinamicas que acompanham o ritmo. Tecnologia integrada para monitorar performance e estimular a competicao saudavel.</p>
+      <div class="concept-highlight">
+        <span class="dot"></span>
+        <span>8 vagas por aula &bull; 30 minutos &bull; Imersivo</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: EXPERIENCIA COMPLETA -->
+<section class="slide slide-experience" id="s2">
+  <div class="section-label fade-in" style="color: var(--gold)">A Experiencia Completa</div>
+  <h2 class="section-title fade-in" style="color: var(--cream)">Mais que treino: <strong>networking, bem-estar e marca</strong></h2>
+  <div class="experience-cards">
+    <div class="exp-card fade-in">
+      <div class="exp-number">01</div>
+      <div class="exp-title">Recepcao no Lounge</div>
+      <div class="exp-desc">Seus convidados sao recebidos em um ambiente exclusivo com cafe, agua, frutas e salada de frutas. Momento de conexao antes do treino.</div>
+      <span class="exp-badge">Networking</span>
+    </div>
+    <div class="exp-card fade-in">
+      <div class="exp-number">02</div>
+      <div class="exp-title">Aulas Exclusivas</div>
+      <div class="exp-desc">Duas turmas de 8 pessoas em aulas de 30 minutos: Teambeats e Group Cycle. Professores dedicados, experiencia privada.</div>
+      <span class="exp-badge">Performance</span>
+    </div>
+    <div class="exp-card fade-in">
+      <div class="exp-number">03</div>
+      <div class="exp-title">Cafe & Encerramento</div>
+      <div class="exp-desc">Cafe da manha completo, entrega de brindes, sorteios. Sua marca no centro de uma experiencia memoravel.</div>
+      <span class="exp-badge">Branding</span>
+    </div>
+    <div class="exp-card fade-in">
+      <div class="exp-number">04</div>
+      <div class="exp-title">Ativacao de Parceiros</div>
+      <div class="exp-desc">Opcao de trazer marcas parceiras para ativacoes conjuntas. Amplie o impacto do evento com experiencias complementares.</div>
+      <span class="exp-badge">Co-branding</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: TIMELINE -->
+<section class="slide slide-timeline" id="s3">
+  <div class="section-label fade-in" style="color: var(--gold)">Programacao</div>
+  <h2 class="section-title fade-in" style="color: var(--cream)">Uma manha <strong>perfeitamente planejada</strong></h2>
+  <div class="timeline">
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot">8h</div>
+      <div class="timeline-content">
+        <div class="timeline-time">08:00</div>
+        <div class="timeline-label">Chegada & Welcome</div>
+        <div class="timeline-desc">Recepcao no lounge LIFTT. Cafe, agua, frutas. Breve apresentacao e integracao do grupo.</div>
+        <span class="timeline-duration">30 min</span>
+      </div>
+    </div>
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot">8:30</div>
+      <div class="timeline-content">
+        <div class="timeline-time">08:30</div>
+        <div class="timeline-label">Aulas Teambeats + Group Cycle</div>
+        <div class="timeline-desc">Duas turmas simultaneas de 8 pessoas. Troca de modalidade na metade. Total: 1h de exercicio com monitoramento.</div>
+        <span class="timeline-duration">60 min</span>
+      </div>
+    </div>
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot">9:30</div>
+      <div class="timeline-content">
+        <div class="timeline-time">09:30</div>
+        <div class="timeline-label">Cafe da Manha Premium</div>
+        <div class="timeline-desc">Bancada completa no lounge com opcoes saudaveis e gourmet. Momento de descontracag, networking e conversas.</div>
+        <span class="timeline-duration">60 a 90 min</span>
+      </div>
+    </div>
+    <div class="timeline-item fade-in">
+      <div class="timeline-dot">10:30</div>
+      <div class="timeline-content">
+        <div class="timeline-time">10:30</div>
+        <div class="timeline-label">Brindes, Sorteios & Encerramento</div>
+        <div class="timeline-desc">Entrega de brindes da marca, sorteios e registro fotografico. Encerramento ate ~11h.</div>
+        <span class="timeline-duration">30 min</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: O QUE ESTA INCLUSO -->
+<section class="slide slide-included" id="s4">
+  <div class="section-label fade-in">O Que Esta Incluso</div>
+  <h2 class="section-title fade-in" style="color: var(--charcoal)">Tudo pronto. Voce so <strong>traz os convidados</strong></h2>
+  <div class="included-grid">
+    <div class="included-item fade-in">
+      <span class="included-icon">&#127947;</span>
+      <div class="included-name">Professores</div>
+      <div class="included-detail">Instrutores LIFTT dedicados ao seu evento</div>
+    </div>
+    <div class="included-item fade-in">
+      <span class="included-icon">&#128166;</span>
+      <div class="included-name">Toalhas</div>
+      <div class="included-detail">Toalhas LIFTT para todos os participantes</div>
+    </div>
+    <div class="included-item fade-in">
+      <span class="included-icon">&#128167;</span>
+      <div class="included-name">Hidratacao</div>
+      <div class="included-detail">Agua mineral e agua com gas</div>
+    </div>
+    <div class="included-item fade-in">
+      <span class="included-icon">&#9749;</span>
+      <div class="included-name">Cafe</div>
+      <div class="included-detail">Cafe premium servido no lounge</div>
+    </div>
+    <div class="included-item fade-in">
+      <span class="included-icon">&#127815;</span>
+      <div class="included-name">Frutas</div>
+      <div class="included-detail">Frutas frescas e salada de frutas</div>
+    </div>
+    <div class="included-item fade-in">
+      <span class="included-icon">&#127963;</span>
+      <div class="included-name">Estrutura</div>
+      <div class="included-detail">Espaco completo: lounge + salas de aula</div>
+    </div>
+    <div class="included-item fade-in">
+      <span class="included-icon">&#128247;</span>
+      <div class="included-name">Ambiente</div>
+      <div class="included-detail">Cenario premium para fotos e stories</div>
+    </div>
+    <div class="included-item fade-in">
+      <span class="included-icon">&#10024;</span>
+      <div class="included-name">Personalizacao</div>
+      <div class="included-detail">Itens extras sob consulta (custo a parte)</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: INVESTIMENTO -->
+<section class="slide slide-value" id="s5">
+  <div class="section-label fade-in" style="color: var(--gold)">Investimento</div>
+  <h2 class="section-title fade-in" style="color: var(--cream); text-align: center; max-width: 600px;">
+    Uma experiencia completa por <strong>menos do que voce imagina</strong>
+  </h2>
+  <div class="value-price-block fade-in">
+    <div class="value-price"><span class="currency">R$</span>1.500</div>
+    <div class="value-per">por evento (sabados)</div>
+  </div>
+  <div class="value-includes fade-in">
+    <span class="value-tag"><span class="check">&#10003;</span> 16 convidados</span>
+    <span class="value-tag"><span class="check">&#10003;</span> 2 aulas exclusivas</span>
+    <span class="value-tag"><span class="check">&#10003;</span> Professores dedicados</span>
+    <span class="value-tag"><span class="check">&#10003;</span> Cafe da manha completo</span>
+    <span class="value-tag"><span class="check">&#10003;</span> Lounge privativo</span>
+    <span class="value-tag"><span class="check">&#10003;</span> ~3h de experiencia</span>
+  </div>
+  <div class="value-comparison fade-in">
+    <p>Comparativo: um cafe da manha empresarial para 16 pessoas em hotel custa <strong>R$ 3.000 a R$ 5.000</strong> &mdash; sem a experiencia, sem o branding, sem o impacto.</p>
+  </div>
+</section>
+
+<!-- SLIDE 7: POR QUE FUNCIONA -->
+<section class="slide slide-proof" id="s6">
+  <div class="section-label fade-in" style="color: var(--gold); text-align: center; width: 100;">Por Que Funciona</div>
+  <h2 class="section-title fade-in" style="color: var(--cream); text-align: center; max-width: 100%; width: 100%;">Numeros que <strong>comprovam o impacto</strong></h2>
+  <div class="proof-grid">
+    <div class="proof-card fade-in">
+      <div class="proof-value">93%</div>
+      <div class="proof-label">das pessoas lembram de marcas associadas a experiencias positivas</div>
+      <div class="proof-divider"></div>
+    </div>
+    <div class="proof-card fade-in">
+      <div class="proof-value">4x</div>
+      <div class="proof-label">mais engajamento em marketing experiencial vs. midia tradicional</div>
+      <div class="proof-divider"></div>
+    </div>
+    <div class="proof-card fade-in">
+      <div class="proof-value">72%</div>
+      <div class="proof-label">dos participantes compartilham a experiencia nas redes sociais</div>
+      <div class="proof-divider"></div>
+    </div>
+    <div class="proof-testimonial fade-in">
+      <blockquote>&ldquo;Trouxemos nossos melhores clientes para um sabado na LIFTT. Foi o melhor investimento de relacionamento que fizemos no trimestre.&rdquo;</blockquote>
+      <cite>PARCEIRO LIFTT &mdash; Formato ilustrativo</cite>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: CLOSING -->
+<section class="slide slide-closing" id="s7">
+  <div class="closing-icon">
+    <svg viewBox="0 0 100 75">
+      <rect x="5" y="10" width="8" height="55" rx="2"/>
+      <rect x="87" y="10" width="8" height="55" rx="2"/>
+      <rect x="13" y="28" width="74" height="8" rx="2"/>
+      <rect x="13" y="44" width="74" height="8" rx="2"/>
+    </svg>
+  </div>
+  <h2 class="closing-headline fade-in">Transforme seu proximo evento em uma <strong>experiencia inesquecivel</strong></h2>
+  <p class="closing-sub fade-in">Reserve um sabado exclusivo na LIFTT e oferca ao seu publico algo que nenhum evento convencional pode entregar.</p>
+  <a href="#" class="closing-cta-btn fade-in">Agendar Meu Evento</a>
+  <div class="closing-info fade-in">
+    <p>LIFTT Fitness Club &mdash; Vitoria, ES</p>
+    <p><a href="#">@lifttfitnessclub</a> &bull; <a href="#">contato@liftt.com.br</a></p>
+  </div>
+  <div class="closing-scarcity fade-in">
+    <span class="pulse-dot"></span>
+    <span>Apenas 4 sabados disponiveis por mes</span>
+  </div>
+</section>
+
+<script>
+  // Fade-in observer
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // Nav dots
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.nav-dot');
+  const sObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = Array.from(slides).indexOf(e.target);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.5 });
+  slides.forEach(s => sObs.observe(s));
+
+  function scrollTo(idx) {
+    slides[idx].scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIFTT Fitness Club - Propostas de Parceria 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --brown: #5b5444;
+  --brown-md: #5a4a3b;
+  --cream: #dfddd1;
+  --black: #1a1816;
+  --surf: #242220;
+  --surf2: #2e2c29;
+  --char: #373634;
+  --muted: #8a8783;
+  --white: #ffffff;
+  --gold: #c4a265;
+  --gold-l: #d4b87a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--black);color:var(--cream);-webkit-font-smoothing:antialiased}
+
+/* ===== VIEW SYSTEM ===== */
+.view{display:none;min-height:100vh}
+.view.active{display:block}
+
+/* ===== LANDING ===== */
+#landing{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center;position:relative;overflow:hidden}
+#landing::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(196,162,101,.06) 0%,transparent 60%)}
+.l-logo svg{width:64px;height:48px;fill:var(--cream);margin-bottom:32px}
+.l-brand{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px;position:relative;z-index:1}
+.l-title{font-size:clamp(32px,5vw,52px);font-weight:300;letter-spacing:-1px;line-height:1.15;margin-bottom:16px;position:relative;z-index:1}
+.l-title strong{font-weight:700;color:var(--gold)}
+.l-sub{font-size:16px;color:var(--muted);font-weight:300;margin-bottom:64px;position:relative;z-index:1}
+.l-cards{display:flex;gap:28px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1;padding:0 20px}
+.l-card{background:var(--surf);border:1px solid rgba(223,221,209,.06);border-radius:24px;padding:48px 40px;width:340px;text-align:left;cursor:pointer;position:relative;overflow:hidden;transition:transform .4s,border-color .4s,box-shadow .4s}
+.l-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity .4s}
+.l-card:hover{transform:translateY(-8px);border-color:rgba(196,162,101,.25);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.l-card:hover::before{opacity:1}
+.l-card-icon{width:56px;height:56px;border-radius:14px;background:rgba(196,162,101,.1);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:24px}
+.l-card-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:10px}
+.l-card-title{font-size:24px;font-weight:700;line-height:1.2;margin-bottom:12px}
+.l-card-desc{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:28px}
+.l-card-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.l-tag{background:rgba(196,162,101,.08);color:var(--cream);font-size:11px;font-weight:600;padding:5px 12px;border-radius:100px}
+.l-cta{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
+.l-card:hover .l-cta{gap:16px}
+.l-footer{position:relative;z-index:1;margin-top:72px;font-size:12px;color:var(--muted);letter-spacing:1px}
+
+/* ===== SHARED SLIDE SYSTEM ===== */
+.deck{position:relative;overflow:hidden}
+.s{min-height:100vh;display:flex;position:relative;overflow:hidden;scroll-snap-align:start}
+
+/* Back button */
+.back-btn{position:fixed;top:24px;left:24px;z-index:200;background:rgba(26,24,22,.7);backdrop-filter:blur(12px);border:1px solid rgba(223,221,209,.1);color:var(--cream);font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:10px 20px;border-radius:100px;cursor:pointer;display:none;transition:background .3s,transform .3s}
+.back-btn:hover{background:rgba(196,162,101,.15);transform:translateX(-2px)}
+.back-btn.show{display:flex;align-items:center;gap:8px}
+
+/* Nav dots */
+.dots{position:fixed;right:24px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:200}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(223,221,209,.2);border:none;cursor:pointer;transition:all .3s;padding:0}
+.dot.on{background:var(--gold);transform:scale(1.3)}
+
+/* Shared classes */
+.lbl{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:24px}
+.ttl{font-size:clamp(36px,5vw,64px);font-weight:300;line-height:1.15;max-width:700px;margin-bottom:40px;letter-spacing:-1px}
+.ttl strong{font-weight:700}
+.fi{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+.fi.v{opacity:1;transform:translateY(0)}
+
+/* ===== DECK 1: TELAS ===== */
+/* Hero */
+.t-hero{background:var(--black);flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.t-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(91,84,68,.15) 0%,transparent 70%)}
+.t-badge{display:inline-block;border:1px solid rgba(196,162,101,.4);padding:8px 24px;border-radius:100px;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:48px;animation:fiu 1s .3s both;position:relative;z-index:1}
+.t-h1{font-size:clamp(48px,7vw,96px);font-weight:300;letter-spacing:-2px;line-height:1.05;animation:fiu 1s .5s both;max-width:900px;padding:0 20px;position:relative;z-index:1}
+.t-h1 strong{font-weight:700;color:var(--gold)}
+.t-sub{font-size:18px;font-weight:300;color:var(--muted);margin-top:32px;letter-spacing:2px;text-transform:uppercase;animation:fiu 1s .7s both;position:relative;z-index:1}
+.t-line{width:60px;height:1px;background:var(--gold);margin:40px auto 0;animation:fiu 1s .9s both;position:relative;z-index:1}
+
+/* Why */
+.t-why{background:var(--white);color:var(--char);flex-direction:column;padding:80px clamp(40px,8vw,120px);justify-content:center}
+.stats-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;max-width:1100px}
+.st-c{padding:40px 0;border-top:1px solid rgba(91,84,68,.15)}
+.st-n{font-size:clamp(40px,5vw,56px);font-weight:800;color:var(--brown);line-height:1;margin-bottom:8px}
+.st-n .u{font-size:.5em;font-weight:300;color:var(--gold)}
+.st-l{font-size:14px;color:var(--muted);line-height:1.5}
+
+/* Audience */
+.t-aud{background:var(--brown);flex-direction:row;flex-wrap:wrap}
+.aud-l{flex:1;min-width:350px;padding:80px clamp(40px,6vw,100px);display:flex;flex-direction:column;justify-content:center}
+.aud-r{flex:1;min-width:350px;min-height:500px;background:linear-gradient(135deg,var(--brown-md),var(--char));display:flex;align-items:center;justify-content:center;padding:60px}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:24px;width:100%;max-width:500px}
+.pi{background:rgba(255,255,255,.05);border:1px solid rgba(223,221,209,.1);border-radius:16px;padding:28px 24px;text-align:center;transition:transform .3s,background .3s}
+.pi:hover{transform:translateY(-4px);background:rgba(255,255,255,.08)}
+.pi-i{font-size:28px;margin-bottom:12px;display:block}
+.pi-l{font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--cream);margin-bottom:4px}
+.pi-d{font-size:12px;color:var(--muted);line-height:1.4}
+
+/* Benefits */
+.t-ben{background:var(--black);flex-direction:column;padding:80px clamp(40px,8vw,120px);justify-content:center}
+.ben-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;max-width:1200px;margin-top:20px}
+.bc{background:var(--surf);border:1px solid rgba(223,221,209,.06);border-radius:20px;padding:40px 32px;transition:transform .3s,border-color .3s;position:relative;overflow:hidden}
+.bc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.bc:hover{transform:translateY(-4px);border-color:rgba(196,162,101,.2)}
+.bc:hover::before{opacity:1}
+.bc-i{width:48px;height:48px;border-radius:12px;background:rgba(196,162,101,.1);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px}
+.bc-t{font-size:18px;font-weight:700;margin-bottom:10px}
+.bc-d{font-size:14px;color:var(--muted);line-height:1.6}
+.bc-h{display:inline-block;background:rgba(196,162,101,.12);color:var(--gold);font-size:12px;font-weight:600;padding:4px 12px;border-radius:100px;margin-top:16px}
+
+/* Touchpoints */
+.t-tp{background:var(--white);color:var(--char);flex-direction:column;padding:80px clamp(40px,8vw,120px);justify-content:center}
+.tp-list{max-width:900px;margin-top:20px}
+.tp-item{display:flex;align-items:flex-start;gap:32px;padding:36px 0;border-bottom:1px solid rgba(91,84,68,.1)}
+.tp-num{font-size:48px;font-weight:800;color:rgba(91,84,68,.12);line-height:1;min-width:60px}
+.tp-h{font-size:20px;font-weight:700;color:var(--brown);margin-bottom:6px}
+.tp-p{font-size:15px;color:var(--muted);line-height:1.6}
+.tp-tag{display:inline-block;background:var(--brown);color:var(--cream);font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;margin-top:8px;letter-spacing:.5px}
+
+/* Invest */
+.t-inv{background:linear-gradient(135deg,var(--black),#2a2520);flex-direction:column;align-items:center;justify-content:center;padding:80px 40px;text-align:center}
+.pr-cards{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;max-width:1000px;margin-bottom:60px}
+.prc{background:var(--surf);border:1px solid rgba(223,221,209,.06);border-radius:24px;padding:48px 36px;min-width:280px;max-width:320px;flex:1;text-align:left;position:relative;transition:transform .3s}
+.prc:hover{transform:translateY(-6px)}
+.prc.feat{border-color:var(--gold);background:linear-gradient(180deg,rgba(196,162,101,.08),var(--surf))}
+.prc-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--black);font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:6px 20px;border-radius:100px;white-space:nowrap}
+.prc-name{font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.prc-price{font-size:48px;font-weight:800;color:var(--cream);line-height:1;margin-bottom:4px}
+.prc-price .cur{font-size:20px;font-weight:400;vertical-align:top;margin-right:4px}
+.prc-per{font-size:14px;color:var(--muted);margin-bottom:28px}
+.prc-div{width:100%;height:1px;background:rgba(223,221,209,.08);margin-bottom:24px}
+.prc-feat{list-style:none;display:flex;flex-direction:column;gap:14px}
+.prc-feat li{font-size:14px;color:var(--cream);display:flex;align-items:flex-start;gap:10px;line-height:1.4}
+.prc-feat .ck{color:var(--gold);font-weight:700;flex-shrink:0}
+
+/* ROI */
+.t-roi{background:var(--white);color:var(--char);flex-direction:column;padding:80px clamp(40px,8vw,120px);justify-content:center}
+.roi-cmp{display:grid;grid-template-columns:1fr auto 1fr;gap:40px;max-width:900px;margin-top:40px;align-items:center}
+.roi-col{text-align:center}
+.roi-col h3{font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:20px}
+.roi-it{padding:16px;margin-bottom:12px;border-radius:12px}
+.roi-it.bad{background:rgba(196,100,100,.08)}
+.roi-it.good{background:rgba(122,158,107,.08)}
+.roi-v{font-size:24px;font-weight:700}
+.roi-v.bad{color:#b85c5c}.roi-v.good{color:var(--brown)}
+.roi-d{font-size:12px;color:var(--muted);margin-top:4px}
+.roi-vs{font-size:14px;font-weight:700;color:var(--muted);letter-spacing:2px}
+
+/* Closing shared */
+.cls{flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 40px}
+.cls-logo svg{width:100px;height:75px;fill:var(--cream);margin-bottom:48px}
+.cls-q{font-size:clamp(24px,3.5vw,40px);font-weight:300;font-style:italic;line-height:1.4;max-width:750px;margin-bottom:48px}
+.cls-div{width:60px;height:1px;background:var(--gold);margin:0 auto 48px}
+.cls-cta{font-size:16px;font-weight:600;margin-bottom:8px}
+.cls-info{font-size:14px;color:var(--muted);line-height:1.8}
+.cls-info a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(196,162,101,.3)}
+.scar{display:inline-block;border:1px solid var(--gold);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:10px 28px;border-radius:100px;margin-top:40px;animation:pulse 3s ease-in-out infinite}
+
+/* ===== DECK 2: EVENTOS ===== */
+.e-hero{background:var(--black);flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative}
+.e-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(196,162,101,.06) 0%,transparent 60%)}
+.e-ey{display:inline-flex;align-items:center;gap:12px;margin-bottom:48px;animation:fiu 1s .2s both;position:relative;z-index:1}
+.e-ey .ln{width:40px;height:1px;background:var(--gold)}
+.e-ey span{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-weight:600}
+.e-h1{font-size:clamp(44px,6.5vw,88px);font-weight:300;line-height:1.05;letter-spacing:-2px;animation:fiu 1s .4s both;max-width:900px;padding:0 20px;position:relative;z-index:1}
+.e-h1 strong{font-weight:700;background:linear-gradient(135deg,var(--gold),var(--gold-l));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.e-desc{font-size:18px;font-weight:300;color:var(--muted);margin-top:32px;max-width:550px;line-height:1.6;animation:fiu 1s .6s both;padding:0 20px;position:relative;z-index:1}
+.e-stats{display:flex;gap:48px;margin-top:60px;animation:fiu 1s .8s both;position:relative;z-index:1;flex-wrap:wrap;justify-content:center}
+.e-sv{font-size:32px;font-weight:800;color:var(--cream)}
+.e-sl{font-size:11px;letter-spacing:1px;color:var(--muted);margin-top:4px;text-transform:uppercase}
+.e-sdiv{width:1px;height:50px;background:rgba(223,221,209,.1)}
+
+/* Concept */
+.e-con{background:var(--white);color:var(--char);flex-direction:column;padding:80px clamp(40px,8vw,120px);justify-content:center}
+.con-g{display:grid;grid-template-columns:1fr 1fr;gap:60px;max-width:1100px;margin-top:20px}
+.con-b{padding:40px;border-radius:20px;background:rgba(91,84,68,.03);border:1px solid rgba(91,84,68,.08)}
+.con-bi{width:56px;height:56px;border-radius:14px;background:var(--brown);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px}
+.con-b h3{font-size:22px;font-weight:700;color:var(--brown);margin-bottom:12px}
+.con-b p{font-size:15px;color:var(--muted);line-height:1.7}
+.con-hl{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:13px;font-weight:600;color:var(--brown)}
+.con-hl .dt{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+
+/* Experience */
+.e-exp{background:var(--brown);flex-direction:column;padding:80px clamp(40px,8vw,120px);justify-content:center}
+.exp-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;max-width:1200px;margin-top:20px}
+.ec{background:rgba(0,0,0,.2);border:1px solid rgba(223,221,209,.08);border-radius:20px;padding:40px 32px;transition:transform .3s,background .3s;position:relative;overflow:hidden}
+.ec:hover{transform:translateY(-6px);background:rgba(0,0,0,.3)}
+.ec::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity .3s}
+.ec:hover::after{opacity:1}
+.ec-n{font-size:56px;font-weight:800;color:rgba(223,221,209,.08);line-height:1;margin-bottom:16px}
+.ec-t{font-size:20px;font-weight:700;margin-bottom:12px}
+.ec-d{font-size:14px;color:var(--muted);line-height:1.7}
+.ec-b{display:inline-block;background:rgba(196,162,101,.15);color:var(--gold);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-top:20px}
+
+/* Timeline */
+.e-tl{background:var(--black);flex-direction:column;padding:80px clamp(40px,8vw,120px);justify-content:center}
+.tl{max-width:800px;margin-top:20px;position:relative}
+.tl::before{content:'';position:absolute;left:24px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--gold),rgba(196,162,101,.1))}
+.tl-i{display:flex;gap:32px;padding:32px 0;position:relative}
+.tl-dot{width:50px;height:50px;border-radius:50%;background:var(--surf);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--gold);flex-shrink:0;z-index:1}
+.tl-c{flex:1;padding-top:8px}
+.tl-time{font-size:28px;font-weight:800;margin-bottom:4px}
+.tl-label{font-size:16px;font-weight:600;margin-bottom:6px}
+.tl-desc{font-size:14px;color:var(--muted);line-height:1.6}
+.tl-dur{display:inline-block;background:rgba(196,162,101,.1);color:var(--gold);font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;margin-top:8px}
+
+/* Included */
+.e-inc{background:var(--white);color:var(--char);flex-direction:column;padding:80px clamp(40px,8vw,120px);justify-content:center}
+.inc-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;max-width:1000px;margin-top:20px}
+.inc-i{background:rgba(91,84,68,.04);border:1px solid rgba(91,84,68,.08);border-radius:16px;padding:28px 24px;text-align:center;transition:transform .3s}
+.inc-i:hover{transform:translateY(-3px)}
+.inc-ic{font-size:32px;margin-bottom:12px;display:block}
+.inc-n{font-size:14px;font-weight:700;color:var(--brown);margin-bottom:4px}
+.inc-d{font-size:12px;color:var(--muted);line-height:1.4}
+
+/* Value */
+.e-val{background:linear-gradient(135deg,var(--black),#2a2520);flex-direction:column;padding:80px clamp(40px,8vw,120px);justify-content:center;align-items:center;text-align:center}
+.val-box{margin:40px 0;padding:48px 64px;background:var(--surf);border:1px solid rgba(196,162,101,.2);border-radius:24px;position:relative}
+.val-box::before{content:'INVESTIMENTO UNICO';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--black);font-size:10px;font-weight:700;letter-spacing:2px;padding:6px 20px;border-radius:100px;white-space:nowrap}
+.val-p{font-size:clamp(56px,8vw,80px);font-weight:800;line-height:1;margin-bottom:4px}
+.val-p .cur{font-size:.35em;font-weight:400;vertical-align:top;margin-right:4px;color:var(--gold)}
+.val-per{font-size:16px;color:var(--muted)}
+.val-tags{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-top:40px;max-width:800px}
+.vt{display:inline-flex;align-items:center;gap:8px;background:rgba(196,162,101,.08);border:1px solid rgba(196,162,101,.15);color:var(--cream);font-size:13px;font-weight:500;padding:10px 20px;border-radius:100px}
+.vt .ck{color:var(--gold);font-weight:700}
+.val-cmp{margin-top:48px;padding:24px 40px;background:rgba(122,158,107,.08);border-radius:12px;max-width:600px}
+.val-cmp p{font-size:15px;line-height:1.6}
+.val-cmp strong{color:var(--gold)}
+
+/* Proof */
+.e-prf{background:var(--brown);flex-direction:column;padding:80px clamp(40px,8vw,120px);justify-content:center;align-items:center}
+.prf-g{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1000px;margin-top:20px}
+.prf-c{text-align:center;padding:40px 24px}
+.prf-v{font-size:48px;font-weight:800;line-height:1;margin-bottom:12px}
+.prf-l{font-size:14px;color:var(--muted);line-height:1.5}
+.prf-d{width:30px;height:2px;background:var(--gold);margin:16px auto 0}
+.prf-q{grid-column:1/-1;background:rgba(0,0,0,.15);border-radius:20px;padding:40px;text-align:center;margin-top:16px}
+.prf-q blockquote{font-size:20px;font-weight:300;font-style:italic;line-height:1.6;max-width:600px;margin:0 auto 16px}
+.prf-q cite{font-size:13px;font-style:normal;color:var(--gold);font-weight:600;letter-spacing:1px}
+
+/* E-closing */
+.e-cls{background:var(--black);position:relative}
+.e-cls::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(196,162,101,.05) 0%,transparent 60%)}
+.cls-icon{width:80px;height:80px;border-radius:50%;border:1px solid rgba(196,162,101,.3);display:flex;align-items:center;justify-content:center;margin-bottom:40px;position:relative;z-index:1}
+.cls-icon svg{width:36px;height:27px;fill:var(--gold)}
+.cls-hl{font-size:clamp(28px,4vw,48px);font-weight:300;line-height:1.2;max-width:700px;margin-bottom:16px;position:relative;z-index:1}
+.cls-hl strong{font-weight:700;color:var(--gold)}
+.cls-sub{font-size:16px;color:var(--muted);max-width:500px;line-height:1.6;margin-bottom:48px;position:relative;z-index:1}
+.cls-btn{display:inline-block;background:var(--gold);color:var(--black);font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:16px 48px;border-radius:100px;border:none;cursor:pointer;transition:transform .3s,box-shadow .3s;position:relative;z-index:1;text-decoration:none}
+.cls-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(196,162,101,.3)}
+.cls-sc{margin-top:32px;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:1px;color:var(--gold);position:relative;z-index:1}
+.pulse-d{width:8px;height:8px;border-radius:50%;background:var(--gold);animation:pulse 2s ease-in-out infinite}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fiu{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{opacity:.4;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .aud-l,.aud-r{min-width:100%}
+  .pg{grid-template-columns:1fr!important}
+  .con-g{grid-template-columns:1fr}
+  .prf-g{grid-template-columns:1fr}
+  .roi-cmp{grid-template-columns:1fr;gap:20px}
+  .roi-vs{display:none}
+  .pr-cards{flex-direction:column;align-items:center}
+  .e-stats{flex-direction:column;gap:24px}
+  .e-sdiv{width:40px;height:1px}
+  .val-box{padding:40px 24px}
+  .l-cards{flex-direction:column;align-items:center}
+  .l-card{width:100%;max-width:380px}
+}
+
+@media print{
+  .s{page-break-after:always}
+  .dots,.back-btn{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<!-- BACK BUTTON -->
+<button class="back-btn" id="backBtn" onclick="showLanding()">&#8592; Voltar</button>
+
+<!-- NAV DOTS -->
+<nav class="dots" id="navDots"></nav>
+
+<!-- =============== LANDING =============== -->
+<div class="view active" id="landing">
+  <div class="l-logo">
+    <svg viewBox="0 0 100 75"><rect x="5" y="10" width="8" height="55" rx="2"/><rect x="87" y="10" width="8" height="55" rx="2"/><rect x="13" y="28" width="74" height="8" rx="2"/><rect x="13" y="44" width="74" height="8" rx="2"/></svg>
+  </div>
+  <div class="l-brand">LIFTT Fitness Club</div>
+  <h1 class="l-title">Propostas de <strong>Parceria</strong></h1>
+  <p class="l-sub">Selecione a apresentacao que deseja visualizar</p>
+  <div class="l-cards">
+    <div class="l-card" onclick="showDeck('telas')">
+      <div class="l-card-icon">&#9654;</div>
+      <div class="l-card-label">Proposta 01</div>
+      <div class="l-card-title">Telas & Presenca</div>
+      <div class="l-card-desc">Midia nas telas Technogym, TVs, Instagram e eventos. Sua marca 24h por dia na rotina de um publico premium.</div>
+      <div class="l-card-tags">
+        <span class="l-tag">Telas 24h</span>
+        <span class="l-tag">Instagram</span>
+        <span class="l-tag">3 Planos</span>
+      </div>
+      <div class="l-cta"><span>Abrir apresentacao</span> <span>&#8594;</span></div>
+    </div>
+    <div class="l-card" onclick="showDeck('eventos')">
+      <div class="l-card-icon">&#10024;</div>
+      <div class="l-card-label">Proposta 02</div>
+      <div class="l-card-title">Eventos Corporativos</div>
+      <div class="l-card-desc">Experiencias exclusivas aos sabados com Teambeats, Group Cycle, cafe da manha premium e ate 16 convidados.</div>
+      <div class="l-card-tags">
+        <span class="l-tag">16 Convidados</span>
+        <span class="l-tag">2 Aulas</span>
+        <span class="l-tag">3h</span>
+      </div>
+      <div class="l-cta"><span>Abrir apresentacao</span> <span>&#8594;</span></div>
+    </div>
+  </div>
+  <p class="l-footer">LIFTT Fitness Club &mdash; Vitoria, ES</p>
+</div>
+
+<!-- =============== DECK 1: TELAS =============== -->
+<div class="view deck" id="telas">
+
+  <!-- S1: Hero -->
+  <section class="s t-hero">
+    <div class="t-badge">Proposta Exclusiva 2026</div>
+    <h1 class="t-h1">Sua marca na <strong>rotina premium</strong> de Vitoria</h1>
+    <p class="t-sub">LIFTT Fitness Club &mdash; Telas & Presenca</p>
+    <div class="t-line"></div>
+  </section>
+
+  <!-- S2: Por que -->
+  <section class="s t-why">
+    <div class="lbl fi">Por que a LIFTT</div>
+    <h2 class="ttl fi">O unico clube fitness <strong>premium de Vitoria</strong> com tecnologia Technogym</h2>
+    <div class="stats-g">
+      <div class="st-c fi"><div class="st-n">200<span class="u">+</span></div><div class="st-l">Clientes ativos em apenas 6 meses de operacao</div></div>
+      <div class="st-c fi"><div class="st-n">500</div><div class="st-l">Capacidade total &mdash; cada vaga e exclusiva</div></div>
+      <div class="st-c fi"><div class="st-n">24<span class="u">h</span></div><div class="st-l">Sua marca exibida continuamente, sem interrupcao</div></div>
+      <div class="st-c fi"><div class="st-n">85<span class="u">min</span></div><div class="st-l">Tempo medio de permanencia por sessao de treino</div></div>
+    </div>
+  </section>
+
+  <!-- S3: Audiencia -->
+  <section class="s t-aud">
+    <div class="aud-l">
+      <div class="lbl fi" style="color:var(--gold)">Perfil do Publico</div>
+      <h2 class="ttl fi" style="color:var(--cream);max-width:500px">Acesso direto a quem <strong>decide e influencia</strong></h2>
+      <p class="fi" style="color:var(--muted);line-height:1.7;max-width:440px;margin-top:16px">Nossos membros sao empresarios, executivos, profissionais liberais e formadores de opiniao. Alto poder aquisitivo. Alta influencia social. Alta frequencia de treino.</p>
+    </div>
+    <div class="aud-r">
+      <div class="pg">
+        <div class="pi fi"><span class="pi-i">&#9733;</span><div class="pi-l">Empresarios</div><div class="pi-d">CEOs e donos de negocios da Grande Vitoria</div></div>
+        <div class="pi fi"><span class="pi-i">&#9830;</span><div class="pi-l">Executivos</div><div class="pi-d">Diretores e C-Level de grandes empresas</div></div>
+        <div class="pi fi"><span class="pi-i">&#9827;</span><div class="pi-l">Influenciadores</div><div class="pi-d">Perfis fitness com audiencia qualificada</div></div>
+        <div class="pi fi"><span class="pi-i">&#9829;</span><div class="pi-l">Profissionais</div><div class="pi-d">Medicos, advogados, arquitetos premium</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S4: Beneficios -->
+  <section class="s t-ben">
+    <div class="lbl fi" style="color:var(--gold)">O Que Sua Marca Recebe</div>
+    <h2 class="ttl fi" style="color:var(--cream)">Presenca <strong>multicanal</strong> dentro do ecossistema LIFTT</h2>
+    <div class="ben-g">
+      <div class="bc fi"><div class="bc-i">&#9654;</div><div class="bc-t">Video nos Equipamentos</div><div class="bc-d">Video de 15s exibido continuamente nas telas Technogym. Cada equipamento e um ponto de contato exclusivo durante o treino.</div><span class="bc-h">24h por dia &bull; Alta atencao</span></div>
+      <div class="bc fi"><div class="bc-i">&#9632;</div><div class="bc-t">TVs da Academia</div><div class="bc-d">Video de ate 1 minuto nas TVs de alta definicao distribuidas pelo espaco. Visibilidade em areas de descanso e circulacao.</div><span class="bc-h">Formato expandido &bull; Branding</span></div>
+      <div class="bc fi"><div class="bc-i">&#10038;</div><div class="bc-t">Instagram LIFTT</div><div class="bc-d">Divulgacao nos canais oficiais da LIFTT, com audiencia organica altamente engajada e segmentada no publico premium.</div><span class="bc-h">Alcance digital &bull; Social proof</span></div>
+      <div class="bc fi"><div class="bc-i">&#9734;</div><div class="bc-t">Ativacoes com Influenciadores</div><div class="bc-d">Acoes co-branded com influenciadores fitness parceiros da LIFTT, amplificando o alcance da sua marca.</div><span class="bc-h">Influencer marketing</span></div>
+      <div class="bc fi"><div class="bc-i">&#9878;</div><div class="bc-t">Eventos Exclusivos</div><div class="bc-d">Presenca da sua marca nos eventos de sabado da LIFTT. Acoes promocionais e experiencias diretas com o publico.</div><span class="bc-h">Experiential &bull; Conversao</span></div>
+      <div class="bc fi"><div class="bc-i">&#10070;</div><div class="bc-t">Associacao de Marca</div><div class="bc-d">Sua marca vinculada aos valores LIFTT: conforto, exclusividade, tecnologia, lifestyle e alta performance.</div><span class="bc-h">Brand equity &bull; Premium</span></div>
+    </div>
+  </section>
+
+  <!-- S5: Touchpoints -->
+  <section class="s t-tp">
+    <div class="lbl fi">Jornada do Cliente</div>
+    <h2 class="ttl fi">Sua marca em <strong>cada momento</strong> da experiencia</h2>
+    <div class="tp-list">
+      <div class="tp-item fi"><div class="tp-num">01</div><div><div class="tp-h">Chegada & Recepcao</div><p class="tp-p">TVs no lounge de entrada com seu video institucional. Primeira impressao em ambiente sofisticado.</p><span class="tp-tag">BRANDING</span></div></div>
+      <div class="tp-item fi"><div class="tp-num">02</div><div><div class="tp-h">Durante o Treino</div><p class="tp-p">Telas individuais em cada equipamento Technogym. O cliente ve sua marca por 85 minutos em media, com alta atencao.</p><span class="tp-tag">ALTA ATENCAO</span></div></div>
+      <div class="tp-item fi"><div class="tp-num">03</div><div><div class="tp-h">Areas de Descanso</div><p class="tp-p">TVs nas areas de permanencia e alongamento. Momento de recuperacao = momento de absorcao da mensagem.</p><span class="tp-tag">RETENCAO</span></div></div>
+      <div class="tp-item fi"><div class="tp-num">04</div><div><div class="tp-h">Digital & Social</div><p class="tp-p">Presenca no Instagram, stories e conteudo dos influenciadores parceiros. Ampliacao alem das paredes da academia.</p><span class="tp-tag">ALCANCE DIGITAL</span></div></div>
+    </div>
+  </section>
+
+  <!-- S6: Investimento -->
+  <section class="s t-inv">
+    <div class="lbl fi">Investimento</div>
+    <div class="pr-cards">
+      <div class="prc fi">
+        <div class="prc-name">Essencial</div>
+        <div class="prc-price"><span class="cur">R$</span>1.500</div>
+        <div class="prc-per">por mes</div>
+        <div class="prc-div"></div>
+        <ul class="prc-feat">
+          <li><span class="ck">&#10003;</span> Video 15s nos equipamentos (24h)</li>
+          <li><span class="ck">&#10003;</span> Video 1min nas TVs (24h)</li>
+          <li><span class="ck">&#10003;</span> 1 post mensal no Instagram LIFTT</li>
+          <li><span class="ck">&#10003;</span> Presenca em 1 evento/mes</li>
+          <li><span class="ck">&#10003;</span> Relatorio mensal de exposicao</li>
+        </ul>
+      </div>
+      <div class="prc feat fi">
+        <div class="prc-badge">Recomendado</div>
+        <div class="prc-name">Premium</div>
+        <div class="prc-price"><span class="cur">R$</span>2.500</div>
+        <div class="prc-per">por mes</div>
+        <div class="prc-div"></div>
+        <ul class="prc-feat">
+          <li><span class="ck">&#10003;</span> Tudo do plano Essencial</li>
+          <li><span class="ck">&#10003;</span> Video exclusivo (sem concorrentes)</li>
+          <li><span class="ck">&#10003;</span> 2 posts + 4 stories/mes no Instagram</li>
+          <li><span class="ck">&#10003;</span> Ativacao com 1 influenciador/mes</li>
+          <li><span class="ck">&#10003;</span> Presenca em todos os eventos</li>
+          <li><span class="ck">&#10003;</span> Espaco para banner fisico no lounge</li>
+        </ul>
+      </div>
+      <div class="prc fi">
+        <div class="prc-name">Exclusivo</div>
+        <div class="prc-price"><span class="cur">R$</span>4.500</div>
+        <div class="prc-per">por mes</div>
+        <div class="prc-div"></div>
+        <ul class="prc-feat">
+          <li><span class="ck">&#10003;</span> Tudo do plano Premium</li>
+          <li><span class="ck">&#10003;</span> Exclusividade total no segmento</li>
+          <li><span class="ck">&#10003;</span> Co-branding em eventos LIFTT</li>
+          <li><span class="ck">&#10003;</span> Producao de conteudo inclusa</li>
+          <li><span class="ck">&#10003;</span> Ativacao com 3 influenciadores/mes</li>
+          <li><span class="ck">&#10003;</span> Reuniao mensal de performance</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fi" style="color:var(--muted);font-size:13px">Contrato minimo: 3 meses &bull; Condicoes especiais para contratos semestrais e anuais</p>
+  </section>
+
+  <!-- S7: ROI -->
+  <section class="s t-roi">
+    <div class="lbl fi">Comparativo de Valor</div>
+    <h2 class="ttl fi">Por que isso e um <strong>investimento inteligente</strong></h2>
+    <div class="roi-cmp fi">
+      <div class="roi-col">
+        <h3>Midia Tradicional</h3>
+        <div class="roi-it bad"><div class="roi-v bad">R$ 5.000+</div><div class="roi-d">Outdoor por mes (publico generico)</div></div>
+        <div class="roi-it bad"><div class="roi-v bad">R$ 3.000+</div><div class="roi-d">Anuncio em revista local</div></div>
+        <div class="roi-it bad"><div class="roi-v bad">R$ 8.000+</div><div class="roi-d">Patrocinio de evento (unica vez)</div></div>
+      </div>
+      <div class="roi-vs">VS</div>
+      <div class="roi-col">
+        <h3>LIFTT Telas</h3>
+        <div class="roi-it good"><div class="roi-v good">R$ 1.500</div><div class="roi-d">Presenca 24h + publico premium qualificado</div></div>
+        <div class="roi-it good"><div class="roi-v good">Multicanal</div><div class="roi-d">Telas + TVs + Instagram + Eventos</div></div>
+        <div class="roi-it good"><div class="roi-v good">Mensal</div><div class="roi-d">Construcao continua de marca, nao pontual</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S8: Closing -->
+  <section class="s cls" style="background:var(--brown)">
+    <div class="cls-logo"><svg viewBox="0 0 100 75"><rect x="5" y="10" width="8" height="55" rx="2"/><rect x="87" y="10" width="8" height="55" rx="2"/><rect x="13" y="28" width="74" height="8" rx="2"/><rect x="13" y="44" width="74" height="8" rx="2"/></svg></div>
+    <p class="cls-q fi">&ldquo;Sua marca nao vai so aparecer. Ela vai fazer parte da rotina de um publico premium, todos os dias.&rdquo;</p>
+    <div class="cls-div"></div>
+    <p class="cls-cta fi">Vamos conversar?</p>
+    <div class="cls-info fi"><p>LIFTT Fitness Club &mdash; Vitoria, ES</p><p>@lifttfitnessclub &bull; contato@liftt.com.br</p></div>
+    <div class="scar fi">Vagas limitadas para parceiros &mdash; 3 restantes</div>
+  </section>
+
+</div>
+
+<!-- =============== DECK 2: EVENTOS =============== -->
+<div class="view deck" id="eventos">
+
+  <!-- S1: Hero -->
+  <section class="s e-hero">
+    <div class="e-ey"><div class="ln"></div><span>LIFTT Fitness Club</span><div class="ln"></div></div>
+    <h1 class="e-h1">Eventos que sua equipe <strong>nunca vai esquecer</strong></h1>
+    <p class="e-desc">Experiencias corporativas exclusivas com tecnologia Technogym, em um dos espacos fitness mais sofisticados de Vitoria.</p>
+    <div class="e-stats">
+      <div style="text-align:center"><div class="e-sv">16</div><div class="e-sl">Convidados</div></div>
+      <div class="e-sdiv"></div>
+      <div style="text-align:center"><div class="e-sv">2</div><div class="e-sl">Aulas exclusivas</div></div>
+      <div class="e-sdiv"></div>
+      <div style="text-align:center"><div class="e-sv">3h</div><div class="e-sl">Experiencia completa</div></div>
+    </div>
+  </section>
+
+  <!-- S2: Conceito -->
+  <section class="s e-con">
+    <div class="lbl fi">O Conceito</div>
+    <h2 class="ttl fi" style="color:var(--char)">Duas experiencias unicas em uma <strong>manha inesquecivel</strong></h2>
+    <div class="con-g">
+      <div class="con-b fi">
+        <div class="con-bi">&#9829;</div>
+        <h3>Teambeats</h3>
+        <p>Treino coletivo com monitoramento de frequencia cardiaca em tempo real, desenvolvido pela Technogym. Cada participante treina na sua intensidade ideal, com feedback visual ao vivo.</p>
+        <div class="con-hl"><span class="dt"></span><span>8 vagas por aula &bull; 30 minutos &bull; Personalizado</span></div>
+      </div>
+      <div class="con-b fi">
+        <div class="con-bi">&#9889;</div>
+        <h3>Group Cycle</h3>
+        <p>Cycling indoor com intensidade, musica envolvente e luzes dinamicas que acompanham o ritmo. Tecnologia integrada para monitorar performance e estimular a competicao saudavel.</p>
+        <div class="con-hl"><span class="dt"></span><span>8 vagas por aula &bull; 30 minutos &bull; Imersivo</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3: Experiencia -->
+  <section class="s e-exp">
+    <div class="lbl fi" style="color:var(--gold)">A Experiencia Completa</div>
+    <h2 class="ttl fi" style="color:var(--cream)">Mais que treino: <strong>networking, bem-estar e marca</strong></h2>
+    <div class="exp-g">
+      <div class="ec fi"><div class="ec-n">01</div><div class="ec-t">Recepcao no Lounge</div><div class="ec-d">Seus convidados sao recebidos em um ambiente exclusivo com cafe, agua, frutas e salada de frutas. Momento de conexao antes do treino.</div><span class="ec-b">Networking</span></div>
+      <div class="ec fi"><div class="ec-n">02</div><div class="ec-t">Aulas Exclusivas</div><div class="ec-d">Duas turmas de 8 pessoas em aulas de 30 minutos: Teambeats e Group Cycle. Professores dedicados, experiencia privada.</div><span class="ec-b">Performance</span></div>
+      <div class="ec fi"><div class="ec-n">03</div><div class="ec-t">Cafe & Encerramento</div><div class="ec-d">Cafe da manha completo, entrega de brindes, sorteios. Sua marca no centro de uma experiencia memoravel.</div><span class="ec-b">Branding</span></div>
+      <div class="ec fi"><div class="ec-n">04</div><div class="ec-t">Ativacao de Parceiros</div><div class="ec-d">Opcao de trazer marcas parceiras para ativacoes conjuntas. Amplie o impacto do evento com experiencias complementares.</div><span class="ec-b">Co-branding</span></div>
+    </div>
+  </section>
+
+  <!-- S4: Timeline -->
+  <section class="s e-tl">
+    <div class="lbl fi" style="color:var(--gold)">Programacao</div>
+    <h2 class="ttl fi" style="color:var(--cream)">Uma manha <strong>perfeitamente planejada</strong></h2>
+    <div class="tl">
+      <div class="tl-i fi"><div class="tl-dot">8h</div><div class="tl-c"><div class="tl-time">08:00</div><div class="tl-label">Chegada & Welcome</div><div class="tl-desc">Recepcao no lounge LIFTT. Cafe, agua, frutas. Breve apresentacao e integracao do grupo.</div><span class="tl-dur">30 min</span></div></div>
+      <div class="tl-i fi"><div class="tl-dot">8:30</div><div class="tl-c"><div class="tl-time">08:30</div><div class="tl-label">Aulas Teambeats + Group Cycle</div><div class="tl-desc">Duas turmas simultaneas de 8 pessoas. Troca de modalidade na metade. Total: 1h de exercicio com monitoramento.</div><span class="tl-dur">60 min</span></div></div>
+      <div class="tl-i fi"><div class="tl-dot">9:30</div><div class="tl-c"><div class="tl-time">09:30</div><div class="tl-label">Cafe da Manha Premium</div><div class="tl-desc">Bancada completa no lounge com opcoes saudaveis e gourmet. Momento de descontracao, networking e conversas.</div><span class="tl-dur">60 a 90 min</span></div></div>
+      <div class="tl-i fi"><div class="tl-dot">10:30</div><div class="tl-c"><div class="tl-time">10:30</div><div class="tl-label">Brindes, Sorteios & Encerramento</div><div class="tl-desc">Entrega de brindes da marca, sorteios e registro fotografico. Encerramento ate ~11h.</div><span class="tl-dur">30 min</span></div></div>
+    </div>
+  </section>
+
+  <!-- S5: Incluso -->
+  <section class="s e-inc">
+    <div class="lbl fi">O Que Esta Incluso</div>
+    <h2 class="ttl fi" style="color:var(--char)">Tudo pronto. Voce so <strong>traz os convidados</strong></h2>
+    <div class="inc-g">
+      <div class="inc-i fi"><span class="inc-ic">&#127947;</span><div class="inc-n">Professores</div><div class="inc-d">Instrutores LIFTT dedicados</div></div>
+      <div class="inc-i fi"><span class="inc-ic">&#128166;</span><div class="inc-n">Toalhas</div><div class="inc-d">Toalhas LIFTT para todos</div></div>
+      <div class="inc-i fi"><span class="inc-ic">&#128167;</span><div class="inc-n">Hidratacao</div><div class="inc-d">Agua mineral e com gas</div></div>
+      <div class="inc-i fi"><span class="inc-ic">&#9749;</span><div class="inc-n">Cafe</div><div class="inc-d">Cafe premium no lounge</div></div>
+      <div class="inc-i fi"><span class="inc-ic">&#127815;</span><div class="inc-n">Frutas</div><div class="inc-d">Frutas frescas e salada de frutas</div></div>
+      <div class="inc-i fi"><span class="inc-ic">&#127963;</span><div class="inc-n">Estrutura</div><div class="inc-d">Lounge + salas de aula</div></div>
+      <div class="inc-i fi"><span class="inc-ic">&#128247;</span><div class="inc-n">Ambiente</div><div class="inc-d">Cenario premium para fotos</div></div>
+      <div class="inc-i fi"><span class="inc-ic">&#10024;</span><div class="inc-n">Personalizacao</div><div class="inc-d">Itens extras sob consulta</div></div>
+    </div>
+  </section>
+
+  <!-- S6: Investimento -->
+  <section class="s e-val">
+    <div class="lbl fi" style="color:var(--gold)">Investimento</div>
+    <h2 class="ttl fi" style="color:var(--cream);text-align:center;max-width:600px">Uma experiencia completa por <strong>menos do que voce imagina</strong></h2>
+    <div class="val-box fi">
+      <div class="val-p"><span class="cur">R$</span>1.500</div>
+      <div class="val-per">por evento (sabados)</div>
+    </div>
+    <div class="val-tags fi">
+      <span class="vt"><span class="ck">&#10003;</span> 16 convidados</span>
+      <span class="vt"><span class="ck">&#10003;</span> 2 aulas exclusivas</span>
+      <span class="vt"><span class="ck">&#10003;</span> Professores dedicados</span>
+      <span class="vt"><span class="ck">&#10003;</span> Cafe da manha completo</span>
+      <span class="vt"><span class="ck">&#10003;</span> Lounge privativo</span>
+      <span class="vt"><span class="ck">&#10003;</span> ~3h de experiencia</span>
+    </div>
+    <div class="val-cmp fi">
+      <p>Comparativo: um cafe da manha empresarial para 16 pessoas em hotel custa <strong>R$ 3.000 a R$ 5.000</strong> &mdash; sem a experiencia, sem o branding, sem o impacto.</p>
+    </div>
+  </section>
+
+  <!-- S7: Proof -->
+  <section class="s e-prf">
+    <div class="lbl fi" style="color:var(--gold);text-align:center;width:100%">Por Que Funciona</div>
+    <h2 class="ttl fi" style="color:var(--cream);text-align:center;max-width:100%;width:100%">Numeros que <strong>comprovam o impacto</strong></h2>
+    <div class="prf-g">
+      <div class="prf-c fi"><div class="prf-v">93%</div><div class="prf-l">das pessoas lembram de marcas associadas a experiencias positivas</div><div class="prf-d"></div></div>
+      <div class="prf-c fi"><div class="prf-v">4x</div><div class="prf-l">mais engajamento em marketing experiencial vs. midia tradicional</div><div class="prf-d"></div></div>
+      <div class="prf-c fi"><div class="prf-v">72%</div><div class="prf-l">dos participantes compartilham a experiencia nas redes sociais</div><div class="prf-d"></div></div>
+      <div class="prf-q fi"><blockquote>&ldquo;Trouxemos nossos melhores clientes para um sabado na LIFTT. Foi o melhor investimento de relacionamento que fizemos no trimestre.&rdquo;</blockquote><cite>PARCEIRO LIFTT &mdash; Formato ilustrativo</cite></div>
+    </div>
+  </section>
+
+  <!-- S8: Closing -->
+  <section class="s cls e-cls">
+    <div class="cls-icon"><svg viewBox="0 0 100 75"><rect x="5" y="10" width="8" height="55" rx="2"/><rect x="87" y="10" width="8" height="55" rx="2"/><rect x="13" y="28" width="74" height="8" rx="2"/><rect x="13" y="44" width="74" height="8" rx="2"/></svg></div>
+    <h2 class="cls-hl fi">Transforme seu proximo evento em uma <strong>experiencia inesquecivel</strong></h2>
+    <p class="cls-sub fi">Reserve um sabado exclusivo na LIFTT e ofereca ao seu publico algo que nenhum evento convencional pode entregar.</p>
+    <button class="cls-btn fi" onclick="showLanding()">Voltar ao Inicio</button>
+    <div class="cls-info fi" style="margin-top:40px"><p>LIFTT Fitness Club &mdash; Vitoria, ES</p><p>@lifttfitnessclub &bull; contato@liftt.com.br</p></div>
+    <div class="cls-sc"><span class="pulse-d"></span><span>Apenas 4 sabados disponiveis por mes</span></div>
+  </section>
+
+</div>
+
+<script>
+const views = document.querySelectorAll('.view');
+const backBtn = document.getElementById('backBtn');
+const dotsNav = document.getElementById('navDots');
+let currentDeck = null;
+let deckSlides = [];
+let dots = [];
+
+function showLanding() {
+  views.forEach(v => v.classList.remove('active'));
+  document.getElementById('landing').classList.add('active');
+  backBtn.classList.remove('show');
+  dotsNav.innerHTML = '';
+  currentDeck = null;
+  window.scrollTo(0, 0);
+  document.documentElement.style.scrollSnapType = '';
+}
+
+function showDeck(id) {
+  views.forEach(v => v.classList.remove('active'));
+  const deck = document.getElementById(id);
+  deck.classList.add('active');
+  backBtn.classList.add('show');
+  currentDeck = id;
+
+  // Build dots
+  deckSlides = deck.querySelectorAll('.s');
+  dotsNav.innerHTML = '';
+  dots = [];
+  deckSlides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' on' : '');
+    d.onclick = () => deckSlides[i].scrollIntoView({ behavior: 'smooth' });
+    dotsNav.appendChild(d);
+    dots.push(d);
+  });
+
+  window.scrollTo(0, 0);
+  document.documentElement.style.scrollSnapType = 'y mandatory';
+
+  // Re-observe for fade-in
+  initObservers(deck);
+}
+
+function initObservers(container) {
+  const els = container.querySelectorAll('.fi');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('v'); });
+  }, { threshold: 0.15 });
+  els.forEach(el => { el.classList.remove('v'); obs.observe(el); });
+
+  // Dot tracking
+  const sObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = Array.from(deckSlides).indexOf(e.target);
+        dots.forEach((d, i) => d.classList.toggle('on', i === idx));
+      }
+    });
+  }, { threshold: 0.5 });
+  deckSlides.forEach(s => sObs.observe(s));
+}
+</script>
+
+</body>
+</html>

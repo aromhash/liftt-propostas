@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIFTT Fitness Club - Telas & Presenca | Proposta de Parceria</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brown-primary: #5b5444;
+    --brown-medium: #5a4a3b;
+    --cream: #dfddd1;
+    --black: #1a1816;
+    --surface: #242220;
+    --charcoal: #373634;
+    --gray-muted: #8a8783;
+    --white: #ffffff;
+    --gold: #c4a265;
+    --gold-light: #d4b87a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--black);
+    color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ========== SLIDE 1 - HERO ========== */
+  .slide-hero {
+    background: var(--black);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .slide-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(91, 84, 68, 0.15) 0%, transparent 70%);
+  }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(196, 162, 101, 0.4);
+    padding: 8px 24px;
+    border-radius: 100px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 48px;
+    animation: fadeInUp 1s ease 0.3s both;
+  }
+
+  .hero-logo {
+    width: 80px;
+    height: auto;
+    margin-bottom: 32px;
+    animation: fadeInUp 1s ease 0.1s both;
+  }
+
+  .hero-logo svg {
+    width: 80px;
+    height: 60px;
+    fill: var(--cream);
+  }
+
+  .hero-title {
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 300;
+    letter-spacing: -2px;
+    line-height: 1.05;
+    animation: fadeInUp 1s ease 0.5s both;
+    max-width: 900px;
+    padding: 0 20px;
+  }
+
+  .hero-title strong {
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--gray-muted);
+    margin-top: 32px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: fadeInUp 1s ease 0.7s both;
+  }
+
+  .hero-line {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 40px auto 0;
+    animation: fadeInUp 1s ease 0.9s both;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeInUp 1s ease 1.2s both;
+  }
+
+  .scroll-indicator span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-muted);
+  }
+
+  .scroll-indicator .arrow {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* ========== SLIDE 2 - POR QUE LIFTT ========== */
+  .slide-why {
+    background: var(--white);
+    color: var(--charcoal);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .section-title {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.15;
+    max-width: 700px;
+    margin-bottom: 60px;
+    letter-spacing: -1px;
+  }
+
+  .section-title strong {
+    font-weight: 700;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+    max-width: 1100px;
+  }
+
+  .stat-card {
+    padding: 40px 0;
+    border-top: 1px solid rgba(91, 84, 68, 0.15);
+  }
+
+  .stat-number {
+    font-size: clamp(40px, 5vw, 56px);
+    font-weight: 800;
+    color: var(--brown-primary);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .stat-number .unit {
+    font-size: 0.5em;
+    font-weight: 300;
+    color: var(--gold);
+  }
+
+  .stat-label {
+    font-size: 14px;
+    color: var(--gray-muted);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  /* ========== SLIDE 3 - AUDIENCIA ========== */
+  .slide-audience {
+    background: var(--brown-primary);
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .audience-left {
+    flex: 1;
+    min-width: 400px;
+    padding: 80px clamp(40px, 6vw, 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .audience-right {
+    flex: 1;
+    min-width: 400px;
+    min-height: 500px;
+    background: linear-gradient(135deg, var(--brown-medium), var(--charcoal));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+  }
+
+  .audience-right .profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .profile-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(223, 221, 209, 0.1);
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+
+  .profile-item:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .profile-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .profile-label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  .profile-desc {
+    font-size: 12px;
+    color: var(--gray-muted);
+    line-height: 1.4;
+  }
+
+  /* ========== SLIDE 4 - O QUE SUA MARCA RECEBE ========== */
+  .slide-benefits {
+    background: var(--black);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin-top: 20px;
+  }
+
+  .benefit-card {
+    background: var(--surface);
+    border: 1px solid rgba(223, 221, 209, 0.06);
+    border-radius: 20px;
+    padding: 40px 32px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .benefit-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(196, 162, 101, 0.2);
+  }
+
+  .benefit-card:hover::before {
+    opacity: 1;
+  }
+
+  .benefit-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(196, 162, 101, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  .benefit-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--cream);
+  }
+
+  .benefit-desc {
+    font-size: 14px;
+    color: var(--gray-muted);
+    line-height: 1.6;
+  }
+
+  .benefit-highlight {
+    display: inline-block;
+    background: rgba(196, 162, 101, 0.12);
+    color: var(--gold);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-top: 16px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ========== SLIDE 5 - PONTOS DE CONTATO ========== */
+  .slide-touchpoints {
+    background: var(--white);
+    color: var(--charcoal);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+
+  .touchpoints-list {
+    max-width: 900px;
+    margin-top: 20px;
+  }
+
+  .touchpoint-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid rgba(91, 84, 68, 0.1);
+  }
+
+  .touchpoint-number {
+    font-size: 48px;
+    font-weight: 800;
+    color: rgba(91, 84, 68, 0.12);
+    line-height: 1;
+    min-width: 60px;
+  }
+
+  .touchpoint-content h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--brown-primary);
+    margin-bottom: 6px;
+  }
+
+  .touchpoint-content p {
+    font-size: 15px;
+    color: var(--gray-muted);
+    line-height: 1.6;
+  }
+
+  .touchpoint-tag {
+    display: inline-block;
+    background: var(--brown-primary);
+    color: var(--cream);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-top: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ========== SLIDE 6 - INVESTIMENTO ========== */
+  .slide-invest {
+    background: linear-gradient(135deg, var(--black) 0%, #2a2520 100%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px;
+    text-align: center;
+  }
+
+  .invest-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+
+  .pricing-cards {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+    margin-bottom: 60px;
+  }
+
+  .pricing-card {
+    background: var(--surface);
+    border: 1px solid rgba(223, 221, 209, 0.06);
+    border-radius: 24px;
+    padding: 48px 36px;
+    min-width: 280px;
+    max-width: 320px;
+    flex: 1;
+    text-align: left;
+    position: relative;
+    transition: transform 0.3s ease;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-6px);
+  }
+
+  .pricing-card.featured {
+    border-color: var(--gold);
+    background: linear-gradient(180deg, rgba(196, 162, 101, 0.08) 0%, var(--surface) 100%);
+  }
+
+  .pricing-card.featured .pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 100px;
+  }
+
+  .pricing-name {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-muted);
+    margin-bottom: 20px;
+  }
+
+  .pricing-price {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .pricing-price .currency {
+    font-size: 20px;
+    font-weight: 400;
+    vertical-align: top;
+    margin-right: 4px;
+  }
+
+  .pricing-period {
+    font-size: 14px;
+    color: var(--gray-muted);
+    margin-bottom: 28px;
+  }
+
+  .pricing-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(223, 221, 209, 0.08);
+    margin-bottom: 24px;
+  }
+
+  .pricing-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .pricing-features li {
+    font-size: 14px;
+    color: var(--cream);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.4;
+  }
+
+  .pricing-features li .check {
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ========== SLIDE 7 - ROI ========== */
+  .slide-roi {
+    background: var(--white);
+    color: var(--charcoal);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+
+  .roi-comparison {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 40px;
+    max-width: 900px;
+    margin-top: 40px;
+    align-items: center;
+  }
+
+  .roi-column {
+    text-align: center;
+  }
+
+  .roi-column h3 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-muted);
+    margin-bottom: 20px;
+  }
+
+  .roi-item {
+    padding: 16px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+
+  .roi-item.bad {
+    background: rgba(196, 100, 100, 0.08);
+  }
+
+  .roi-item.good {
+    background: rgba(122, 158, 107, 0.08);
+  }
+
+  .roi-value {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .roi-value.bad { color: #b85c5c; }
+  .roi-value.good { color: var(--brown-primary); }
+
+  .roi-desc {
+    font-size: 12px;
+    color: var(--gray-muted);
+    margin-top: 4px;
+  }
+
+  .roi-vs {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--gray-muted);
+    letter-spacing: 2px;
+  }
+
+  /* ========== SLIDE 8 - CLOSING ========== */
+  .slide-closing {
+    background: var(--brown-primary);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+  }
+
+  .closing-logo svg {
+    width: 100px;
+    height: 75px;
+    fill: var(--cream);
+    margin-bottom: 48px;
+  }
+
+  .closing-quote {
+    font-size: clamp(24px, 3.5vw, 40px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.4;
+    max-width: 750px;
+    margin-bottom: 48px;
+    color: var(--cream);
+  }
+
+  .closing-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 48px;
+  }
+
+  .closing-cta {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+
+  .closing-contact {
+    font-size: 14px;
+    color: var(--gray-muted);
+    line-height: 1.8;
+  }
+
+  .closing-contact a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(196, 162, 101, 0.3);
+    transition: border-color 0.3s;
+  }
+
+  .closing-contact a:hover {
+    border-color: var(--gold);
+  }
+
+  .scarcity-badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 28px;
+    border-radius: 100px;
+    margin-top: 40px;
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+  }
+
+  /* ========== ANIMATIONS ========== */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ========== NAV DOTS ========== */
+  .nav-dots {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+  }
+
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(223, 221, 209, 0.2);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .nav-dot.active {
+    background: var(--gold);
+    transform: scale(1.3);
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 768px) {
+    .audience-left, .audience-right { min-width: 100%; }
+    .roi-comparison { grid-template-columns: 1fr; gap: 20px; }
+    .roi-vs { display: none; }
+    .pricing-cards { flex-direction: column; align-items: center; }
+    .profile-grid { grid-template-columns: 1fr !important; }
+  }
+
+  /* ========== PRINT / PDF ========== */
+  @media print {
+    .slide { page-break-after: always; min-height: 100vh; }
+    .nav-dots, .scroll-indicator { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV DOTS -->
+<nav class="nav-dots">
+  <button class="nav-dot active" onclick="scrollToSlide(0)"></button>
+  <button class="nav-dot" onclick="scrollToSlide(1)"></button>
+  <button class="nav-dot" onclick="scrollToSlide(2)"></button>
+  <button class="nav-dot" onclick="scrollToSlide(3)"></button>
+  <button class="nav-dot" onclick="scrollToSlide(4)"></button>
+  <button class="nav-dot" onclick="scrollToSlide(5)"></button>
+  <button class="nav-dot" onclick="scrollToSlide(6)"></button>
+  <button class="nav-dot" onclick="scrollToSlide(7)"></button>
+</nav>
+
+<!-- SLIDE 1: HERO -->
+<section class="slide slide-hero" id="slide-0">
+  <div class="hero-badge">Proposta Exclusiva 2026</div>
+  <h1 class="hero-title">Sua marca na <strong>rotina premium</strong> de Vitoria</h1>
+  <p class="hero-subtitle">LIFTT Fitness Club &mdash; Telas & Presenca</p>
+  <div class="hero-line"></div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- SLIDE 2: POR QUE LIFTT -->
+<section class="slide slide-why" id="slide-1">
+  <div class="section-label fade-in">Por que a LIFTT</div>
+  <h2 class="section-title fade-in">O unico clube fitness <strong>premium de Vitoria</strong> com tecnologia Technogym</h2>
+  <div class="stats-grid">
+    <div class="stat-card fade-in">
+      <div class="stat-number">200<span class="unit">+</span></div>
+      <div class="stat-label">Clientes ativos em apenas 6 meses de operacao</div>
+    </div>
+    <div class="stat-card fade-in">
+      <div class="stat-number">500</div>
+      <div class="stat-label">Capacidade total &mdash; cada vaga e exclusiva</div>
+    </div>
+    <div class="stat-card fade-in">
+      <div class="stat-number">24<span class="unit">h</span></div>
+      <div class="stat-label">Sua marca exibida continuamente, sem interrupcao</div>
+    </div>
+    <div class="stat-card fade-in">
+      <div class="stat-number">85<span class="unit">min</span></div>
+      <div class="stat-label">Tempo medio de permanencia por sessao de treino</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: AUDIENCIA -->
+<section class="slide slide-audience" id="slide-2">
+  <div class="audience-left">
+    <div class="section-label fade-in" style="color: var(--gold)">Perfil do Publico</div>
+    <h2 class="section-title fade-in" style="color: var(--cream); max-width: 500px;">
+      Acesso direto a quem <strong>decide e influencia</strong>
+    </h2>
+    <p class="fade-in" style="color: var(--gray-muted); line-height: 1.7; max-width: 440px; margin-top: 16px;">
+      Nossos membros sao empresarios, executivos, profissionais liberais e formadores de opiniao.
+      Alto poder aquisitivo. Alta influencia social. Alta frequencia de treino.
+    </p>
+  </div>
+  <div class="audience-right">
+    <div class="profile-grid">
+      <div class="profile-item fade-in">
+        <span class="profile-icon">&#9733;</span>
+        <div class="profile-label">Empresarios</div>
+        <div class="profile-desc">CEOs e donos de negocios da Grande Vitoria</div>
+      </div>
+      <div class="profile-item fade-in">
+        <span class="profile-icon">&#9830;</span>
+        <div class="profile-label">Executivos</div>
+        <div class="profile-desc">Diretores e C-Level de grandes empresas</div>
+      </div>
+      <div class="profile-item fade-in">
+        <span class="profile-icon">&#9827;</span>
+        <div class="profile-label">Influenciadores</div>
+        <div class="profile-desc">Perfis fitness com audiencia qualificada</div>
+      </div>
+      <div class="profile-item fade-in">
+        <span class="profile-icon">&#9829;</span>
+        <div class="profile-label">Profissionais</div>
+        <div class="profile-desc">Medicos, advogados, arquitetos premium</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: BENEFICIOS -->
+<section class="slide slide-benefits" id="slide-3">
+  <div class="section-label fade-in" style="color: var(--gold);">O Que Sua Marca Recebe</div>
+  <h2 class="section-title fade-in" style="color: var(--cream); margin-bottom: 40px;">
+    Presenca <strong>multicanal</strong> dentro do ecossistema LIFTT
+  </h2>
+  <div class="benefits-grid">
+    <div class="benefit-card fade-in">
+      <div class="benefit-icon">&#9654;</div>
+      <div class="benefit-title">Video nos Equipamentos</div>
+      <div class="benefit-desc">Video de 15 segundos exibido continuamente nas telas Technogym. Cada equipamento e um ponto de contato exclusivo durante o treino.</div>
+      <span class="benefit-highlight">24h por dia &bull; Alta atencao</span>
+    </div>
+    <div class="benefit-card fade-in">
+      <div class="benefit-icon">&#9632;</div>
+      <div class="benefit-title">TVs da Academia</div>
+      <div class="benefit-desc">Video de ate 1 minuto nas TVs de alta definicao distribuidas pelo espaco. Visibilidade em areas de descanso e circulacao.</div>
+      <span class="benefit-highlight">Formato expandido &bull; Branding</span>
+    </div>
+    <div class="benefit-card fade-in">
+      <div class="benefit-icon">&#10038;</div>
+      <div class="benefit-title">Instagram LIFTT</div>
+      <div class="benefit-desc">Divulgacao nos canais oficiais da LIFTT, com audiencia organica altamente engajada e segmentada no publico premium.</div>
+      <span class="benefit-highlight">Alcance digital &bull; Social proof</span>
+    </div>
+    <div class="benefit-card fade-in">
+      <div class="benefit-icon">&#9734;</div>
+      <div class="benefit-title">Ativacoes com Influenciadores</div>
+      <div class="benefit-desc">Possibilidade de acoes co-branded com influenciadores fitness parceiros da LIFTT, amplificando o alcance da sua marca.</div>
+      <span class="benefit-highlight">Influencer marketing</span>
+    </div>
+    <div class="benefit-card fade-in">
+      <div class="benefit-icon">&#9878;</div>
+      <div class="benefit-title">Eventos Exclusivos</div>
+      <div class="benefit-desc">Presenca da sua marca nos eventos de sabado da LIFTT. Acoes promocionais e experiencias diretas com o publico.</div>
+      <span class="benefit-highlight">Experiential &bull; Conversao</span>
+    </div>
+    <div class="benefit-card fade-in">
+      <div class="benefit-icon">&#10070;</div>
+      <div class="benefit-title">Associacao de Marca</div>
+      <div class="benefit-desc">Sua marca vinculada aos valores LIFTT: conforto, exclusividade, tecnologia, lifestyle e alta performance.</div>
+      <span class="benefit-highlight">Brand equity &bull; Premium</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: PONTOS DE CONTATO -->
+<section class="slide slide-touchpoints" id="slide-4">
+  <div class="section-label fade-in">Jornada do Cliente</div>
+  <h2 class="section-title fade-in">Sua marca em <strong>cada momento</strong> da experiencia</h2>
+  <div class="touchpoints-list">
+    <div class="touchpoint-item fade-in">
+      <div class="touchpoint-number">01</div>
+      <div class="touchpoint-content">
+        <h3>Chegada & Recepcao</h3>
+        <p>TVs no lounge de entrada com seu video institucional. Primeira impressao em ambiente sofisticado.</p>
+        <span class="touchpoint-tag">BRANDING</span>
+      </div>
+    </div>
+    <div class="touchpoint-item fade-in">
+      <div class="touchpoint-number">02</div>
+      <div class="touchpoint-content">
+        <h3>Durante o Treino</h3>
+        <p>Telas individuais em cada equipamento Technogym. O cliente ve sua marca por 85 minutos em media, com alta atencao e baixa distracao.</p>
+        <span class="touchpoint-tag">ALTA ATENCAO</span>
+      </div>
+    </div>
+    <div class="touchpoint-item fade-in">
+      <div class="touchpoint-number">03</div>
+      <div class="touchpoint-content">
+        <h3>Areas de Descanso</h3>
+        <p>TVs nas areas de permanencia e alongamento. Momento de recuperacao = momento de absorcao da mensagem.</p>
+        <span class="touchpoint-tag">RETENCAO</span>
+      </div>
+    </div>
+    <div class="touchpoint-item fade-in">
+      <div class="touchpoint-number">04</div>
+      <div class="touchpoint-content">
+        <h3>Digital & Social</h3>
+        <p>Presenca no Instagram, stories e conteudo dos influenciadores parceiros. Ampliacao alem das paredes da academia.</p>
+        <span class="touchpoint-tag">ALCANCE DIGITAL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: INVESTIMENTO -->
+<section class="slide slide-invest" id="slide-5">
+  <div class="invest-label fade-in">Investimento</div>
+  <div class="pricing-cards">
+    <div class="pricing-card fade-in">
+      <div class="pricing-name">Essencial</div>
+      <div class="pricing-price"><span class="currency">R$</span>1.500</div>
+      <div class="pricing-period">por mes</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li><span class="check">&#10003;</span> Video 15s nos equipamentos (24h)</li>
+        <li><span class="check">&#10003;</span> Video 1min nas TVs (24h)</li>
+        <li><span class="check">&#10003;</span> 1 post mensal no Instagram LIFTT</li>
+        <li><span class="check">&#10003;</span> Presenca em 1 evento/mes</li>
+        <li><span class="check">&#10003;</span> Relatorio mensal de exposicao</li>
+      </ul>
+    </div>
+    <div class="pricing-card featured fade-in">
+      <div class="pricing-badge">Recomendado</div>
+      <div class="pricing-name">Premium</div>
+      <div class="pricing-price"><span class="currency">R$</span>2.500</div>
+      <div class="pricing-period">por mes</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li><span class="check">&#10003;</span> Tudo do plano Essencial</li>
+        <li><span class="check">&#10003;</span> Video exclusivo (sem concorrentes)</li>
+        <li><span class="check">&#10003;</span> 2 posts + 4 stories/mes no Instagram</li>
+        <li><span class="check">&#10003;</span> Ativacao com 1 influenciador/mes</li>
+        <li><span class="check">&#10003;</span> Presenca em todos os eventos</li>
+        <li><span class="check">&#10003;</span> Espaco para banner fisico no lounge</li>
+      </ul>
+    </div>
+    <div class="pricing-card fade-in">
+      <div class="pricing-name">Exclusivo</div>
+      <div class="pricing-price"><span class="currency">R$</span>4.500</div>
+      <div class="pricing-period">por mes</div>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li><span class="check">&#10003;</span> Tudo do plano Premium</li>
+        <li><span class="check">&#10003;</span> Exclusividade total no segmento</li>
+        <li><span class="check">&#10003;</span> Co-branding em eventos LIFTT</li>
+        <li><span class="check">&#10003;</span> Producao de conteudo inclusa</li>
+        <li><span class="check">&#10003;</span> Ativacao com 3 influenciadores/mes</li>
+        <li><span class="check">&#10003;</span> Reuniao mensal de performance</li>
+      </ul>
+    </div>
+  </div>
+  <p class="fade-in" style="color: var(--gray-muted); font-size: 13px;">Contrato minimo: 3 meses &bull; Condicoes especiais para contratos semestrais e anuais</p>
+</section>
+
+<!-- SLIDE 7: ROI -->
+<section class="slide slide-roi" id="slide-6">
+  <div class="section-label fade-in">Comparativo de Valor</div>
+  <h2 class="section-title fade-in">Por que isso e um <strong>investimento inteligente</strong></h2>
+  <div class="roi-comparison fade-in">
+    <div class="roi-column">
+      <h3>Midia Tradicional</h3>
+      <div class="roi-item bad">
+        <div class="roi-value bad">R$ 5.000+</div>
+        <div class="roi-desc">Outdoor por mes (publico generico)</div>
+      </div>
+      <div class="roi-item bad">
+        <div class="roi-value bad">R$ 3.000+</div>
+        <div class="roi-desc">Anuncio em revista local</div>
+      </div>
+      <div class="roi-item bad">
+        <div class="roi-value bad">R$ 8.000+</div>
+        <div class="roi-desc">Patrocinio de evento (unica vez)</div>
+      </div>
+    </div>
+    <div class="roi-vs">VS</div>
+    <div class="roi-column">
+      <h3>LIFTT Telas</h3>
+      <div class="roi-item good">
+        <div class="roi-value good">R$ 1.500</div>
+        <div class="roi-desc">Presenca 24h + publico premium qualificado</div>
+      </div>
+      <div class="roi-item good">
+        <div class="roi-value good">Multicanal</div>
+        <div class="roi-desc">Telas + TVs + Instagram + Eventos</div>
+      </div>
+      <div class="roi-item good">
+        <div class="roi-value good">Mensal</div>
+        <div class="roi-desc">Construcao continua de marca, nao pontual</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: CLOSING -->
+<section class="slide slide-closing" id="slide-7">
+  <div class="closing-logo">
+    <svg viewBox="0 0 100 75">
+      <rect x="5" y="10" width="8" height="55" rx="2"/>
+      <rect x="87" y="10" width="8" height="55" rx="2"/>
+      <rect x="13" y="28" width="74" height="8" rx="2"/>
+      <rect x="13" y="44" width="74" height="8" rx="2"/>
+    </svg>
+  </div>
+  <p class="closing-quote fade-in">
+    &ldquo;Sua marca nao vai so aparecer. Ela vai fazer parte da rotina de um publico premium, todos os dias.&rdquo;
+  </p>
+  <div class="closing-divider"></div>
+  <p class="closing-cta fade-in">Vamos conversar?</p>
+  <div class="closing-contact fade-in">
+    <p>LIFTT Fitness Club &mdash; Vitoria, ES</p>
+    <p><a href="#">@lifttfitnessclub</a> &bull; <a href="#">contato@liftt.com.br</a></p>
+  </div>
+  <div class="scarcity-badge fade-in">Vagas limitadas para parceiros &mdash; 3 restantes</div>
+</section>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Nav dots
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.nav-dot');
+
+  const slideObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = Array.from(slides).indexOf(entry.target);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+
+        // Update dot colors based on slide background
+        const isLight = entry.target.classList.contains('slide-why') ||
+                       entry.target.classList.contains('slide-touchpoints') ||
+                       entry.target.classList.contains('slide-roi');
+        document.querySelector('.nav-dots').style.setProperty('--dot-color', isLight ? '#5b5444' : '#dfddd1');
+      }
+    });
+  }, { threshold: 0.5 });
+
+  slides.forEach(s => slideObserver.observe(s));
+
+  function scrollToSlide(idx) {
+    slides[idx].scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
