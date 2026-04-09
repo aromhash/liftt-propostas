@@ -31,7 +31,19 @@
       "Bash(du -sh \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/\"*)",
       "Bash(npx --yes sharp-cli --help)",
       "Bash(sed -i 's|img/hero-brand\\\\.png|img/hero-brand.jpg|g' LIFTT_TELAS_PREMIUM_v2.html LIFTT_PROPOSTAS_2026.html)",
-      "Bash(sed -i 's|img/evento-welcome\\\\.png|img/evento-welcome.jpg|g' LIFTT_EVENTOS_PREMIUM_v2.html LIFTT_PROPOSTAS_2026.html)"
+      "Bash(sed -i 's|img/evento-welcome\\\\.png|img/evento-welcome.jpg|g' LIFTT_EVENTOS_PREMIUM_v2.html LIFTT_PROPOSTAS_2026.html)",
+      "Bash(cp \"/c/Users/marce/Downloads/DSC02441.jpg\" fachada-raw.jpg)",
+      "Bash(cp \"/c/Users/marce/Downloads/DSC03392.jpg\" interior-raw.jpg)",
+      "Bash(cp \"/c/Users/marce/Downloads/DSC00437.jpg\" trainer-raw.jpg)",
+      "Bash(cp \"/c/Users/marce/Downloads/DSC00556.jpg\" tela-azul-raw.jpg)",
+      "Bash(cp \"/c/Users/marce/Downloads/DSC00597.jpg\" technogym-menu-raw.jpg)",
+      "Bash(find:*)",
+      "Read(//c/Users/marce/AppData/Local/Temp/claude/C--Users-marce-OneDrive--rea-de-Trabalho-pdf/e613a18b-89e8-4b22-8e10-b578b91f5980/tasks/**)",
+      "Bash(cp \"/c/Users/marce/OneDrive/Área de Trabalho/DOCS LIFTT/HISTORICO/Fevereiro 2026/Videos/LIFTT VIDEO/LIFT_SLOW.mp4\" \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/lift-slow-raw.mp4\")",
+      "Bash(cp \"/c/Users/marce/Downloads/Cópia de STORYS LIFTT \\(1920 x 1080 px\\).mp4\" \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/storys-raw.mp4\")",
+      "Bash(cp \"/c/Users/marce/OneDrive/Área de Trabalho/DOCS LIFTT/HISTORICO/Outubro 2025/EVENTO LIFTT/ANIMAÇÃO - 1920x1080px - 10seg.mp4\" \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/animacao-raw.mp4\")",
+      "Bash(cp \"/c/Users/marce/Downloads/Experiência Liftt + Sundays.mp4\" \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/experiencia-raw.mp4\")",
+      "Bash(ls -lh \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/\"*raw.mp4)"
     ]
   }
 }
