@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(start:*)",
+      "WebFetch(domain:drive.google.com)",
+      "mcp__railway__create-project-and-link",
+      "Bash(railway whoami:*)",
+      "Bash(railway workspace:*)",
+      "Bash(railway init:*)",
+      "Bash(railway help:*)",
+      "mcp__railway__list-projects",
+      "Bash(railway link:*)",
+      "mcp__railway__deploy",
+      "Bash(railway service:*)",
+      "Bash(railway up:*)",
+      "Bash(railway add:*)",
+      "mcp__railway__list-services",
+      "mcp__github__create_repository",
+      "mcp__railway__generate-domain",
+      "mcp__railway__list-deployments",
+      "Bash(railway domain:*)",
+      "WebFetch(domain:considerate-smile-production-5008.up.railway.app)",
+      "Bash(railway status:*)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://considerate-smile-production-5008.up.railway.app/LIFTT_TELAS_PREMIUM_v2.html\")",
+      "Bash(curl:*)",
+      "Bash(cp \"/c/Users/marce/projeto1claude/public/img/logo-white.png\" \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/\")",
+      "Bash(cp \"/c/Users/marce/projeto1claude/public/img/logo-light.png\" \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/\")",
+      "Bash(cp \"/c/Users/marce/projeto1claude/public/img/symbol-light.png\" \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/\")",
+      "Bash(cp \"/c/Users/marce/projeto1claude/public/img/symbol-dark.png\" \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/\")",
+      "Bash(cp \"/c/Users/marce/Downloads/Liftt Fitness Club - Conecte-se ao seu melhor.png\" \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/hero-brand.png\")",
+      "Bash(du -sh \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/\"*)",
+      "Bash(npx --yes sharp-cli --help)",
+      "Bash(sed -i 's|img/hero-brand\\\\.png|img/hero-brand.jpg|g' LIFTT_TELAS_PREMIUM_v2.html LIFTT_PROPOSTAS_2026.html)",
+      "Bash(sed -i 's|img/evento-welcome\\\\.png|img/evento-welcome.jpg|g' LIFTT_EVENTOS_PREMIUM_v2.html LIFTT_PROPOSTAS_2026.html)"
+    ]
+  }
+}
