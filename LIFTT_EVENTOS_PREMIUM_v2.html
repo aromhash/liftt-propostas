@@ -3,6 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Eventos corporativos exclusivos no LIFTT Fitness Club — Teambeats, Group Cycle e café premium em Vitória, ES.">
+<meta property="og:title" content="LIFTT Fitness Club - Eventos Corporativos">
+<meta property="og:description" content="Experiências exclusivas aos sábados para até 16 convidados.">
+<meta property="og:image" content="img/evento-welcome.png">
+<link rel="icon" type="image/png" href="img/symbol-dark.png">
 <title>LIFTT Fitness Club - Eventos Corporativos | Proposta de Parceria</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -38,6 +43,31 @@
     overflow: hidden;
   }
 
+  /* ========== BACK BUTTON ========== */
+  .back-btn {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 200;
+    background: rgba(26, 24, 22, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(223, 221, 209, 0.1);
+    color: var(--cream);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .back-btn:hover {
+    background: rgba(196, 162, 101, 0.15);
+    transform: translateX(-2px);
+  }
+
   /* ========== UTILITIES ========== */
   .section-label {
     font-size: 11px;
@@ -68,7 +98,7 @@
 
   /* ========== SLIDE 1: HERO ========== */
   .slide-hero {
-    background: var(--black);
+    background: var(--black) url('img/evento-welcome.png') center/cover no-repeat;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -80,7 +110,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 60%, rgba(196, 162, 101, 0.06) 0%, transparent 60%);
+    background: rgba(26, 24, 22, 0.82);
   }
 
   .hero-eyebrow {
@@ -89,6 +119,8 @@
     gap: 12px;
     margin-bottom: 48px;
     animation: fadeInUp 1s ease 0.2s both;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-eyebrow .line {
@@ -113,6 +145,8 @@
     animation: fadeInUp 1s ease 0.4s both;
     max-width: 900px;
     padding: 0 20px;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-title strong {
@@ -132,6 +166,8 @@
     line-height: 1.6;
     animation: fadeInUp 1s ease 0.6s both;
     padding: 0 20px;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-stats-row {
@@ -139,6 +175,8 @@
     gap: 48px;
     margin-top: 60px;
     animation: fadeInUp 1s ease 0.8s both;
+    position: relative;
+    z-index: 1;
   }
 
   .hero-stat {
@@ -176,6 +214,7 @@
     left: 50%;
     transform: translateX(-50%);
     animation: fadeInUp 1s ease 1.2s both;
+    z-index: 1;
   }
 
   .scroll-hint .chevron {
@@ -488,7 +527,7 @@
   }
 
   .value-price-block::before {
-    content: 'INVESTIMENTO UNICO';
+    content: 'INVESTIMENTO ÚNICO';
     position: absolute;
     top: -12px;
     left: 50%;
@@ -665,12 +704,13 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
   }
 
-  .closing-icon svg {
-    width: 36px;
-    height: 27px;
-    fill: var(--gold);
+  .closing-icon img {
+    height: 36px;
+    width: auto;
   }
 
   .closing-headline {
@@ -807,27 +847,30 @@
 </head>
 <body>
 
+<!-- BACK BUTTON -->
+<a href="index.html" class="back-btn">&#8592; Voltar</a>
+
 <!-- NAV -->
 <nav class="nav-dots">
-  <button class="nav-dot active" onclick="scrollTo(0)"></button>
-  <button class="nav-dot" onclick="scrollTo(1)"></button>
-  <button class="nav-dot" onclick="scrollTo(2)"></button>
-  <button class="nav-dot" onclick="scrollTo(3)"></button>
-  <button class="nav-dot" onclick="scrollTo(4)"></button>
-  <button class="nav-dot" onclick="scrollTo(5)"></button>
-  <button class="nav-dot" onclick="scrollTo(6)"></button>
-  <button class="nav-dot" onclick="scrollTo(7)"></button>
+  <button class="nav-dot active" onclick="goToSlide(0)"></button>
+  <button class="nav-dot" onclick="goToSlide(1)"></button>
+  <button class="nav-dot" onclick="goToSlide(2)"></button>
+  <button class="nav-dot" onclick="goToSlide(3)"></button>
+  <button class="nav-dot" onclick="goToSlide(4)"></button>
+  <button class="nav-dot" onclick="goToSlide(5)"></button>
+  <button class="nav-dot" onclick="goToSlide(6)"></button>
+  <button class="nav-dot" onclick="goToSlide(7)"></button>
 </nav>
 
 <!-- SLIDE 1: HERO -->
 <section class="slide slide-hero" id="s0">
   <div class="hero-eyebrow">
     <div class="line"></div>
-    <span>LIFTT Fitness Club</span>
+    <span><img src="img/logo-white.png" alt="LIFTT Fitness Club" style="height:48px"></span>
     <div class="line"></div>
   </div>
   <h1 class="hero-title">Eventos que sua equipe <strong>nunca vai esquecer</strong></h1>
-  <p class="hero-desc">Experiencias corporativas exclusivas com tecnologia Technogym, em um dos espacos fitness mais sofisticados de Vitoria.</p>
+  <p class="hero-desc">Experiências corporativas exclusivas com tecnologia Technogym, em um dos espaços fitness mais sofisticados de Vitória.</p>
   <div class="hero-stats-row">
     <div class="hero-stat">
       <div class="hero-stat-value">16</div>
@@ -841,7 +884,7 @@
     <div class="hero-stat-divider"></div>
     <div class="hero-stat">
       <div class="hero-stat-value">3h</div>
-      <div class="hero-stat-label">Experiencia completa</div>
+      <div class="hero-stat-label">Experiência completa</div>
     </div>
   </div>
   <div class="scroll-hint">
@@ -851,13 +894,14 @@
 
 <!-- SLIDE 2: CONCEITO -->
 <section class="slide slide-concept" id="s1">
+  <div class="section-label fade-in"><img src="img/logo-light.png" alt="LIFTT Fitness Club" style="height:48px"></div>
   <div class="section-label fade-in">O Conceito</div>
-  <h2 class="section-title fade-in" style="color: var(--charcoal)">Duas experiencias unicas em uma <strong>manha inesquecivel</strong></h2>
+  <h2 class="section-title fade-in" style="color: var(--charcoal)">Duas experiências únicas em uma <strong>manhã inesquecível</strong></h2>
   <div class="concept-grid">
     <div class="concept-block fade-in">
       <div class="concept-block-icon">&#9829;</div>
       <h3>Teambeats</h3>
-      <p>Treino coletivo com monitoramento de frequencia cardiaca em tempo real, desenvolvido pela Technogym. Cada participante treina na sua intensidade ideal, com feedback visual ao vivo.</p>
+      <p>Treino coletivo com monitoramento de frequência cardíaca em tempo real, desenvolvido pela Technogym. Cada participante treina na sua intensidade ideal, com feedback visual ao vivo.</p>
       <div class="concept-highlight">
         <span class="dot"></span>
         <span>8 vagas por aula &bull; 30 minutos &bull; Personalizado</span>
@@ -866,7 +910,7 @@
     <div class="concept-block fade-in">
       <div class="concept-block-icon">&#9889;</div>
       <h3>Group Cycle</h3>
-      <p>Cycling indoor com intensidade, musica envolvente e luzes dinamicas que acompanham o ritmo. Tecnologia integrada para monitorar performance e estimular a competicao saudavel.</p>
+      <p>Cycling indoor com intensidade, música envolvente e luzes dinâmicas que acompanham o ritmo. Tecnologia integrada para monitorar performance e estimular a competição saudável.</p>
       <div class="concept-highlight">
         <span class="dot"></span>
         <span>8 vagas por aula &bull; 30 minutos &bull; Imersivo</span>
@@ -877,31 +921,31 @@
 
 <!-- SLIDE 3: EXPERIENCIA COMPLETA -->
 <section class="slide slide-experience" id="s2">
-  <div class="section-label fade-in" style="color: var(--gold)">A Experiencia Completa</div>
+  <div class="section-label fade-in" style="color: var(--gold)">A Experiência Completa</div>
   <h2 class="section-title fade-in" style="color: var(--cream)">Mais que treino: <strong>networking, bem-estar e marca</strong></h2>
   <div class="experience-cards">
     <div class="exp-card fade-in">
       <div class="exp-number">01</div>
-      <div class="exp-title">Recepcao no Lounge</div>
-      <div class="exp-desc">Seus convidados sao recebidos em um ambiente exclusivo com cafe, agua, frutas e salada de frutas. Momento de conexao antes do treino.</div>
+      <div class="exp-title">Recepção no Lounge</div>
+      <div class="exp-desc">Seus convidados são recebidos em um ambiente exclusivo com café, água, frutas e salada de frutas. Momento de conexão antes do treino.</div>
       <span class="exp-badge">Networking</span>
     </div>
     <div class="exp-card fade-in">
       <div class="exp-number">02</div>
       <div class="exp-title">Aulas Exclusivas</div>
-      <div class="exp-desc">Duas turmas de 8 pessoas em aulas de 30 minutos: Teambeats e Group Cycle. Professores dedicados, experiencia privada.</div>
+      <div class="exp-desc">Duas turmas de 8 pessoas em aulas de 30 minutos: Teambeats e Group Cycle. Professores dedicados, experiência privada.</div>
       <span class="exp-badge">Performance</span>
     </div>
     <div class="exp-card fade-in">
       <div class="exp-number">03</div>
-      <div class="exp-title">Cafe & Encerramento</div>
-      <div class="exp-desc">Cafe da manha completo, entrega de brindes, sorteios. Sua marca no centro de uma experiencia memoravel.</div>
+      <div class="exp-title">Café & Encerramento</div>
+      <div class="exp-desc">Café da manhã completo, entrega de brindes, sorteios. Sua marca no centro de uma experiência memorável.</div>
       <span class="exp-badge">Branding</span>
     </div>
     <div class="exp-card fade-in">
       <div class="exp-number">04</div>
-      <div class="exp-title">Ativacao de Parceiros</div>
-      <div class="exp-desc">Opcao de trazer marcas parceiras para ativacoes conjuntas. Amplie o impacto do evento com experiencias complementares.</div>
+      <div class="exp-title">Ativação de Parceiros</div>
+      <div class="exp-desc">Opção de trazer marcas parceiras para ativações conjuntas. Amplie o impacto do evento com experiências complementares.</div>
       <span class="exp-badge">Co-branding</span>
     </div>
   </div>
@@ -909,15 +953,15 @@
 
 <!-- SLIDE 4: TIMELINE -->
 <section class="slide slide-timeline" id="s3">
-  <div class="section-label fade-in" style="color: var(--gold)">Programacao</div>
-  <h2 class="section-title fade-in" style="color: var(--cream)">Uma manha <strong>perfeitamente planejada</strong></h2>
+  <div class="section-label fade-in" style="color: var(--gold)">Programação</div>
+  <h2 class="section-title fade-in" style="color: var(--cream)">Uma manhã <strong>perfeitamente planejada</strong></h2>
   <div class="timeline">
     <div class="timeline-item fade-in">
       <div class="timeline-dot">8h</div>
       <div class="timeline-content">
         <div class="timeline-time">08:00</div>
         <div class="timeline-label">Chegada & Welcome</div>
-        <div class="timeline-desc">Recepcao no lounge LIFTT. Cafe, agua, frutas. Breve apresentacao e integracao do grupo.</div>
+        <div class="timeline-desc">Recepção no lounge LIFTT. Café, água, frutas. Breve apresentação e integração do grupo.</div>
         <span class="timeline-duration">30 min</span>
       </div>
     </div>
@@ -926,7 +970,7 @@
       <div class="timeline-content">
         <div class="timeline-time">08:30</div>
         <div class="timeline-label">Aulas Teambeats + Group Cycle</div>
-        <div class="timeline-desc">Duas turmas simultaneas de 8 pessoas. Troca de modalidade na metade. Total: 1h de exercicio com monitoramento.</div>
+        <div class="timeline-desc">Duas turmas simultâneas de 8 pessoas. Troca de modalidade na metade. Total: 1h de exercício com monitoramento.</div>
         <span class="timeline-duration">60 min</span>
       </div>
     </div>
@@ -934,8 +978,8 @@
       <div class="timeline-dot">9:30</div>
       <div class="timeline-content">
         <div class="timeline-time">09:30</div>
-        <div class="timeline-label">Cafe da Manha Premium</div>
-        <div class="timeline-desc">Bancada completa no lounge com opcoes saudaveis e gourmet. Momento de descontracag, networking e conversas.</div>
+        <div class="timeline-label">Café da Manhã Premium</div>
+        <div class="timeline-desc">Bancada completa no lounge com opções saudáveis e gourmet. Momento de descontração, networking e conversas.</div>
         <span class="timeline-duration">60 a 90 min</span>
       </div>
     </div>
@@ -944,7 +988,7 @@
       <div class="timeline-content">
         <div class="timeline-time">10:30</div>
         <div class="timeline-label">Brindes, Sorteios & Encerramento</div>
-        <div class="timeline-desc">Entrega de brindes da marca, sorteios e registro fotografico. Encerramento ate ~11h.</div>
+        <div class="timeline-desc">Entrega de brindes da marca, sorteios e registro fotográfico. Encerramento até ~11h.</div>
         <span class="timeline-duration">30 min</span>
       </div>
     </div>
@@ -953,8 +997,8 @@
 
 <!-- SLIDE 5: O QUE ESTA INCLUSO -->
 <section class="slide slide-included" id="s4">
-  <div class="section-label fade-in">O Que Esta Incluso</div>
-  <h2 class="section-title fade-in" style="color: var(--charcoal)">Tudo pronto. Voce so <strong>traz os convidados</strong></h2>
+  <div class="section-label fade-in">O Que Está Incluso</div>
+  <h2 class="section-title fade-in" style="color: var(--charcoal)">Tudo pronto. Você só <strong>traz os convidados</strong></h2>
   <div class="included-grid">
     <div class="included-item fade-in">
       <span class="included-icon">&#127947;</span>
@@ -968,13 +1012,13 @@
     </div>
     <div class="included-item fade-in">
       <span class="included-icon">&#128167;</span>
-      <div class="included-name">Hidratacao</div>
-      <div class="included-detail">Agua mineral e agua com gas</div>
+      <div class="included-name">Hidratação</div>
+      <div class="included-detail">Água mineral e água com gás</div>
     </div>
     <div class="included-item fade-in">
       <span class="included-icon">&#9749;</span>
-      <div class="included-name">Cafe</div>
-      <div class="included-detail">Cafe premium servido no lounge</div>
+      <div class="included-name">Café</div>
+      <div class="included-detail">Café premium servido no lounge</div>
     </div>
     <div class="included-item fade-in">
       <span class="included-icon">&#127815;</span>
@@ -984,17 +1028,17 @@
     <div class="included-item fade-in">
       <span class="included-icon">&#127963;</span>
       <div class="included-name">Estrutura</div>
-      <div class="included-detail">Espaco completo: lounge + salas de aula</div>
+      <div class="included-detail">Espaço completo: lounge + salas de aula</div>
     </div>
     <div class="included-item fade-in">
       <span class="included-icon">&#128247;</span>
       <div class="included-name">Ambiente</div>
-      <div class="included-detail">Cenario premium para fotos e stories</div>
+      <div class="included-detail">Cenário premium para fotos e stories</div>
     </div>
     <div class="included-item fade-in">
       <span class="included-icon">&#10024;</span>
-      <div class="included-name">Personalizacao</div>
-      <div class="included-detail">Itens extras sob consulta (custo a parte)</div>
+      <div class="included-name">Personalização</div>
+      <div class="included-detail">Itens extras sob consulta (custo à parte)</div>
     </div>
   </div>
 </section>
@@ -1003,47 +1047,47 @@
 <section class="slide slide-value" id="s5">
   <div class="section-label fade-in" style="color: var(--gold)">Investimento</div>
   <h2 class="section-title fade-in" style="color: var(--cream); text-align: center; max-width: 600px;">
-    Uma experiencia completa por <strong>menos do que voce imagina</strong>
+    Uma experiência completa por <strong>menos do que você imagina</strong>
   </h2>
   <div class="value-price-block fade-in">
     <div class="value-price"><span class="currency">R$</span>1.500</div>
-    <div class="value-per">por evento (sabados)</div>
+    <div class="value-per">por evento (sábados)</div>
   </div>
   <div class="value-includes fade-in">
     <span class="value-tag"><span class="check">&#10003;</span> 16 convidados</span>
     <span class="value-tag"><span class="check">&#10003;</span> 2 aulas exclusivas</span>
     <span class="value-tag"><span class="check">&#10003;</span> Professores dedicados</span>
-    <span class="value-tag"><span class="check">&#10003;</span> Cafe da manha completo</span>
+    <span class="value-tag"><span class="check">&#10003;</span> Café da manhã completo</span>
     <span class="value-tag"><span class="check">&#10003;</span> Lounge privativo</span>
-    <span class="value-tag"><span class="check">&#10003;</span> ~3h de experiencia</span>
+    <span class="value-tag"><span class="check">&#10003;</span> ~3h de experiência</span>
   </div>
   <div class="value-comparison fade-in">
-    <p>Comparativo: um cafe da manha empresarial para 16 pessoas em hotel custa <strong>R$ 3.000 a R$ 5.000</strong> &mdash; sem a experiencia, sem o branding, sem o impacto.</p>
+    <p>Comparativo: um café da manhã empresarial para 16 pessoas em hotel custa <strong>R$ 3.000 a R$ 5.000</strong> &mdash; sem a experiência, sem o branding, sem o impacto.</p>
   </div>
 </section>
 
 <!-- SLIDE 7: POR QUE FUNCIONA -->
 <section class="slide slide-proof" id="s6">
   <div class="section-label fade-in" style="color: var(--gold); text-align: center; width: 100;">Por Que Funciona</div>
-  <h2 class="section-title fade-in" style="color: var(--cream); text-align: center; max-width: 100%; width: 100%;">Numeros que <strong>comprovam o impacto</strong></h2>
+  <h2 class="section-title fade-in" style="color: var(--cream); text-align: center; max-width: 100%; width: 100%;">Números que <strong>comprovam o impacto</strong></h2>
   <div class="proof-grid">
     <div class="proof-card fade-in">
       <div class="proof-value">93%</div>
-      <div class="proof-label">das pessoas lembram de marcas associadas a experiencias positivas</div>
+      <div class="proof-label">das pessoas lembram de marcas associadas a experiências positivas</div>
       <div class="proof-divider"></div>
     </div>
     <div class="proof-card fade-in">
       <div class="proof-value">4x</div>
-      <div class="proof-label">mais engajamento em marketing experiencial vs. midia tradicional</div>
+      <div class="proof-label">mais engajamento em marketing experiencial vs. mídia tradicional</div>
       <div class="proof-divider"></div>
     </div>
     <div class="proof-card fade-in">
       <div class="proof-value">72%</div>
-      <div class="proof-label">dos participantes compartilham a experiencia nas redes sociais</div>
+      <div class="proof-label">dos participantes compartilham a experiência nas redes sociais</div>
       <div class="proof-divider"></div>
     </div>
     <div class="proof-testimonial fade-in">
-      <blockquote>&ldquo;Trouxemos nossos melhores clientes para um sabado na LIFTT. Foi o melhor investimento de relacionamento que fizemos no trimestre.&rdquo;</blockquote>
+      <blockquote>&ldquo;Trouxemos nossos melhores clientes para um sábado na LIFTT. Foi o melhor investimento de relacionamento que fizemos no trimestre.&rdquo;</blockquote>
       <cite>PARCEIRO LIFTT &mdash; Formato ilustrativo</cite>
     </div>
   </div>
@@ -1052,23 +1096,18 @@
 <!-- SLIDE 8: CLOSING -->
 <section class="slide slide-closing" id="s7">
   <div class="closing-icon">
-    <svg viewBox="0 0 100 75">
-      <rect x="5" y="10" width="8" height="55" rx="2"/>
-      <rect x="87" y="10" width="8" height="55" rx="2"/>
-      <rect x="13" y="28" width="74" height="8" rx="2"/>
-      <rect x="13" y="44" width="74" height="8" rx="2"/>
-    </svg>
+    <img src="img/logo-white.png" alt="LIFTT Fitness Club">
   </div>
-  <h2 class="closing-headline fade-in">Transforme seu proximo evento em uma <strong>experiencia inesquecivel</strong></h2>
-  <p class="closing-sub fade-in">Reserve um sabado exclusivo na LIFTT e oferca ao seu publico algo que nenhum evento convencional pode entregar.</p>
+  <h2 class="closing-headline fade-in">Transforme seu próximo evento em uma <strong>experiência inesquecível</strong></h2>
+  <p class="closing-sub fade-in">Reserve um sábado exclusivo na LIFTT e ofereça ao seu público algo que nenhum evento convencional pode entregar.</p>
   <a href="#" class="closing-cta-btn fade-in">Agendar Meu Evento</a>
   <div class="closing-info fade-in">
-    <p>LIFTT Fitness Club &mdash; Vitoria, ES</p>
-    <p><a href="#">@lifttfitnessclub</a> &bull; <a href="#">contato@liftt.com.br</a></p>
+    <p>LIFTT Fitness Club &mdash; Vitória, ES</p>
+    <p><a href="https://instagram.com/alifttclub" target="_blank">@alifttclub</a> &bull; <a href="mailto:contato@liftt.com.br">contato@liftt.com.br</a></p>
   </div>
   <div class="closing-scarcity fade-in">
     <span class="pulse-dot"></span>
-    <span>Apenas 4 sabados disponiveis por mes</span>
+    <span>Apenas 4 sábados disponíveis por mês</span>
   </div>
 </section>
 
@@ -1092,7 +1131,7 @@
   }, { threshold: 0.5 });
   slides.forEach(s => sObs.observe(s));
 
-  function scrollTo(idx) {
+  function goToSlide(idx) {
     slides[idx].scrollIntoView({ behavior: 'smooth' });
   }
 </script>

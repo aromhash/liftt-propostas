@@ -3,7 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LIFTT Fitness Club - Telas & Presenca | Proposta de Parceria</title>
+<meta name="description" content="Proposta de parceria LIFTT Fitness Club — Telas & Presença. Mídia premium 24h em Vitória, ES.">
+<meta property="og:title" content="LIFTT Fitness Club - Telas & Presença">
+<meta property="og:description" content="Sua marca na rotina premium de Vitória. Telas Technogym, TVs, Instagram e eventos.">
+<meta property="og:image" content="img/hero-brand.png">
+<link rel="icon" type="image/png" href="img/symbol-dark.png">
+<title>LIFTT Fitness Club - Telas & Presença | Proposta de Parceria</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -38,9 +43,34 @@
     overflow: hidden;
   }
 
+  /* ========== BACK BUTTON ========== */
+  .back-btn {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 200;
+    background: rgba(26, 24, 22, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(223, 221, 209, 0.1);
+    color: var(--cream);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .back-btn:hover {
+    background: rgba(196, 162, 101, 0.15);
+    transform: translateX(-2px);
+  }
+
   /* ========== SLIDE 1 - HERO ========== */
   .slide-hero {
-    background: var(--black);
+    background: var(--black) url('img/hero-brand.png') center/cover no-repeat;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -51,10 +81,12 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 50% 30%, rgba(91, 84, 68, 0.15) 0%, transparent 70%);
+    background: rgba(26, 24, 22, 0.85);
   }
 
   .hero-badge {
+    position: relative;
+    z-index: 1;
     display: inline-block;
     border: 1px solid rgba(196, 162, 101, 0.4);
     padding: 8px 24px;
@@ -68,19 +100,22 @@
   }
 
   .hero-logo {
+    position: relative;
+    z-index: 1;
     width: 80px;
     height: auto;
     margin-bottom: 32px;
     animation: fadeInUp 1s ease 0.1s both;
   }
 
-  .hero-logo svg {
-    width: 80px;
-    height: 60px;
-    fill: var(--cream);
+  .hero-logo img {
+    height: 48px;
+    width: auto;
   }
 
   .hero-title {
+    position: relative;
+    z-index: 1;
     font-size: clamp(48px, 7vw, 96px);
     font-weight: 300;
     letter-spacing: -2px;
@@ -96,6 +131,8 @@
   }
 
   .hero-subtitle {
+    position: relative;
+    z-index: 1;
     font-size: 18px;
     font-weight: 300;
     color: var(--gray-muted);
@@ -106,6 +143,8 @@
   }
 
   .hero-line {
+    position: relative;
+    z-index: 1;
     width: 60px;
     height: 1px;
     background: var(--gold);
@@ -123,6 +162,7 @@
     align-items: center;
     gap: 8px;
     animation: fadeInUp 1s ease 1.2s both;
+    z-index: 1;
   }
 
   .scroll-indicator span {
@@ -217,7 +257,7 @@
 
   .audience-left {
     flex: 1;
-    min-width: 400px;
+    min-width: 300px;
     padding: 80px clamp(40px, 6vw, 100px);
     display: flex;
     flex-direction: column;
@@ -618,11 +658,13 @@
     padding: 80px 40px;
   }
 
-  .closing-logo svg {
-    width: 100px;
-    height: 75px;
-    fill: var(--cream);
+  .closing-logo {
     margin-bottom: 48px;
+  }
+
+  .closing-logo img {
+    height: 48px;
+    width: auto;
   }
 
   .closing-quote {
@@ -742,11 +784,14 @@
   /* ========== PRINT / PDF ========== */
   @media print {
     .slide { page-break-after: always; min-height: 100vh; }
-    .nav-dots, .scroll-indicator { display: none; }
+    .nav-dots, .scroll-indicator, .back-btn { display: none; }
   }
 </style>
 </head>
 <body>
+
+<!-- BACK BUTTON -->
+<a href="index.html" class="back-btn">&#8592; Voltar</a>
 
 <!-- NAV DOTS -->
 <nav class="nav-dots">
@@ -762,9 +807,12 @@
 
 <!-- SLIDE 1: HERO -->
 <section class="slide slide-hero" id="slide-0">
+  <div class="hero-logo">
+    <img src="img/logo-white.png" alt="LIFTT Fitness Club" style="height:48px">
+  </div>
   <div class="hero-badge">Proposta Exclusiva 2026</div>
-  <h1 class="hero-title">Sua marca na <strong>rotina premium</strong> de Vitoria</h1>
-  <p class="hero-subtitle">LIFTT Fitness Club &mdash; Telas & Presenca</p>
+  <h1 class="hero-title">Sua marca na <strong>rotina premium</strong> de Vitória</h1>
+  <p class="hero-subtitle">LIFTT Fitness Club &mdash; Telas & Presença</p>
   <div class="hero-line"></div>
   <div class="scroll-indicator">
     <span>Scroll</span>
@@ -775,11 +823,11 @@
 <!-- SLIDE 2: POR QUE LIFTT -->
 <section class="slide slide-why" id="slide-1">
   <div class="section-label fade-in">Por que a LIFTT</div>
-  <h2 class="section-title fade-in">O unico clube fitness <strong>premium de Vitoria</strong> com tecnologia Technogym</h2>
+  <h2 class="section-title fade-in">O único clube fitness <strong>premium de Vitória</strong> com tecnologia Technogym</h2>
   <div class="stats-grid">
     <div class="stat-card fade-in">
       <div class="stat-number">200<span class="unit">+</span></div>
-      <div class="stat-label">Clientes ativos em apenas 6 meses de operacao</div>
+      <div class="stat-label">Clientes ativos em apenas 6 meses de operação</div>
     </div>
     <div class="stat-card fade-in">
       <div class="stat-number">500</div>
@@ -787,33 +835,33 @@
     </div>
     <div class="stat-card fade-in">
       <div class="stat-number">24<span class="unit">h</span></div>
-      <div class="stat-label">Sua marca exibida continuamente, sem interrupcao</div>
+      <div class="stat-label">Sua marca exibida continuamente, sem interrupção</div>
     </div>
     <div class="stat-card fade-in">
       <div class="stat-number">85<span class="unit">min</span></div>
-      <div class="stat-label">Tempo medio de permanencia por sessao de treino</div>
+      <div class="stat-label">Tempo médio de permanência por sessão de treino</div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 3: AUDIENCIA -->
+<!-- SLIDE 3: AUDIÊNCIA -->
 <section class="slide slide-audience" id="slide-2">
   <div class="audience-left">
-    <div class="section-label fade-in" style="color: var(--gold)">Perfil do Publico</div>
+    <div class="section-label fade-in" style="color: var(--gold)">Perfil do Público</div>
     <h2 class="section-title fade-in" style="color: var(--cream); max-width: 500px;">
       Acesso direto a quem <strong>decide e influencia</strong>
     </h2>
     <p class="fade-in" style="color: var(--gray-muted); line-height: 1.7; max-width: 440px; margin-top: 16px;">
-      Nossos membros sao empresarios, executivos, profissionais liberais e formadores de opiniao.
-      Alto poder aquisitivo. Alta influencia social. Alta frequencia de treino.
+      Nossos membros são empresários, executivos, profissionais liberais e formadores de opinião.
+      Alto poder aquisitivo. Alta influência social. Alta frequência de treino.
     </p>
   </div>
   <div class="audience-right">
     <div class="profile-grid">
       <div class="profile-item fade-in">
         <span class="profile-icon">&#9733;</span>
-        <div class="profile-label">Empresarios</div>
-        <div class="profile-desc">CEOs e donos de negocios da Grande Vitoria</div>
+        <div class="profile-label">Empresários</div>
+        <div class="profile-desc">CEOs e donos de negócios da Grande Vitória</div>
       </div>
       <div class="profile-item fade-in">
         <span class="profile-icon">&#9830;</span>
@@ -823,57 +871,57 @@
       <div class="profile-item fade-in">
         <span class="profile-icon">&#9827;</span>
         <div class="profile-label">Influenciadores</div>
-        <div class="profile-desc">Perfis fitness com audiencia qualificada</div>
+        <div class="profile-desc">Perfis fitness com audiência qualificada</div>
       </div>
       <div class="profile-item fade-in">
         <span class="profile-icon">&#9829;</span>
         <div class="profile-label">Profissionais</div>
-        <div class="profile-desc">Medicos, advogados, arquitetos premium</div>
+        <div class="profile-desc">Médicos, advogados, arquitetos premium</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SLIDE 4: BENEFICIOS -->
+<!-- SLIDE 4: BENEFÍCIOS -->
 <section class="slide slide-benefits" id="slide-3">
   <div class="section-label fade-in" style="color: var(--gold);">O Que Sua Marca Recebe</div>
   <h2 class="section-title fade-in" style="color: var(--cream); margin-bottom: 40px;">
-    Presenca <strong>multicanal</strong> dentro do ecossistema LIFTT
+    Presença <strong>multicanal</strong> dentro do ecossistema LIFTT
   </h2>
   <div class="benefits-grid">
     <div class="benefit-card fade-in">
       <div class="benefit-icon">&#9654;</div>
-      <div class="benefit-title">Video nos Equipamentos</div>
-      <div class="benefit-desc">Video de 15 segundos exibido continuamente nas telas Technogym. Cada equipamento e um ponto de contato exclusivo durante o treino.</div>
-      <span class="benefit-highlight">24h por dia &bull; Alta atencao</span>
+      <div class="benefit-title">Vídeo nos Equipamentos</div>
+      <div class="benefit-desc">Vídeo de 15 segundos exibido continuamente nas telas Technogym. Cada equipamento é um ponto de contato exclusivo durante o treino.</div>
+      <span class="benefit-highlight">24h por dia &bull; Alta atenção</span>
     </div>
     <div class="benefit-card fade-in">
       <div class="benefit-icon">&#9632;</div>
       <div class="benefit-title">TVs da Academia</div>
-      <div class="benefit-desc">Video de ate 1 minuto nas TVs de alta definicao distribuidas pelo espaco. Visibilidade em areas de descanso e circulacao.</div>
+      <div class="benefit-desc">Vídeo de até 1 minuto nas TVs de alta definição distribuídas pelo espaço. Visibilidade em áreas de descanso e circulação.</div>
       <span class="benefit-highlight">Formato expandido &bull; Branding</span>
     </div>
     <div class="benefit-card fade-in">
       <div class="benefit-icon">&#10038;</div>
       <div class="benefit-title">Instagram LIFTT</div>
-      <div class="benefit-desc">Divulgacao nos canais oficiais da LIFTT, com audiencia organica altamente engajada e segmentada no publico premium.</div>
+      <div class="benefit-desc">Divulgação nos canais oficiais da LIFTT, com audiência orgânica altamente engajada e segmentada no público premium.</div>
       <span class="benefit-highlight">Alcance digital &bull; Social proof</span>
     </div>
     <div class="benefit-card fade-in">
       <div class="benefit-icon">&#9734;</div>
-      <div class="benefit-title">Ativacoes com Influenciadores</div>
-      <div class="benefit-desc">Possibilidade de acoes co-branded com influenciadores fitness parceiros da LIFTT, amplificando o alcance da sua marca.</div>
+      <div class="benefit-title">Ativações com Influenciadores</div>
+      <div class="benefit-desc">Possibilidade de ações co-branded com influenciadores fitness parceiros da LIFTT, amplificando o alcance da sua marca.</div>
       <span class="benefit-highlight">Influencer marketing</span>
     </div>
     <div class="benefit-card fade-in">
       <div class="benefit-icon">&#9878;</div>
       <div class="benefit-title">Eventos Exclusivos</div>
-      <div class="benefit-desc">Presenca da sua marca nos eventos de sabado da LIFTT. Acoes promocionais e experiencias diretas com o publico.</div>
-      <span class="benefit-highlight">Experiential &bull; Conversao</span>
+      <div class="benefit-desc">Presença da sua marca nos eventos de sábado da LIFTT. Ações promocionais e experiências diretas com o público.</div>
+      <span class="benefit-highlight">Experiential &bull; Conversão</span>
     </div>
     <div class="benefit-card fade-in">
       <div class="benefit-icon">&#10070;</div>
-      <div class="benefit-title">Associacao de Marca</div>
+      <div class="benefit-title">Associação de Marca</div>
       <div class="benefit-desc">Sua marca vinculada aos valores LIFTT: conforto, exclusividade, tecnologia, lifestyle e alta performance.</div>
       <span class="benefit-highlight">Brand equity &bull; Premium</span>
     </div>
@@ -883,13 +931,13 @@
 <!-- SLIDE 5: PONTOS DE CONTATO -->
 <section class="slide slide-touchpoints" id="slide-4">
   <div class="section-label fade-in">Jornada do Cliente</div>
-  <h2 class="section-title fade-in">Sua marca em <strong>cada momento</strong> da experiencia</h2>
+  <h2 class="section-title fade-in">Sua marca em <strong>cada momento</strong> da experiência</h2>
   <div class="touchpoints-list">
     <div class="touchpoint-item fade-in">
       <div class="touchpoint-number">01</div>
       <div class="touchpoint-content">
-        <h3>Chegada & Recepcao</h3>
-        <p>TVs no lounge de entrada com seu video institucional. Primeira impressao em ambiente sofisticado.</p>
+        <h3>Chegada & Recepção</h3>
+        <p>TVs no lounge de entrada com seu vídeo institucional. Primeira impressão em ambiente sofisticado.</p>
         <span class="touchpoint-tag">BRANDING</span>
       </div>
     </div>
@@ -897,23 +945,23 @@
       <div class="touchpoint-number">02</div>
       <div class="touchpoint-content">
         <h3>Durante o Treino</h3>
-        <p>Telas individuais em cada equipamento Technogym. O cliente ve sua marca por 85 minutos em media, com alta atencao e baixa distracao.</p>
-        <span class="touchpoint-tag">ALTA ATENCAO</span>
+        <p>Telas individuais em cada equipamento Technogym. O cliente vê sua marca por 85 minutos em média, com alta atenção e baixa distração.</p>
+        <span class="touchpoint-tag">ALTA ATENÇÃO</span>
       </div>
     </div>
     <div class="touchpoint-item fade-in">
       <div class="touchpoint-number">03</div>
       <div class="touchpoint-content">
-        <h3>Areas de Descanso</h3>
-        <p>TVs nas areas de permanencia e alongamento. Momento de recuperacao = momento de absorcao da mensagem.</p>
-        <span class="touchpoint-tag">RETENCAO</span>
+        <h3>Áreas de Descanso</h3>
+        <p>TVs nas áreas de permanência e alongamento. Momento de recuperação = momento de absorção da mensagem.</p>
+        <span class="touchpoint-tag">RETENÇÃO</span>
       </div>
     </div>
     <div class="touchpoint-item fade-in">
       <div class="touchpoint-number">04</div>
       <div class="touchpoint-content">
         <h3>Digital & Social</h3>
-        <p>Presenca no Instagram, stories e conteudo dos influenciadores parceiros. Ampliacao alem das paredes da academia.</p>
+        <p>Presença no Instagram, stories e conteúdo dos influenciadores parceiros. Amplificação além das paredes da academia.</p>
         <span class="touchpoint-tag">ALCANCE DIGITAL</span>
       </div>
     </div>
@@ -927,67 +975,67 @@
     <div class="pricing-card fade-in">
       <div class="pricing-name">Essencial</div>
       <div class="pricing-price"><span class="currency">R$</span>1.500</div>
-      <div class="pricing-period">por mes</div>
+      <div class="pricing-period">por mês</div>
       <div class="pricing-divider"></div>
       <ul class="pricing-features">
-        <li><span class="check">&#10003;</span> Video 15s nos equipamentos (24h)</li>
-        <li><span class="check">&#10003;</span> Video 1min nas TVs (24h)</li>
+        <li><span class="check">&#10003;</span> Vídeo 15s nos equipamentos (24h)</li>
+        <li><span class="check">&#10003;</span> Vídeo 1min nas TVs (24h)</li>
         <li><span class="check">&#10003;</span> 1 post mensal no Instagram LIFTT</li>
-        <li><span class="check">&#10003;</span> Presenca em 1 evento/mes</li>
-        <li><span class="check">&#10003;</span> Relatorio mensal de exposicao</li>
+        <li><span class="check">&#10003;</span> Presença em 1 evento/mês</li>
+        <li><span class="check">&#10003;</span> Relatório mensal de exposição</li>
       </ul>
     </div>
     <div class="pricing-card featured fade-in">
       <div class="pricing-badge">Recomendado</div>
       <div class="pricing-name">Premium</div>
       <div class="pricing-price"><span class="currency">R$</span>2.500</div>
-      <div class="pricing-period">por mes</div>
+      <div class="pricing-period">por mês</div>
       <div class="pricing-divider"></div>
       <ul class="pricing-features">
         <li><span class="check">&#10003;</span> Tudo do plano Essencial</li>
-        <li><span class="check">&#10003;</span> Video exclusivo (sem concorrentes)</li>
-        <li><span class="check">&#10003;</span> 2 posts + 4 stories/mes no Instagram</li>
-        <li><span class="check">&#10003;</span> Ativacao com 1 influenciador/mes</li>
-        <li><span class="check">&#10003;</span> Presenca em todos os eventos</li>
-        <li><span class="check">&#10003;</span> Espaco para banner fisico no lounge</li>
+        <li><span class="check">&#10003;</span> Vídeo exclusivo (sem concorrentes)</li>
+        <li><span class="check">&#10003;</span> 2 posts + 4 stories/mês no Instagram</li>
+        <li><span class="check">&#10003;</span> Ativação com 1 influenciador/mês</li>
+        <li><span class="check">&#10003;</span> Presença em todos os eventos</li>
+        <li><span class="check">&#10003;</span> Espaço para banner físico no lounge</li>
       </ul>
     </div>
     <div class="pricing-card fade-in">
       <div class="pricing-name">Exclusivo</div>
       <div class="pricing-price"><span class="currency">R$</span>4.500</div>
-      <div class="pricing-period">por mes</div>
+      <div class="pricing-period">por mês</div>
       <div class="pricing-divider"></div>
       <ul class="pricing-features">
         <li><span class="check">&#10003;</span> Tudo do plano Premium</li>
         <li><span class="check">&#10003;</span> Exclusividade total no segmento</li>
         <li><span class="check">&#10003;</span> Co-branding em eventos LIFTT</li>
-        <li><span class="check">&#10003;</span> Producao de conteudo inclusa</li>
-        <li><span class="check">&#10003;</span> Ativacao com 3 influenciadores/mes</li>
-        <li><span class="check">&#10003;</span> Reuniao mensal de performance</li>
+        <li><span class="check">&#10003;</span> Produção de conteúdo inclusa</li>
+        <li><span class="check">&#10003;</span> Ativação com 3 influenciadores/mês</li>
+        <li><span class="check">&#10003;</span> Reunião mensal de performance</li>
       </ul>
     </div>
   </div>
-  <p class="fade-in" style="color: var(--gray-muted); font-size: 13px;">Contrato minimo: 3 meses &bull; Condicoes especiais para contratos semestrais e anuais</p>
+  <p class="fade-in" style="color: var(--gray-muted); font-size: 13px;">Contrato mínimo: 3 meses &bull; Condições especiais para contratos semestrais e anuais</p>
 </section>
 
 <!-- SLIDE 7: ROI -->
 <section class="slide slide-roi" id="slide-6">
   <div class="section-label fade-in">Comparativo de Valor</div>
-  <h2 class="section-title fade-in">Por que isso e um <strong>investimento inteligente</strong></h2>
+  <h2 class="section-title fade-in">Por que isso é um <strong>investimento inteligente</strong></h2>
   <div class="roi-comparison fade-in">
     <div class="roi-column">
-      <h3>Midia Tradicional</h3>
+      <h3>Mídia Tradicional</h3>
       <div class="roi-item bad">
         <div class="roi-value bad">R$ 5.000+</div>
-        <div class="roi-desc">Outdoor por mes (publico generico)</div>
+        <div class="roi-desc">Outdoor por mês (público genérico)</div>
       </div>
       <div class="roi-item bad">
         <div class="roi-value bad">R$ 3.000+</div>
-        <div class="roi-desc">Anuncio em revista local</div>
+        <div class="roi-desc">Anúncio em revista local</div>
       </div>
       <div class="roi-item bad">
         <div class="roi-value bad">R$ 8.000+</div>
-        <div class="roi-desc">Patrocinio de evento (unica vez)</div>
+        <div class="roi-desc">Patrocínio de evento (única vez)</div>
       </div>
     </div>
     <div class="roi-vs">VS</div>
@@ -995,7 +1043,7 @@
       <h3>LIFTT Telas</h3>
       <div class="roi-item good">
         <div class="roi-value good">R$ 1.500</div>
-        <div class="roi-desc">Presenca 24h + publico premium qualificado</div>
+        <div class="roi-desc">Presença 24h + público premium qualificado</div>
       </div>
       <div class="roi-item good">
         <div class="roi-value good">Multicanal</div>
@@ -1003,7 +1051,7 @@
       </div>
       <div class="roi-item good">
         <div class="roi-value good">Mensal</div>
-        <div class="roi-desc">Construcao continua de marca, nao pontual</div>
+        <div class="roi-desc">Construção contínua de marca, não pontual</div>
       </div>
     </div>
   </div>
@@ -1012,21 +1060,16 @@
 <!-- SLIDE 8: CLOSING -->
 <section class="slide slide-closing" id="slide-7">
   <div class="closing-logo">
-    <svg viewBox="0 0 100 75">
-      <rect x="5" y="10" width="8" height="55" rx="2"/>
-      <rect x="87" y="10" width="8" height="55" rx="2"/>
-      <rect x="13" y="28" width="74" height="8" rx="2"/>
-      <rect x="13" y="44" width="74" height="8" rx="2"/>
-    </svg>
+    <img src="img/logo-white.png" alt="LIFTT Fitness Club" style="height:48px">
   </div>
   <p class="closing-quote fade-in">
-    &ldquo;Sua marca nao vai so aparecer. Ela vai fazer parte da rotina de um publico premium, todos os dias.&rdquo;
+    &ldquo;Sua marca não vai só aparecer. Ela vai fazer parte da rotina de um público premium, todos os dias.&rdquo;
   </p>
   <div class="closing-divider"></div>
   <p class="closing-cta fade-in">Vamos conversar?</p>
   <div class="closing-contact fade-in">
-    <p>LIFTT Fitness Club &mdash; Vitoria, ES</p>
-    <p><a href="#">@lifttfitnessclub</a> &bull; <a href="#">contato@liftt.com.br</a></p>
+    <p>LIFTT Fitness Club &mdash; Vitória, ES</p>
+    <p><a href="https://instagram.com/alifttclub" target="_blank">@alifttclub</a> &bull; <a href="mailto:contato@liftt.com.br">contato@liftt.com.br</a></p>
   </div>
   <div class="scarcity-badge fade-in">Vagas limitadas para parceiros &mdash; 3 restantes</div>
 </section>
