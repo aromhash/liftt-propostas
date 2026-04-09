@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIFTT Fitness Club - Manual de Vendas | Propostas de Parceria</title>
+<link rel="icon" type="image/png" href="img/symbol-dark.png">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brown: #5b5444;
+    --cream: #dfddd1;
+    --black: #1a1816;
+    --surface: #242220;
+    --charcoal: #373634;
+    --muted: #8a8783;
+    --gold: #c4a265;
+    --green: #7a9e6b;
+    --red: #c45c5c;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #f8f7f4;
+    color: var(--charcoal);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--black);
+    color: var(--cream);
+    padding: 48px 40px;
+    text-align: center;
+  }
+  .header img { height: 40px; margin-bottom: 24px; }
+  .header .badge {
+    display: inline-block;
+    border: 1px solid rgba(196,162,101,0.4);
+    padding: 6px 20px;
+    border-radius: 100px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+  }
+  .header h1 strong { font-weight: 700; color: var(--gold); }
+  .header p { color: var(--muted); font-size: 14px; margin-top: 8px; }
+
+  /* CONTAINER */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* SECTIONS */
+  section {
+    margin: 48px 0;
+  }
+
+  .section-num {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 20px;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brown);
+    margin: 28px 0 12px;
+  }
+
+  p { margin-bottom: 12px; font-size: 15px; }
+
+  /* CARDS */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  .card {
+    background: white;
+    border: 1px solid rgba(91,84,68,0.1);
+    border-radius: 16px;
+    padding: 28px 24px;
+  }
+
+  .card-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 8px;
+  }
+
+  .card p { font-size: 13px; color: var(--muted); margin-bottom: 0; }
+
+  /* FULL CARD */
+  .full-card {
+    background: white;
+    border: 1px solid rgba(91,84,68,0.1);
+    border-radius: 16px;
+    padding: 32px;
+    margin: 20px 0;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: var(--brown);
+    color: var(--cream);
+    border-radius: 16px;
+    padding: 32px;
+    margin: 24px 0;
+  }
+  .highlight h3 { color: var(--gold); margin-top: 0; }
+  .highlight p { color: var(--cream); opacity: 0.85; }
+  .highlight strong { color: var(--gold); }
+
+  /* TIP BOX */
+  .tip {
+    background: rgba(122,158,107,0.08);
+    border-left: 3px solid var(--green);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .tip-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .tip p { font-size: 14px; margin-bottom: 0; }
+
+  /* WARNING BOX */
+  .warn {
+    background: rgba(196,92,92,0.06);
+    border-left: 3px solid var(--red);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+  .warn-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--red);
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .warn p { font-size: 14px; margin-bottom: 0; }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+  th {
+    background: var(--brown);
+    color: var(--cream);
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  th:first-child { border-radius: 8px 0 0 0; }
+  th:last-child { border-radius: 0 8px 0 0; }
+  td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(91,84,68,0.08);
+  }
+  tr:nth-child(even) { background: rgba(91,84,68,0.02); }
+  .feat-yes { color: var(--green); font-weight: 700; }
+  .feat-no { color: var(--muted); }
+
+  /* PRICING */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .price-card {
+    background: white;
+    border: 1px solid rgba(91,84,68,0.1);
+    border-radius: 16px;
+    padding: 28px 20px;
+    text-align: center;
+  }
+  .price-card.recommended {
+    border-color: var(--gold);
+    background: linear-gradient(180deg, rgba(196,162,101,0.06), white);
+    position: relative;
+  }
+  .price-card.recommended::before {
+    content: 'RECOMENDADO';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--black);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 4px 14px;
+    border-radius: 100px;
+  }
+  .price-name {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .price-value {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--brown);
+  }
+  .price-value span { font-size: 16px; font-weight: 400; }
+  .price-period { font-size: 13px; color: var(--muted); margin-bottom: 16px; }
+  .price-list {
+    list-style: none;
+    text-align: left;
+    font-size: 13px;
+  }
+  .price-list li {
+    padding: 6px 0;
+    border-top: 1px solid rgba(91,84,68,0.06);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .price-list .ck { color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
+  /* SCRIPT */
+  .script-block {
+    background: white;
+    border: 1px solid rgba(91,84,68,0.1);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 16px 0;
+  }
+  .script-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--brown);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .script-block blockquote {
+    font-style: italic;
+    color: var(--charcoal);
+    font-size: 14px;
+    line-height: 1.7;
+    border-left: 2px solid var(--gold);
+    padding-left: 16px;
+  }
+
+  /* OBJECTION */
+  .objection {
+    background: white;
+    border: 1px solid rgba(91,84,68,0.1);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 12px 0;
+  }
+  .objection-q {
+    font-weight: 700;
+    color: var(--red);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .objection-a {
+    font-size: 14px;
+    color: var(--charcoal);
+  }
+
+  /* CHECKLIST */
+  .checklist {
+    list-style: none;
+    margin: 16px 0;
+  }
+  .checklist li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(91,84,68,0.06);
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .checklist .icon { font-size: 16px; flex-shrink: 0; }
+
+  /* DIVIDER */
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 48px auto;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--black);
+    color: var(--muted);
+    text-align: center;
+    padding: 40px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-top: 60px;
+  }
+  .footer strong { color: var(--gold); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .card-grid, .pricing-grid { grid-template-columns: 1fr; }
+    .header { padding: 32px 20px; }
+    .header h1 { font-size: 24px; }
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: white; }
+    .header { padding: 24px; }
+    section { page-break-inside: avoid; }
+    .highlight { background: #f0ede6; color: var(--charcoal); }
+    .highlight h3 { color: var(--brown); }
+    .highlight p { color: var(--charcoal); opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <img src="img/logo-white.png" alt="LIFTT Fitness Club">
+  <div class="badge">Documento Interno</div>
+  <h1>Manual de <strong>Vendas</strong></h1>
+  <p>Propostas de Parceria 2026 &mdash; Guia completo para a equipe comercial</p>
+</div>
+
+<div class="container">
+
+<!-- ==================== SEÇÃO 1 ==================== -->
+<section>
+  <div class="section-num">01 &mdash; Contexto</div>
+  <h2>O que estamos vendendo e por quê</h2>
+
+  <p>A LIFTT oferece dois produtos de parceria para empresas e marcas que querem acesso direto ao público premium de Vitória. Não estamos vendendo publicidade comum &mdash; estamos vendendo <strong>associação com um estilo de vida exclusivo</strong>.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Proposta 01</div>
+      <h4>Telas & Presença</h4>
+      <p>Mídia contínua nas telas Technogym, TVs, Instagram e eventos. A marca do parceiro aparece 24h por dia na rotina dos membros.</p>
+    </div>
+    <div class="card">
+      <div class="card-label">Proposta 02</div>
+      <h4>Eventos Corporativos</h4>
+      <p>Experiência exclusiva aos sábados: 2 aulas, café da manhã premium, networking. Até 16 convidados por evento.</p>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <h3>Por que isso importa</h3>
+    <p>A LIFTT não é uma academia &mdash; é um <strong>clube fitness premium</strong> com tecnologia Technogym, público classe A+ e posicionamento de luxo. Toda marca que entra aqui se associa a esse posicionamento. É isso que vendemos: <strong>prestígio por associação</strong>.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== SEÇÃO 2 ==================== -->
+<section>
+  <div class="section-num">02 &mdash; Nosso Público</div>
+  <h2>Conheça quem frequenta a LIFTT</h2>
+
+  <p>Antes de oferecer qualquer proposta, o vendedor precisa dominar os números e o perfil. Esses são os argumentos que fecham negócio.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4>200+ membros ativos</h4>
+      <p>Em apenas 6 meses de operação. Crescimento orgânico, sem promoções agressivas.</p>
+    </div>
+    <div class="card">
+      <h4>500 vagas totais</h4>
+      <p>Capacidade limitada por design. Cada vaga é exclusiva &mdash; reforça escassez.</p>
+    </div>
+    <div class="card">
+      <h4>85 min por sessão</h4>
+      <p>Tempo médio de permanência. São 85 minutos de exposição à marca do parceiro.</p>
+    </div>
+    <div class="card">
+      <h4>Perfil A+</h4>
+      <p>Empresários, executivos, médicos, advogados, influenciadores. Alto poder aquisitivo e influência social.</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="tip-label">Dica de venda</div>
+    <p>Sempre compare com mídia tradicional: <strong>"Um outdoor em Vitória custa R$ 5.000/mês e atinge público genérico. Na LIFTT, por R$ 1.500, sua marca fica 24h por dia na frente de 200+ empresários e executivos."</strong></p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== SEÇÃO 3 ==================== -->
+<section>
+  <div class="section-num">03 &mdash; Proposta 01</div>
+  <h2>Telas & Presença &mdash; Como funciona</h2>
+
+  <p>Esta é a proposta de <strong>presença contínua</strong>. A marca do parceiro aparece todos os dias, em múltiplos pontos de contato dentro da LIFTT.</p>
+
+  <h3>Pontos de contato</h3>
+  <table>
+    <tr>
+      <th>Canal</th>
+      <th>Formato</th>
+      <th>Quando</th>
+    </tr>
+    <tr>
+      <td><strong>Telas Technogym</strong></td>
+      <td>Vídeo de 15 segundos</td>
+      <td>24h por dia, em cada equipamento</td>
+    </tr>
+    <tr>
+      <td><strong>TVs da academia</strong></td>
+      <td>Vídeo de até 1 minuto</td>
+      <td>24h &mdash; lounge, descanso, circulação</td>
+    </tr>
+    <tr>
+      <td><strong>Instagram LIFTT</strong></td>
+      <td>Posts e stories</td>
+      <td>Conforme o plano contratado</td>
+    </tr>
+    <tr>
+      <td><strong>Eventos de sábado</strong></td>
+      <td>Presença física da marca</td>
+      <td>Eventos mensais</td>
+    </tr>
+    <tr>
+      <td><strong>Influenciadores</strong></td>
+      <td>Ações co-branded</td>
+      <td>Planos Premium e Exclusivo</td>
+    </tr>
+  </table>
+
+  <h3>Planos e valores</h3>
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="price-name">Essencial</div>
+      <div class="price-value"><span>R$</span> 1.500</div>
+      <div class="price-period">por mês</div>
+      <ul class="price-list">
+        <li><span class="ck">&#10003;</span> Vídeo 15s nos equipamentos (24h)</li>
+        <li><span class="ck">&#10003;</span> Vídeo 1min nas TVs (24h)</li>
+        <li><span class="ck">&#10003;</span> 1 post mensal no Instagram</li>
+        <li><span class="ck">&#10003;</span> Presença em 1 evento/mês</li>
+        <li><span class="ck">&#10003;</span> Relatório mensal de exposição</li>
+      </ul>
+    </div>
+    <div class="price-card recommended">
+      <div class="price-name">Premium</div>
+      <div class="price-value"><span>R$</span> 2.500</div>
+      <div class="price-period">por mês</div>
+      <ul class="price-list">
+        <li><span class="ck">&#10003;</span> Tudo do Essencial</li>
+        <li><span class="ck">&#10003;</span> Vídeo exclusivo (sem concorrentes)</li>
+        <li><span class="ck">&#10003;</span> 2 posts + 4 stories/mês</li>
+        <li><span class="ck">&#10003;</span> 1 ativação com influenciador/mês</li>
+        <li><span class="ck">&#10003;</span> Presença em todos os eventos</li>
+        <li><span class="ck">&#10003;</span> Banner físico no lounge</li>
+      </ul>
+    </div>
+    <div class="price-card">
+      <div class="price-name">Exclusivo</div>
+      <div class="price-value"><span>R$</span> 4.500</div>
+      <div class="price-period">por mês</div>
+      <ul class="price-list">
+        <li><span class="ck">&#10003;</span> Tudo do Premium</li>
+        <li><span class="ck">&#10003;</span> Exclusividade total no segmento</li>
+        <li><span class="ck">&#10003;</span> Co-branding em eventos</li>
+        <li><span class="ck">&#10003;</span> Produção de conteúdo inclusa</li>
+        <li><span class="ck">&#10003;</span> 3 ativações com influenciadores/mês</li>
+        <li><span class="ck">&#10003;</span> Reunião mensal de performance</li>
+      </ul>
+    </div>
+  </div>
+
+  <p><strong>Contrato mínimo:</strong> 3 meses. Condições especiais para semestrais e anuais.</p>
+
+  <div class="tip">
+    <div class="tip-label">Estratégia de venda</div>
+    <p>Sempre apresente o <strong>Premium</strong> primeiro &mdash; é o plano com melhor relação custo-benefício e onde a maioria fecha. O Essencial serve como âncora baixa, e o Exclusivo como aspiracional. Se o cliente hesitar no Premium, ofereça o Essencial como "entrada" com possibilidade de upgrade.</p>
+  </div>
+
+  <h3>Jornada do cliente na LIFTT (use no pitch)</h3>
+  <ul class="checklist">
+    <li><span class="icon">1.</span> <strong>Chegada &amp; Recepção</strong> &mdash; TVs no lounge com vídeo institucional do parceiro. Primeira impressão premium.</li>
+    <li><span class="icon">2.</span> <strong>Durante o treino (85 min)</strong> &mdash; Telas individuais em cada equipamento Technogym. Alta atenção, baixa distração.</li>
+    <li><span class="icon">3.</span> <strong>Áreas de descanso</strong> &mdash; TVs nas áreas de permanência. Momento de absorção da mensagem.</li>
+    <li><span class="icon">4.</span> <strong>Digital &amp; Social</strong> &mdash; Instagram, stories, conteúdo de influenciadores. Amplificação além da academia.</li>
+  </ul>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== SEÇÃO 4 ==================== -->
+<section>
+  <div class="section-num">04 &mdash; Proposta 02</div>
+  <h2>Eventos Corporativos &mdash; Como funciona</h2>
+
+  <p>Esta é a proposta de <strong>impacto pontual</strong>. A empresa traz seus clientes, colaboradores ou parceiros para uma experiência inesquecível dentro da LIFTT.</p>
+
+  <div class="full-card">
+    <h3 style="margin-top:0">O que está incluso por R$ 1.500</h3>
+    <div class="card-grid" style="margin-top:16px">
+      <div class="card" style="border:none;padding:12px 0">
+        <h4>Estrutura</h4>
+        <p>Lounge privativo + 2 salas de aula exclusivas. Espaço completo para o evento.</p>
+      </div>
+      <div class="card" style="border:none;padding:12px 0">
+        <h4>Aulas</h4>
+        <p>2 turmas de 8 pessoas: Teambeats (frequência cardíaca) + Group Cycle (cycling imersivo). 30 min cada.</p>
+      </div>
+      <div class="card" style="border:none;padding:12px 0">
+        <h4>Alimentação</h4>
+        <p>Café da manhã completo: café premium, água, água com gás, frutas frescas, salada de frutas.</p>
+      </div>
+      <div class="card" style="border:none;padding:12px 0">
+        <h4>Equipe</h4>
+        <p>Professores LIFTT dedicados, toalhas para todos, cenário premium para fotos e stories.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Programação do evento</h3>
+  <table>
+    <tr>
+      <th>Horário</th>
+      <th>Atividade</th>
+      <th>Duração</th>
+    </tr>
+    <tr>
+      <td><strong>08:00</strong></td>
+      <td>Chegada &amp; Welcome &mdash; recepção no lounge, café, frutas, integração</td>
+      <td>30 min</td>
+    </tr>
+    <tr>
+      <td><strong>08:30</strong></td>
+      <td>Aulas Teambeats + Group Cycle &mdash; 2 turmas simultâneas, troca na metade</td>
+      <td>60 min</td>
+    </tr>
+    <tr>
+      <td><strong>09:30</strong></td>
+      <td>Café da manhã premium &mdash; networking, descontração, conversas</td>
+      <td>60-90 min</td>
+    </tr>
+    <tr>
+      <td><strong>10:30</strong></td>
+      <td>Brindes, sorteios &amp; encerramento &mdash; registro fotográfico</td>
+      <td>30 min</td>
+    </tr>
+  </table>
+
+  <div class="highlight">
+    <h3>Argumento matador</h3>
+    <p>Um café da manhã empresarial para 16 pessoas em hotel custa <strong>R$ 3.000 a R$ 5.000</strong> &mdash; sem experiência, sem branding, sem impacto emocional. Na LIFTT, o evento custa <strong>R$ 1.500</strong> e entrega tudo isso + uma experiência que os convidados vão lembrar e compartilhar nas redes.</p>
+  </div>
+
+  <h3>Números que comprovam</h3>
+  <div class="card-grid">
+    <div class="card">
+      <h4>93%</h4>
+      <p>das pessoas lembram de marcas associadas a experiências positivas</p>
+    </div>
+    <div class="card">
+      <h4>4x mais engajamento</h4>
+      <p>Marketing experiencial vs. mídia tradicional</p>
+    </div>
+    <div class="card">
+      <h4>72%</h4>
+      <p>dos participantes compartilham a experiência nas redes sociais</p>
+    </div>
+    <div class="card">
+      <h4>4 sábados/mês</h4>
+      <p>Disponibilidade limitada &mdash; use a escassez como gatilho</p>
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="tip-label">Para quem vender</div>
+    <p><strong>Empresas</strong> que querem team building ou endomarketing. <strong>Clínicas e escritórios</strong> que querem presentear clientes VIP. <strong>Marcas</strong> que querem ativar produto para público premium. <strong>Influenciadores</strong> que querem criar conteúdo diferenciado.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== SEÇÃO 5 ==================== -->
+<section>
+  <div class="section-num">05 &mdash; Como Abordar</div>
+  <h2>Scripts e abordagem por canal</h2>
+
+  <h3>Abordagem por WhatsApp/DM</h3>
+  <div class="script-block">
+    <div class="script-label">Script &mdash; Primeiro contato</div>
+    <blockquote>
+      Oi [Nome], tudo bem? Sou [Seu nome] da LIFTT Fitness Club.<br><br>
+      Estamos abrindo vagas para parceiros que querem colocar sua marca na frente do público mais qualificado de Vitória &mdash; empresários, executivos e profissionais de alto padrão que treinam diariamente aqui.<br><br>
+      Temos duas propostas: uma de presença contínua nas telas e redes, e outra de eventos exclusivos aos sábados.<br><br>
+      Posso te enviar a apresentação? São 2 minutos de leitura.
+    </blockquote>
+  </div>
+
+  <div class="script-block">
+    <div class="script-label">Script &mdash; Follow-up após envio</div>
+    <blockquote>
+      [Nome], conseguiu dar uma olhada na proposta?<br><br>
+      Só para contextualizar: hoje temos [X] parceiros e restam poucas vagas &mdash; a ideia é manter exclusividade, então não vamos abrir para muitas marcas do mesmo segmento.<br><br>
+      Quer que eu explique melhor algum dos planos?
+    </blockquote>
+  </div>
+
+  <h3>Abordagem presencial/reunião</h3>
+  <div class="script-block">
+    <div class="script-label">Roteiro &mdash; 5 passos</div>
+    <blockquote>
+      <strong>1. Contexto (30s)</strong> &mdash; "A LIFTT é o único clube fitness premium de Vitória com tecnologia Technogym. 200+ membros, classe A+."<br><br>
+      <strong>2. Problema (30s)</strong> &mdash; "Mídia tradicional é cara e atinge público genérico. Outdoor a R$ 5.000, revista a R$ 3.000."<br><br>
+      <strong>3. Solução (1 min)</strong> &mdash; "Na LIFTT, sua marca fica 24h na frente de quem realmente decide. A partir de R$ 1.500/mês."<br><br>
+      <strong>4. Prova (30s)</strong> &mdash; "85 minutos de exposição por sessão, 200+ empresários, audiência qualificada no Instagram."<br><br>
+      <strong>5. Fechamento (30s)</strong> &mdash; "Temos 3 vagas restantes. Qual plano faz mais sentido pra vocês?"
+    </blockquote>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== SEÇÃO 6 ==================== -->
+<section>
+  <div class="section-num">06 &mdash; Objeções</div>
+  <h2>Como responder às objeções mais comuns</h2>
+
+  <div class="objection">
+    <div class="objection-q">"Está caro."</div>
+    <div class="objection-a">Compare com as alternativas: outdoor (R$ 5.000+), revista (R$ 3.000+), patrocínio de evento único (R$ 8.000+). Na LIFTT são R$ 1.500/mês com presença 24h, público qualificado e multicanal. É o melhor custo-benefício em mídia premium de Vitória.</div>
+  </div>
+
+  <div class="objection">
+    <div class="objection-q">"Vocês têm poucos membros."</div>
+    <div class="objection-a">Justamente. Não vendemos volume &mdash; vendemos qualidade. 200 empresários e executivos valem mais que 10.000 pessoas genéricas num outdoor. Cada membro da LIFTT é um tomador de decisão.</div>
+  </div>
+
+  <div class="objection">
+    <div class="objection-q">"Preciso pensar."</div>
+    <div class="objection-a">Entendo. Só quero que saiba que temos vagas limitadas por segmento &mdash; aceitamos no máximo 2 parceiros por área. Se um concorrente seu fechar antes, a vaga fecha. Posso reservar por 48h enquanto você analisa?</div>
+  </div>
+
+  <div class="objection">
+    <div class="objection-q">"Não sei se meu público está aí."</div>
+    <div class="objection-a">Nossos membros são empresários, executivos, médicos, advogados e influenciadores. Se sua marca atende público classe A de Vitória, seu cliente treina aqui. Posso mostrar o perfil detalhado na apresentação.</div>
+  </div>
+
+  <div class="objection">
+    <div class="objection-q">"3 meses é muito compromisso."</div>
+    <div class="objection-a">Construção de marca leva tempo. 3 meses é o mínimo para gerar reconhecimento real. Depois do primeiro mês, você já vai ver o impacto no Instagram e no boca a boca. E oferecemos condições melhores para 6 e 12 meses.</div>
+  </div>
+
+  <div class="objection">
+    <div class="objection-q">"Evento de R$ 1.500 para 16 pessoas, não é pouco?"</div>
+    <div class="objection-a">São 16 convidados VIP com experiência completa: 2 aulas exclusivas com professores dedicados, café da manhã premium, cenário para fotos. Compare com um hotel: R$ 3.000-5.000 só pelo café da manhã, sem experiência nenhuma. Aqui o impacto é emocional &mdash; e isso gera indicações.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== SEÇÃO 7 ==================== -->
+<section>
+  <div class="section-num">07 &mdash; Gatilhos</div>
+  <h2>Gatilhos mentais para usar na negociação</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <h4>Escassez</h4>
+      <p>"Restam apenas 3 vagas para parceiros." / "Apenas 4 sábados disponíveis por mês." / "Máximo 2 parceiros por segmento."</p>
+    </div>
+    <div class="card">
+      <h4>Exclusividade</h4>
+      <p>"Sua marca será a única do segmento dentro da LIFTT." / "O plano Exclusivo bloqueia concorrentes."</p>
+    </div>
+    <div class="card">
+      <h4>Prova Social</h4>
+      <p>"93% das pessoas lembram de marcas associadas a experiências positivas." / "72% compartilham nas redes."</p>
+    </div>
+    <div class="card">
+      <h4>Comparação</h4>
+      <p>"Outdoor: R$ 5.000 público genérico. LIFTT: R$ 1.500 público premium 24h." / "Hotel: R$ 5.000. LIFTT: R$ 1.500 com experiência."</p>
+    </div>
+    <div class="card">
+      <h4>Urgência</h4>
+      <p>"Já temos [X] interessados nessa vaga." / "Se um concorrente fechar antes, o segmento fecha."</p>
+    </div>
+    <div class="card">
+      <h4>Autoridade</h4>
+      <p>"Technogym é a marca #1 mundial em equipamentos fitness." / "A LIFTT é o único clube premium de Vitória com essa tecnologia."</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== SEÇÃO 8 ==================== -->
+<section>
+  <div class="section-num">08 &mdash; Processo</div>
+  <h2>Passo a passo do fechamento</h2>
+
+  <ul class="checklist">
+    <li><span class="icon">1.</span> <strong>Prospecção</strong> &mdash; Identifique marcas locais que atendem público premium (clínicas, restaurantes, escritórios de advocacia, concessionárias, moda, saúde, estética, tecnologia).</li>
+    <li><span class="icon">2.</span> <strong>Primeiro contato</strong> &mdash; WhatsApp ou DM com script curto. Não envie a proposta sem contexto.</li>
+    <li><span class="icon">3.</span> <strong>Envio da apresentação</strong> &mdash; Envie o link da proposta adequada (Telas ou Eventos). Use: <strong>considerate-smile-production-5008.up.railway.app</strong></li>
+    <li><span class="icon">4.</span> <strong>Follow-up (24-48h)</strong> &mdash; Pergunte se viu, tire dúvidas, reforce escassez.</li>
+    <li><span class="icon">5.</span> <strong>Reunião/visita</strong> &mdash; Convide para conhecer a LIFTT pessoalmente. O espaço vende sozinho.</li>
+    <li><span class="icon">6.</span> <strong>Proposta formal</strong> &mdash; Envie o plano escolhido com condições e prazo de validade (7 dias).</li>
+    <li><span class="icon">7.</span> <strong>Fechamento</strong> &mdash; Contrato + início da veiculação em até 7 dias.</li>
+  </ul>
+
+  <div class="warn">
+    <div class="warn-label">Importante</div>
+    <p>Nunca ofereça desconto no primeiro contato. Se o cliente pedir, ofereça <strong>benefícios extras</strong> em vez de redução de preço (ex: 1 mês adicional grátis em contrato semestral, stories extras). O preço é o preço &mdash; o valor está na exclusividade.</p>
+  </div>
+
+  <div class="tip">
+    <div class="tip-label">Segmentos prioritários</div>
+    <p><strong>Tier 1 (alto valor):</strong> Clínicas de estética, concessionárias, moda premium, suplementos, joalherias.<br>
+    <strong>Tier 2 (bom fit):</strong> Restaurantes, escritórios de advocacia/contabilidade, imobiliárias de alto padrão.<br>
+    <strong>Tier 3 (eventos):</strong> Empresas de tecnologia, startups, consultorias &mdash; focam mais em team building.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== SEÇÃO 9 ==================== -->
+<section>
+  <div class="section-num">09 &mdash; Resumo Rápido</div>
+  <h2>Cola de bolso</h2>
+
+  <table>
+    <tr>
+      <th></th>
+      <th>Telas & Presença</th>
+      <th>Eventos</th>
+    </tr>
+    <tr>
+      <td><strong>O que é</strong></td>
+      <td>Mídia contínua 24h</td>
+      <td>Experiência aos sábados</td>
+    </tr>
+    <tr>
+      <td><strong>Preço</strong></td>
+      <td>R$ 1.500 a R$ 4.500/mês</td>
+      <td>R$ 1.500/evento</td>
+    </tr>
+    <tr>
+      <td><strong>Contrato</strong></td>
+      <td>Mín. 3 meses</td>
+      <td>Por evento</td>
+    </tr>
+    <tr>
+      <td><strong>Para quem</strong></td>
+      <td>Marcas que querem presença constante</td>
+      <td>Empresas que querem impactar grupo</td>
+    </tr>
+    <tr>
+      <td><strong>Argumento-chave</strong></td>
+      <td>24h de exposição, público qualificado</td>
+      <td>Metade do preço de hotel, 10x o impacto</td>
+    </tr>
+    <tr>
+      <td><strong>Gatilho principal</strong></td>
+      <td>Escassez de vagas por segmento</td>
+      <td>Apenas 4 sábados/mês</td>
+    </tr>
+  </table>
+</section>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>LIFTT Fitness Club</strong> &mdash; Vitória, ES<br>
+  Documento interno &mdash; Não compartilhar com clientes<br>
+  Atualizado em abril de 2026
+</div>
+
+</body>
+</html>
