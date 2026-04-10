@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Locação da LIFTT Fitness Club para filmagens e produções de marca em Vitória, ES.">
+<meta property="og:title" content="LIFTT Fitness Club - Locação para Marcas">
+<meta property="og:description" content="A LIFTT como cenário exclusivo para a produção da sua marca.">
+<meta property="og:image" content="img/fachada.jpg">
+<link rel="icon" type="image/png" href="img/symbol-dark.png">
+<title>LIFTT Fitness Club - Locação para Marcas & Filmagens</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brown-primary: #5b5444;
+    --brown-medium: #5a4a3b;
+    --cream: #dfddd1;
+    --black: #1a1816;
+    --surface: #242220;
+    --charcoal: #373634;
+    --gray-muted: #8a8783;
+    --white: #ffffff;
+    --gold: #c4a265;
+    --gold-light: #d4b87a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--black);
+    color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* NAV DOTS */
+  .nav-dots {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+  }
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(223, 221, 209, 0.2);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+  .nav-dot.active {
+    background: var(--gold);
+    transform: scale(1.3);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* SHARED */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .section-title {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.15;
+    max-width: 800px;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+  }
+  .section-title strong { font-weight: 700; }
+
+  /* ========== SLIDE 1: HERO ========== */
+  .slide-hero {
+    background: var(--black) url('img/fachada.jpg') center/cover no-repeat;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .slide-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,24,22,0.75) 0%, rgba(26,24,22,0.95) 100%);
+    z-index: 1;
+  }
+  .hero-logo {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 32px;
+    animation: fadeInUp 1s ease 0.1s both;
+  }
+  .hero-logo img {
+    height: 48px;
+  }
+  .hero-badge {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    border: 1px solid rgba(196, 162, 101, 0.4);
+    padding: 8px 24px;
+    border-radius: 100px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 40px;
+    animation: fadeInUp 1s ease 0.3s both;
+  }
+  .hero-title {
+    position: relative;
+    z-index: 2;
+    font-size: clamp(42px, 7vw, 88px);
+    font-weight: 300;
+    letter-spacing: -2px;
+    line-height: 1.05;
+    animation: fadeInUp 1s ease 0.5s both;
+    max-width: 1000px;
+    padding: 0 20px;
+  }
+  .hero-title strong {
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-subtitle {
+    position: relative;
+    z-index: 2;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--gray-muted);
+    margin-top: 32px;
+    max-width: 600px;
+    line-height: 1.7;
+    animation: fadeInUp 1s ease 0.7s both;
+    padding: 0 20px;
+  }
+  .hero-line {
+    position: relative;
+    z-index: 2;
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 48px auto 0;
+    animation: fadeInUp 1s ease 0.9s both;
+  }
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeInUp 1s ease 1.2s both;
+  }
+  .scroll-indicator span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-muted);
+  }
+  .scroll-indicator .arrow {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* ========== SLIDE 2: O CONCEITO ========== */
+  .slide-concept {
+    background: var(--white);
+    color: var(--charcoal);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+  .concept-title {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.15;
+    max-width: 900px;
+    margin-bottom: 48px;
+    letter-spacing: -1px;
+  }
+  .concept-title strong {
+    font-weight: 700;
+    color: var(--brown-primary);
+  }
+  .concept-text {
+    font-size: 18px;
+    color: var(--gray-muted);
+    line-height: 1.8;
+    max-width: 720px;
+    font-weight: 300;
+  }
+  .concept-text strong {
+    color: var(--charcoal);
+    font-weight: 600;
+  }
+  .concept-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 32px 0;
+  }
+
+  /* ========== SLIDE 3: O QUE INCLUÍMOS ========== */
+  .slide-included {
+    background: var(--brown-primary);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .included-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin-top: 40px;
+    width: 100%;
+  }
+  .inc-card {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(223, 221, 209, 0.1);
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: left;
+    transition: transform 0.3s, background 0.3s;
+    backdrop-filter: blur(4px);
+  }
+  .inc-card:hover {
+    transform: translateY(-6px);
+    background: rgba(0, 0, 0, 0.35);
+  }
+  .inc-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(196, 162, 101, 0.15);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  .inc-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+  .inc-desc {
+    font-size: 14px;
+    color: var(--gray-muted);
+    line-height: 1.6;
+  }
+
+  /* ========== SLIDE 4: O QUE VOCÊ TRAZ ========== */
+  .slide-brand {
+    background: var(--black);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+    position: relative;
+  }
+  .slide-brand::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(196, 162, 101, 0.05) 0%, transparent 60%);
+  }
+  .brand-content {
+    position: relative;
+    z-index: 1;
+  }
+  .brand-list {
+    max-width: 900px;
+    margin-top: 20px;
+  }
+  .brand-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(223, 221, 209, 0.08);
+  }
+  .brand-num {
+    font-size: 48px;
+    font-weight: 800;
+    color: rgba(196, 162, 101, 0.2);
+    line-height: 1;
+    min-width: 70px;
+  }
+  .brand-content-inner h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .brand-content-inner p {
+    font-size: 15px;
+    color: var(--gray-muted);
+    line-height: 1.7;
+    max-width: 600px;
+  }
+  .brand-tag {
+    display: inline-block;
+    background: rgba(196, 162, 101, 0.1);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-top: 12px;
+  }
+
+  /* ========== SLIDE 5: PROCESSO ========== */
+  .slide-process {
+    background: var(--white);
+    color: var(--charcoal);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+  .process-timeline {
+    max-width: 900px;
+    margin-top: 32px;
+    position: relative;
+  }
+  .process-timeline::before {
+    content: '';
+    position: absolute;
+    left: 32px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), rgba(196, 162, 101, 0.1));
+  }
+  .process-item {
+    display: flex;
+    gap: 40px;
+    padding: 24px 0;
+    position: relative;
+  }
+  .process-num {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--gold);
+    color: var(--brown-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    flex-shrink: 0;
+    z-index: 1;
+    box-shadow: 0 4px 20px rgba(91, 84, 68, 0.1);
+  }
+  .process-content {
+    flex: 1;
+    padding-top: 16px;
+  }
+  .process-content h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--brown-primary);
+    margin-bottom: 6px;
+  }
+  .process-content p {
+    font-size: 14px;
+    color: var(--gray-muted);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  /* ========== SLIDE 6: REGRAS ========== */
+  .slide-rules {
+    background: var(--brown-primary);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin-top: 40px;
+  }
+  .rule-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(223, 221, 209, 0.08);
+    border-radius: 20px;
+    padding: 36px 32px;
+    backdrop-filter: blur(4px);
+  }
+  .rule-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(196, 162, 101, 0.15);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 18px;
+  }
+  .rule-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .rule-desc {
+    font-size: 14px;
+    color: var(--gray-muted);
+    line-height: 1.6;
+  }
+
+  /* ========== SLIDE 7: INVESTIMENTO ========== */
+  .slide-invest {
+    background: linear-gradient(135deg, var(--black) 0%, #2a2520 100%);
+    flex-direction: column;
+    padding: 80px 40px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+  }
+  .slide-invest::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 40%, rgba(196, 162, 101, 0.08) 0%, transparent 60%);
+  }
+  .invest-content {
+    position: relative;
+    z-index: 1;
+    max-width: 700px;
+  }
+  .invest-title {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+  }
+  .invest-title strong { font-weight: 700; color: var(--gold); }
+  .invest-sub {
+    font-size: 16px;
+    color: var(--gray-muted);
+    margin-bottom: 56px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+  .price-block {
+    background: var(--surface);
+    border: 1px solid rgba(196, 162, 101, 0.3);
+    border-radius: 28px;
+    padding: 56px 64px;
+    position: relative;
+    margin-bottom: 48px;
+    display: inline-block;
+  }
+  .price-block::before {
+    content: 'VALOR POR SESSÃO';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 6px 24px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .price-value {
+    font-size: clamp(64px, 10vw, 104px);
+    font-weight: 800;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .price-value .cur {
+    font-size: 0.35em;
+    font-weight: 400;
+    vertical-align: top;
+    margin-right: 6px;
+    color: var(--gold);
+  }
+  .price-per {
+    font-size: 15px;
+    color: var(--gray-muted);
+  }
+  .price-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    max-width: 700px;
+  }
+  .price-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(196, 162, 101, 0.08);
+    border: 1px solid rgba(196, 162, 101, 0.15);
+    color: var(--cream);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 100px;
+  }
+  .price-tag .ck { color: var(--gold); font-weight: 700; }
+
+  /* ========== SLIDE 8: CLOSING ========== */
+  .slide-closing {
+    background: var(--black) url('img/equipe.jpg') center/cover no-repeat;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+  }
+  .slide-closing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,24,22,0.78) 0%, rgba(26,24,22,0.95) 100%);
+  }
+  .closing-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+  .closing-logo img {
+    height: 56px;
+    margin-bottom: 40px;
+  }
+  .closing-headline {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 300;
+    line-height: 1.2;
+    max-width: 720px;
+    margin-bottom: 24px;
+  }
+  .closing-headline strong {
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .closing-sub {
+    font-size: 16px;
+    color: var(--gray-muted);
+    max-width: 520px;
+    line-height: 1.7;
+    margin: 0 auto 40px;
+  }
+  .closing-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 32px;
+  }
+  .closing-cta {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .closing-contact {
+    font-size: 14px;
+    color: var(--gray-muted);
+    line-height: 1.8;
+  }
+  .closing-contact a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(196, 162, 101, 0.3);
+  }
+  .closing-contact a:hover {
+    border-color: var(--gold);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .brand-item { flex-direction: column; gap: 16px; }
+    .brand-num { font-size: 40px; }
+    .process-item { gap: 24px; }
+    .process-num { width: 52px; height: 52px; font-size: 16px; }
+    .process-timeline::before { left: 26px; }
+    .price-block { padding: 40px 32px; }
+  }
+
+  @media print {
+    .slide { page-break-after: always; min-height: 100vh; }
+    .nav-dots, .scroll-indicator { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV DOTS -->
+<nav class="nav-dots">
+  <button class="nav-dot active" onclick="goToSlide(0)"></button>
+  <button class="nav-dot" onclick="goToSlide(1)"></button>
+  <button class="nav-dot" onclick="goToSlide(2)"></button>
+  <button class="nav-dot" onclick="goToSlide(3)"></button>
+  <button class="nav-dot" onclick="goToSlide(4)"></button>
+  <button class="nav-dot" onclick="goToSlide(5)"></button>
+  <button class="nav-dot" onclick="goToSlide(6)"></button>
+  <button class="nav-dot" onclick="goToSlide(7)"></button>
+</nav>
+
+<!-- SLIDE 1: HERO -->
+<section class="slide slide-hero" id="s0">
+  <div class="hero-logo">
+    <img src="img/logo-white.png" alt="LIFTT Fitness Club">
+  </div>
+  <div class="hero-badge">Locação para Marcas 2026</div>
+  <h1 class="hero-title">A LIFTT como cenário da <strong>sua produção de marca</strong></h1>
+  <p class="hero-subtitle">Estrutura premium para filmagens, ensaios e ativações comerciais &mdash; tecnologia Technogym, lounge sofisticado, lifestyle fitness.</p>
+  <div class="hero-line"></div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- SLIDE 2: O CONCEITO -->
+<section class="slide slide-concept" id="s1">
+  <div class="section-label fade-in" style="color: var(--gold);">O Conceito</div>
+  <h2 class="concept-title fade-in">Um cenário premium pronto para a sua <strong>produção comercial</strong></h2>
+  <div class="concept-divider fade-in"></div>
+  <p class="concept-text fade-in">
+    A LIFTT abre suas portas para marcas que querem produzir conteúdo de alto padrão em um ambiente <strong>fitness premium</strong>, associado a tecnologia Technogym, lifestyle e exclusividade.
+  </p>
+  <p class="concept-text fade-in" style="margin-top: 20px;">
+    Fornecemos toda a <strong>estrutura física</strong> para a sua filmagem acontecer. Você traz sua equipe, seu elenco e sua visão criativa. Juntos, criamos produções que elevam o posicionamento da sua marca.
+  </p>
+</section>
+
+<!-- SLIDE 3: O QUE INCLUÍMOS -->
+<section class="slide slide-included" id="s2">
+  <div class="section-label fade-in">O Que a LIFTT Fornece</div>
+  <h2 class="section-title fade-in" style="color: var(--cream);">Estrutura completa para a <strong>sua filmagem</strong></h2>
+
+  <div class="included-grid">
+    <div class="inc-card fade-in">
+      <div class="inc-icon">01</div>
+      <div class="inc-title">Sala de Treino</div>
+      <div class="inc-desc">Acesso total ao espaço Technogym com equipamentos de última geração para cenas de treino, ensaios fitness e ativações.</div>
+    </div>
+
+    <div class="inc-card fade-in">
+      <div class="inc-icon">02</div>
+      <div class="inc-title">Lounge Premium</div>
+      <div class="inc-desc">Ambiente sofisticado para cenas de recepção, bastidores, entrevistas ou looks de lifestyle.</div>
+    </div>
+
+    <div class="inc-card fade-in">
+      <div class="inc-icon">03</div>
+      <div class="inc-title">Ambiente Exclusivo</div>
+      <div class="inc-desc">Espaço reservado durante a janela de gravação para garantir privacidade e qualidade da produção.</div>
+    </div>
+
+    <div class="inc-card fade-in">
+      <div class="inc-icon">04</div>
+      <div class="inc-title">Identidade Visual</div>
+      <div class="inc-desc">Cenário alinhado ao posicionamento premium da LIFTT &mdash; design, iluminação e atmosfera.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: O QUE VOCÊ TRAZ -->
+<section class="slide slide-brand" id="s3">
+  <div class="brand-content">
+    <div class="section-label fade-in">O Que a Marca Traz</div>
+    <h2 class="section-title fade-in" style="color: var(--cream);">A produção é <strong>totalmente sua</strong></h2>
+    <p class="fade-in" style="color: var(--gray-muted); line-height: 1.7; max-width: 700px; margin-top: -16px; margin-bottom: 32px; font-size: 16px;">
+      A LIFTT fornece o cenário. Você traz todo o aparato necessário para a sua produção acontecer como planejada.
+    </p>
+
+    <div class="brand-list">
+      <div class="brand-item fade-in">
+        <div class="brand-num">01</div>
+        <div class="brand-content-inner">
+          <h3>Equipe de Produção</h3>
+          <p>Diretor, operador de câmera, iluminação, som, maquiagem e toda a equipe técnica necessária para a filmagem.</p>
+          <span class="brand-tag">Crew completa</span>
+        </div>
+      </div>
+
+      <div class="brand-item fade-in">
+        <div class="brand-num">02</div>
+        <div class="brand-content-inner">
+          <h3>Elenco e Modelos</h3>
+          <p>Influenciadoras, modelos, atores ou atletas para a produção. A LIFTT não fornece elenco &mdash; você traz as pessoas que vão aparecer no conteúdo.</p>
+          <span class="brand-tag">Cast próprio</span>
+        </div>
+      </div>
+
+      <div class="brand-item fade-in">
+        <div class="brand-num">03</div>
+        <div class="brand-content-inner">
+          <h3>Equipamentos</h3>
+          <p>Câmeras, lentes, luzes, tripés, cabos, monitores &mdash; todo o equipamento técnico da produção deve ser providenciado pela marca.</p>
+          <span class="brand-tag">Gear próprio</span>
+        </div>
+      </div>
+
+      <div class="brand-item fade-in">
+        <div class="brand-num">04</div>
+        <div class="brand-content-inner">
+          <h3>Figurino e Props</h3>
+          <p>Vestuário, acessórios, produtos da marca e qualquer item de cenografia adicional para a composição das cenas.</p>
+          <span class="brand-tag">Arte própria</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: PROCESSO -->
+<section class="slide slide-process" id="s4">
+  <div class="section-label fade-in">Processo de Aprovação</div>
+  <h2 class="concept-title fade-in">Cada detalhe <strong>alinhado previamente</strong> com a gerência</h2>
+
+  <div class="process-timeline">
+    <div class="process-item fade-in">
+      <div class="process-num">01</div>
+      <div class="process-content">
+        <h3>Briefing Inicial</h3>
+        <p>Envie uma mensagem com informações essenciais: data desejada, duração da gravação, número de pessoas que virão ao local e o que será trazido pela equipe.</p>
+      </div>
+    </div>
+
+    <div class="process-item fade-in">
+      <div class="process-num">02</div>
+      <div class="process-content">
+        <h3>Envio do Roteiro</h3>
+        <p>Apresente o roteiro da produção à gerência da LIFTT antes do dia da gravação. Inclua conceito, storyboard, cenas planejadas e uso da marca LIFTT.</p>
+      </div>
+    </div>
+
+    <div class="process-item fade-in">
+      <div class="process-num">03</div>
+      <div class="process-content">
+        <h3>Aprovação da Gerência</h3>
+        <p>A gerência analisa o roteiro e aprova ou sugere ajustes para garantir o alinhamento com o posicionamento premium da marca LIFTT.</p>
+      </div>
+    </div>
+
+    <div class="process-item fade-in">
+      <div class="process-num">04</div>
+      <div class="process-content">
+        <h3>Data Confirmada</h3>
+        <p>Após aprovação, a data e horário ficam reservados. A LIFTT libera o espaço exclusivamente para a sua produção dentro da janela acordada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: REGRAS -->
+<section class="slide slide-rules" id="s5">
+  <div class="section-label fade-in" style="color: var(--gold);">Diretrizes</div>
+  <h2 class="section-title fade-in" style="color: var(--cream);">Regras para manter o <strong>padrão da produção</strong></h2>
+
+  <div class="rules-grid">
+    <div class="rule-card fade-in">
+      <div class="rule-icon">01</div>
+      <div class="rule-title">Comunicação Prévia</div>
+      <div class="rule-desc">Informar com antecedência o número de pessoas, equipamentos e produtos que virão ao local.</div>
+    </div>
+
+    <div class="rule-card fade-in">
+      <div class="rule-icon">02</div>
+      <div class="rule-title">Roteiro Aprovado</div>
+      <div class="rule-desc">Todo roteiro deve ser enviado e aprovado previamente pela gerência da LIFTT antes da gravação.</div>
+    </div>
+
+    <div class="rule-card fade-in">
+      <div class="rule-icon">03</div>
+      <div class="rule-title">Posicionamento Premium</div>
+      <div class="rule-desc">Toda produção deve estar alinhada ao posicionamento premium e ao lifestyle da marca LIFTT.</div>
+    </div>
+
+    <div class="rule-card fade-in">
+      <div class="rule-icon">04</div>
+      <div class="rule-title">Preservação do Espaço</div>
+      <div class="rule-desc">Equipamentos, elenco e materiais não devem danificar a estrutura, mobiliário ou equipamentos Technogym.</div>
+    </div>
+
+    <div class="rule-card fade-in">
+      <div class="rule-icon">05</div>
+      <div class="rule-title">Menção à LIFTT</div>
+      <div class="rule-desc">A marca LIFTT deve ser mencionada ou apresentada na produção final, sempre que fizer sentido ao roteiro.</div>
+    </div>
+
+    <div class="rule-card fade-in">
+      <div class="rule-icon">06</div>
+      <div class="rule-title">Horário Acordado</div>
+      <div class="rule-desc">A produção deve acontecer dentro da janela de tempo previamente acordada com a gerência.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: INVESTIMENTO -->
+<section class="slide slide-invest" id="s6">
+  <div class="invest-content">
+    <div class="section-label fade-in" style="color: var(--gold); margin-bottom: 32px;">Investimento</div>
+    <h2 class="invest-title fade-in">Uma locação premium por <strong>valor acessível</strong></h2>
+    <p class="invest-sub fade-in">Estrutura completa, lounge privativo, ambiente exclusivo &mdash; tudo pronto para a sua produção.</p>
+
+    <div class="price-block fade-in">
+      <div class="price-value"><span class="cur">R$</span>1.500</div>
+      <div class="price-per">por sessão de gravação</div>
+    </div>
+
+    <div class="price-tags fade-in">
+      <span class="price-tag"><span class="ck">&#10003;</span> Sala de treino Technogym</span>
+      <span class="price-tag"><span class="ck">&#10003;</span> Lounge premium</span>
+      <span class="price-tag"><span class="ck">&#10003;</span> Ambiente exclusivo</span>
+      <span class="price-tag"><span class="ck">&#10003;</span> Horário reservado</span>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: CLOSING -->
+<section class="slide slide-closing" id="s7">
+  <div class="closing-content">
+    <div class="closing-logo">
+      <img src="img/logo-white.png" alt="LIFTT Fitness Club">
+    </div>
+    <h2 class="closing-headline fade-in">Pronto para trazer sua marca para o <strong>cenário mais premium</strong> de Vitória?</h2>
+    <p class="closing-sub fade-in">Entre em contato para enviar seu briefing e roteiro. Alinhamos juntos e confirmamos a data.</p>
+
+    <div class="closing-divider"></div>
+    <p class="closing-cta fade-in">Vamos conversar</p>
+    <div class="closing-contact fade-in">
+      <p>LIFTT Fitness Club &mdash; Vitória, ES</p>
+      <p>
+        <a href="https://instagram.com/lifttclub" target="_blank">@lifttclub</a> &bull;
+        <a href="mailto:liftt@lifttclub.com">liftt@lifttclub.com</a> &bull;
+        <a href="https://wa.me/5527999990584">Mateus Cruz &mdash; (27) 99999-0584</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Fade-in observer
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // Nav dots
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.nav-dot');
+  const sObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = Array.from(slides).indexOf(e.target);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.5 });
+  slides.forEach(s => sObs.observe(s));
+
+  function goToSlide(idx) {
+    slides[idx].scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
