@@ -43,7 +43,10 @@
       "Bash(cp \"/c/Users/marce/Downloads/Cópia de STORYS LIFTT \\(1920 x 1080 px\\).mp4\" \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/storys-raw.mp4\")",
       "Bash(cp \"/c/Users/marce/OneDrive/Área de Trabalho/DOCS LIFTT/HISTORICO/Outubro 2025/EVENTO LIFTT/ANIMAÇÃO - 1920x1080px - 10seg.mp4\" \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/animacao-raw.mp4\")",
       "Bash(cp \"/c/Users/marce/Downloads/Experiência Liftt + Sundays.mp4\" \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/experiencia-raw.mp4\")",
-      "Bash(ls -lh \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/\"*raw.mp4)"
+      "Bash(ls -lh \"/c/Users/marce/OneDrive/Área de Trabalho/pdf/img/\"*raw.mp4)",
+      "WebFetch(domain:www.lifttclub.com)",
+      "Bash(nslookup propostas.lifttclub.com)",
+      "Bash(dig propostas.lifttclub.com CNAME +short)"
     ]
   }
 }

@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Parceria LIFTT Fitness Club com influenciadoras e modelos — produção de conteúdo premium em Vitória, ES.">
+<meta property="og:title" content="LIFTT Fitness Club - Parceria Influenciadoras">
+<meta property="og:description" content="A LIFTT como cenário da sua próxima produção de conteúdo.">
+<meta property="og:image" content="img/fachada.jpg">
+<link rel="icon" type="image/png" href="img/symbol-dark.png">
+<title>LIFTT Fitness Club - Influenciadoras & Produção de Conteúdo</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brown-primary: #5b5444;
+    --brown-medium: #5a4a3b;
+    --cream: #dfddd1;
+    --black: #1a1816;
+    --surface: #242220;
+    --charcoal: #373634;
+    --gray-muted: #8a8783;
+    --white: #ffffff;
+    --gold: #c4a265;
+    --gold-light: #d4b87a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--black);
+    color: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .slide {
+    min-height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ========== BACK BUTTON ========== */
+  .back-btn {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 200;
+    background: rgba(26, 24, 22, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(223, 221, 209, 0.1);
+    color: var(--cream);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .back-btn:hover {
+    background: rgba(196, 162, 101, 0.15);
+    transform: translateX(-2px);
+  }
+
+  /* ========== NAV DOTS ========== */
+  .nav-dots {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+  }
+  .nav-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(223, 221, 209, 0.2);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+  .nav-dot.active {
+    background: var(--gold);
+    transform: scale(1.3);
+  }
+
+  /* ========== ANIMATIONS ========== */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ========== SHARED ========== */
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .section-title {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.15;
+    max-width: 800px;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+  }
+  .section-title strong { font-weight: 700; }
+
+  /* ========== SLIDE 1: HERO ========== */
+  .slide-hero {
+    background: var(--black) url('img/interior.jpg') center/cover no-repeat;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .slide-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,24,22,0.7) 0%, rgba(26,24,22,0.92) 100%);
+    z-index: 1;
+  }
+  .hero-logo {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 32px;
+    animation: fadeInUp 1s ease 0.1s both;
+  }
+  .hero-logo img {
+    height: 48px;
+  }
+  .hero-badge {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    border: 1px solid rgba(196, 162, 101, 0.4);
+    padding: 8px 24px;
+    border-radius: 100px;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 40px;
+    animation: fadeInUp 1s ease 0.3s both;
+  }
+  .hero-title {
+    position: relative;
+    z-index: 2;
+    font-size: clamp(42px, 7vw, 88px);
+    font-weight: 300;
+    letter-spacing: -2px;
+    line-height: 1.05;
+    animation: fadeInUp 1s ease 0.5s both;
+    max-width: 1000px;
+    padding: 0 20px;
+  }
+  .hero-title strong {
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-subtitle {
+    position: relative;
+    z-index: 2;
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--gray-muted);
+    margin-top: 32px;
+    max-width: 600px;
+    line-height: 1.7;
+    animation: fadeInUp 1s ease 0.7s both;
+    padding: 0 20px;
+  }
+  .hero-line {
+    position: relative;
+    z-index: 2;
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 48px auto 0;
+    animation: fadeInUp 1s ease 0.9s both;
+  }
+  .scroll-indicator {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeInUp 1s ease 1.2s both;
+  }
+  .scroll-indicator span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gray-muted);
+  }
+  .scroll-indicator .arrow {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* ========== SLIDE 2: O CONCEITO ========== */
+  .slide-concept {
+    background: var(--white);
+    color: var(--charcoal);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+  .concept-title {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.15;
+    max-width: 900px;
+    margin-bottom: 48px;
+    letter-spacing: -1px;
+  }
+  .concept-title strong {
+    font-weight: 700;
+    color: var(--brown-primary);
+  }
+  .concept-text {
+    font-size: 18px;
+    color: var(--gray-muted);
+    line-height: 1.8;
+    max-width: 720px;
+    font-weight: 300;
+  }
+  .concept-text strong {
+    color: var(--charcoal);
+    font-weight: 600;
+  }
+  .concept-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 32px 0;
+  }
+
+  /* ========== SLIDE 3: DINÂMICA ========== */
+  .slide-dynamic {
+    background: var(--brown-primary);
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .dynamic-left {
+    flex: 1;
+    min-width: 350px;
+    padding: 80px clamp(40px, 6vw, 100px);
+  }
+  .dynamic-right {
+    flex: 1;
+    min-width: 350px;
+    min-height: 500px;
+    background: url('img/trainer.jpg') center/cover no-repeat;
+    position: relative;
+  }
+  .dynamic-right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(91,84,68,0.6), transparent);
+  }
+  .dynamic-exchange {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .exchange-box {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(223, 221, 209, 0.1);
+    border-radius: 16px;
+    padding: 28px 24px;
+    backdrop-filter: blur(4px);
+  }
+  .exchange-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .exchange-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .exchange-desc {
+    font-size: 13px;
+    color: var(--gray-muted);
+    line-height: 1.6;
+  }
+
+  /* ========== SLIDE 4: ENTREGAS ========== */
+  .slide-deliverables {
+    background: var(--black);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    max-width: 1100px;
+    margin-top: 40px;
+  }
+  .deliv-card {
+    background: var(--surface);
+    border: 1px solid rgba(223, 221, 209, 0.06);
+    border-radius: 24px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s, border-color 0.4s;
+  }
+  .deliv-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .deliv-card:hover { transform: translateY(-6px); border-color: rgba(196,162,101,0.25); }
+  .deliv-card:hover::before { opacity: 1; }
+  .deliv-num {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .deliv-name {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .deliv-qty {
+    font-size: 14px;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .deliv-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .deliv-list li {
+    font-size: 14px;
+    color: var(--gray-muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    line-height: 1.5;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(223,221,209,0.05);
+  }
+  .deliv-list li:last-child { border: none; padding-bottom: 0; }
+  .deliv-list .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+
+  /* ========== SLIDE 5: FORMATOS ========== */
+  .slide-formats {
+    background: var(--white);
+    color: var(--charcoal);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+  }
+  .formats-list {
+    max-width: 900px;
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .format-item {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    padding: 32px 36px;
+    background: rgba(91,84,68,0.03);
+    border: 1px solid rgba(91,84,68,0.08);
+    border-radius: 20px;
+    transition: transform 0.3s, background 0.3s;
+  }
+  .format-item:hover {
+    transform: translateX(8px);
+    background: rgba(196,162,101,0.05);
+  }
+  .format-num {
+    font-size: 56px;
+    font-weight: 800;
+    color: rgba(91,84,68,0.15);
+    line-height: 1;
+    min-width: 80px;
+  }
+  .format-content {
+    flex: 1;
+  }
+  .format-formula {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--brown-primary);
+    margin-bottom: 6px;
+  }
+  .format-formula .plus { color: var(--gold); margin: 0 8px; font-weight: 400; }
+  .format-desc {
+    font-size: 14px;
+    color: var(--gray-muted);
+    line-height: 1.6;
+  }
+  .format-note {
+    margin-top: 32px;
+    padding: 24px 32px;
+    background: rgba(196,162,101,0.08);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 12px 12px 0;
+    font-size: 14px;
+    color: var(--charcoal);
+    line-height: 1.6;
+  }
+  .format-note strong { color: var(--brown-primary); }
+
+  /* ========== SLIDE 6: REGRAS ========== */
+  .slide-rules {
+    background: var(--black);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+    position: relative;
+  }
+  .slide-rules::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 30%, rgba(196,162,101,0.05) 0%, transparent 60%);
+  }
+  .rules-content {
+    position: relative;
+    z-index: 1;
+  }
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin-top: 40px;
+  }
+  .rule-card {
+    background: var(--surface);
+    border: 1px solid rgba(223, 221, 209, 0.06);
+    border-radius: 20px;
+    padding: 40px 32px;
+    position: relative;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .rule-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(196, 162, 101, 0.2);
+  }
+  .rule-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(196, 162, 101, 0.12);
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 20px;
+  }
+  .rule-text {
+    font-size: 15px;
+    color: var(--cream);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  .rule-text strong {
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  /* ========== SLIDE 7: DISPONIBILIDADE ========== */
+  .slide-schedule {
+    background: var(--brown-primary);
+    flex-direction: column;
+    padding: 80px clamp(40px, 8vw, 120px);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .schedule-title {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.15;
+    max-width: 700px;
+    margin-bottom: 40px;
+    letter-spacing: -1px;
+    color: var(--cream);
+  }
+  .schedule-title strong { font-weight: 700; color: var(--gold); }
+  .schedule-block {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(196, 162, 101, 0.3);
+    border-radius: 24px;
+    padding: 56px 72px;
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+  }
+  .schedule-block::before {
+    content: 'JANELA DE GRAVAÇÃO';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--black);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 6px 20px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .schedule-days {
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .schedule-hours {
+    font-size: clamp(56px, 8vw, 96px);
+    font-weight: 800;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+  .schedule-period {
+    font-size: 15px;
+    color: var(--gray-muted);
+    max-width: 400px;
+    line-height: 1.6;
+    margin: 0 auto;
+  }
+
+  /* ========== SLIDE 8: OBJETIVO / CLOSING ========== */
+  .slide-closing {
+    background: var(--black) url('img/equipe.jpg') center/cover no-repeat;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+  }
+  .slide-closing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(26,24,22,0.75) 0%, rgba(26,24,22,0.95) 100%);
+  }
+  .closing-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+  }
+  .closing-logo img {
+    height: 56px;
+    margin-bottom: 40px;
+  }
+  .closing-headline {
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 300;
+    line-height: 1.2;
+    max-width: 720px;
+    margin-bottom: 32px;
+  }
+  .closing-headline strong {
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .objectives-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+    margin: 40px 0 48px;
+    max-width: 900px;
+  }
+  .objective {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(223, 221, 209, 0.08);
+    border-radius: 16px;
+    padding: 20px 24px;
+    text-align: left;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .objective-icon {
+    color: var(--gold);
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 800;
+  }
+  .objective-text {
+    font-size: 13px;
+    color: var(--cream);
+    line-height: 1.5;
+  }
+  .closing-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
+    margin: 0 auto 32px;
+  }
+  .closing-cta {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .closing-contact {
+    font-size: 14px;
+    color: var(--gray-muted);
+    line-height: 1.8;
+  }
+  .closing-contact a {
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(196, 162, 101, 0.3);
+  }
+  .closing-contact a:hover {
+    border-color: var(--gold);
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 768px) {
+    .deliverables-grid { grid-template-columns: 1fr; }
+    .dynamic-exchange { grid-template-columns: 1fr; }
+    .format-item { flex-direction: column; gap: 16px; text-align: center; }
+    .format-num { min-width: auto; }
+    .schedule-block { padding: 40px 32px; }
+  }
+
+  @media print {
+    .slide { page-break-after: always; min-height: 100vh; }
+    .nav-dots, .back-btn, .scroll-indicator { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- BACK BUTTON -->
+<a href="index.html" class="back-btn">&#8592; Voltar</a>
+
+<!-- NAV DOTS -->
+<nav class="nav-dots">
+  <button class="nav-dot active" onclick="goToSlide(0)"></button>
+  <button class="nav-dot" onclick="goToSlide(1)"></button>
+  <button class="nav-dot" onclick="goToSlide(2)"></button>
+  <button class="nav-dot" onclick="goToSlide(3)"></button>
+  <button class="nav-dot" onclick="goToSlide(4)"></button>
+  <button class="nav-dot" onclick="goToSlide(5)"></button>
+  <button class="nav-dot" onclick="goToSlide(6)"></button>
+  <button class="nav-dot" onclick="goToSlide(7)"></button>
+</nav>
+
+<!-- SLIDE 1: HERO -->
+<section class="slide slide-hero" id="s0">
+  <div class="hero-logo">
+    <img src="img/logo-white.png" alt="LIFTT Fitness Club">
+  </div>
+  <div class="hero-badge">Parceria Exclusiva 2026</div>
+  <h1 class="hero-title">A LIFTT como cenário da sua <strong>próxima produção</strong></h1>
+  <p class="hero-subtitle">Proposta de parceria para influenciadoras e produção de conteúdo &mdash; tecnologia, performance e lifestyle em um ambiente premium.</p>
+  <div class="hero-line"></div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- SLIDE 2: O CONCEITO -->
+<section class="slide slide-concept" id="s1">
+  <div class="section-label fade-in" style="color: var(--gold);">O Propósito</div>
+  <h2 class="concept-title fade-in">Redefinir a experiência fitness conectando <strong>tecnologia, performance e lifestyle</strong></h2>
+  <div class="concept-divider fade-in"></div>
+  <p class="concept-text fade-in">
+    A LIFTT nasce com o propósito de <strong>redefinir a experiência fitness</strong>, conectando tecnologia Technogym, performance e lifestyle em um ambiente premium em Vitória.
+  </p>
+  <p class="concept-text fade-in" style="margin-top: 20px;">
+    Esta parceria amplia a <strong>presença digital da marca</strong>, associando a LIFTT a conteúdos de alto padrão estético, bem-estar e performance &mdash; alinhados ao nosso posicionamento exclusivo.
+  </p>
+</section>
+
+<!-- SLIDE 3: DINÂMICA -->
+<section class="slide slide-dynamic" id="s2">
+  <div class="dynamic-left">
+    <div class="section-label fade-in" style="color: var(--gold);">Dinâmica da Parceria</div>
+    <h2 class="section-title fade-in" style="color: var(--cream); max-width: 500px;">
+      Uma troca de <strong>valor real</strong> entre marcas
+    </h2>
+    <p class="fade-in" style="color: var(--gray-muted); line-height: 1.7; max-width: 480px; margin-top: 8px;">
+      A influenciadora utiliza nossa estrutura premium para produzir conteúdos autorais ou em conjunto com marcas parceiras. Em contrapartida, toda produção dentro da academia fortalece a presença digital da LIFTT.
+    </p>
+
+    <div class="dynamic-exchange fade-in">
+      <div class="exchange-box">
+        <div class="exchange-label">Você recebe</div>
+        <div class="exchange-title">Estrutura Premium</div>
+        <div class="exchange-desc">Ambiente completo para gravar conteúdo autoral com qualidade estética e tecnologia Technogym.</div>
+      </div>
+      <div class="exchange-box">
+        <div class="exchange-label">LIFTT recebe</div>
+        <div class="exchange-title">Presença Digital</div>
+        <div class="exchange-desc">Conteúdos estratégicos que fortalecem a marca em redes sociais e ampliam o alcance.</div>
+      </div>
+    </div>
+  </div>
+  <div class="dynamic-right"></div>
+</section>
+
+<!-- SLIDE 4: ENTREGAS -->
+<section class="slide slide-deliverables" id="s3">
+  <div class="section-label fade-in">Entregas Esperadas</div>
+  <h2 class="section-title fade-in" style="color: var(--cream);">O que a influenciadora <strong>entrega em cada visita</strong></h2>
+
+  <div class="deliverables-grid">
+    <div class="deliv-card fade-in">
+      <div class="deliv-num">01 &mdash; Por visita</div>
+      <div class="deliv-name">Stories</div>
+      <div class="deliv-qty">Sequência mínima de 4 stories</div>
+      <ul class="deliv-list">
+        <li><span class="dot"></span>Apresentação da academia</li>
+        <li><span class="dot"></span>Estrutura e ambiente</li>
+        <li><span class="dot"></span>Experiência de treino</li>
+        <li><span class="dot"></span>Marcação da LIFTT</li>
+      </ul>
+    </div>
+
+    <div class="deliv-card fade-in">
+      <div class="deliv-num">02 &mdash; Por sessão</div>
+      <div class="deliv-name">Feed</div>
+      <div class="deliv-qty">1 conteúdo no feed (Reels ou Carrossel)</div>
+      <ul class="deliv-list">
+        <li><span class="dot"></span>Publicação em formato collab</li>
+        <li><span class="dot"></span>Marcação obrigatória da LIFTT</li>
+        <li><span class="dot"></span>Ambiente evidenciado</li>
+        <li><span class="dot"></span>Alinhado ao posicionamento premium</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: FORMATOS -->
+<section class="slide slide-formats" id="s4">
+  <div class="section-label fade-in">Formatos de Collab</div>
+  <h2 class="concept-title fade-in">Dois caminhos possíveis para a <strong>produção do conteúdo</strong></h2>
+
+  <div class="formats-list">
+    <div class="format-item fade-in">
+      <div class="format-num">01</div>
+      <div class="format-content">
+        <div class="format-formula">Influenciadora <span class="plus">+</span> LIFTT</div>
+        <div class="format-desc">Conteúdo autoral focado na experiência LIFTT. Collab obrigatório quando não há marca envolvida.</div>
+      </div>
+    </div>
+
+    <div class="format-item fade-in">
+      <div class="format-num">02</div>
+      <div class="format-content">
+        <div class="format-formula">Influenciadora <span class="plus">+</span> Marca <span class="plus">+</span> LIFTT</div>
+        <div class="format-desc">Conteúdo em conjunto com marcas parceiras. A LIFTT entra como ambiente e co-autora do conteúdo.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="format-note fade-in">
+    <strong>Importante:</strong> Caso não haja marca envolvida, o conteúdo deverá ser publicado obrigatoriamente em formato <strong>collab com a LIFTT</strong>, garantindo visibilidade mútua.
+  </div>
+</section>
+
+<!-- SLIDE 6: REGRAS -->
+<section class="slide slide-rules" id="s5">
+  <div class="rules-content">
+    <div class="section-label fade-in">Regras de Conteúdo</div>
+    <h2 class="section-title fade-in" style="color: var(--cream);">Diretrizes para manter o <strong>padrão premium</strong></h2>
+
+    <div class="rules-grid">
+      <div class="rule-card fade-in">
+        <div class="rule-icon">01</div>
+        <p class="rule-text">Todo conteúdo produzido dentro da academia deve <strong>incluir a LIFTT</strong>.</p>
+      </div>
+      <div class="rule-card fade-in">
+        <div class="rule-icon">02</div>
+        <p class="rule-text">A marca deve ser <strong>marcada</strong> e, sempre que possível, inserida como <strong>colaboradora</strong>.</p>
+      </div>
+      <div class="rule-card fade-in">
+        <div class="rule-icon">03</div>
+        <p class="rule-text">O <strong>ambiente, estrutura e experiência</strong> da academia devem ser evidenciados no conteúdo.</p>
+      </div>
+      <div class="rule-card fade-in">
+        <div class="rule-icon">04</div>
+        <p class="rule-text">A produção deve estar alinhada ao <strong>posicionamento premium</strong> da marca.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: DISPONIBILIDADE -->
+<section class="slide slide-schedule" id="s6">
+  <div class="section-label fade-in" style="color: var(--gold);">Disponibilidade para Gravação</div>
+  <h2 class="schedule-title fade-in">Horários <strong>exclusivos</strong> para produção</h2>
+
+  <div class="schedule-block fade-in">
+    <div class="schedule-days">Segunda a Sexta-feira</div>
+    <div class="schedule-hours">12h &mdash; 16h</div>
+    <p class="schedule-period">Horários definidos para garantir organização do espaço e melhor experiência para alunos e parceiros.</p>
+  </div>
+</section>
+
+<!-- SLIDE 8: CLOSING -->
+<section class="slide slide-closing" id="s7">
+  <div class="closing-content">
+    <div class="closing-logo">
+      <img src="img/logo-white.png" alt="LIFTT Fitness Club">
+    </div>
+    <h2 class="closing-headline fade-in">Vamos construir juntos o <strong>lifestyle fitness premium</strong> de Vitória?</h2>
+
+    <div class="objectives-list fade-in">
+      <div class="objective">
+        <div class="objective-icon">&#10003;</div>
+        <div class="objective-text">Fortalecer o posicionamento da LIFTT como referência em lifestyle fitness</div>
+      </div>
+      <div class="objective">
+        <div class="objective-icon">&#10003;</div>
+        <div class="objective-text">Gerar conteúdo recorrente e estratégico</div>
+      </div>
+      <div class="objective">
+        <div class="objective-icon">&#10003;</div>
+        <div class="objective-text">Aumentar a visibilidade da marca em redes sociais</div>
+      </div>
+      <div class="objective">
+        <div class="objective-icon">&#10003;</div>
+        <div class="objective-text">Conectar a LIFTT a influenciadores alinhados ao público</div>
+      </div>
+    </div>
+
+    <div class="closing-divider"></div>
+    <p class="closing-cta fade-in">Entre em contato para agendar sua visita</p>
+    <div class="closing-contact fade-in">
+      <p>LIFTT Fitness Club &mdash; Vitória, ES</p>
+      <p>
+        <a href="https://instagram.com/lifttclub" target="_blank">@lifttclub</a> &bull;
+        <a href="mailto:liftt@lifttclub.com">liftt@lifttclub.com</a> &bull;
+        <a href="https://wa.me/5527999990584">Mateus Cruz &mdash; (27) 99999-0584</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Fade-in observer
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+  // Nav dots
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.nav-dot');
+  const sObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = Array.from(slides).indexOf(e.target);
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+    });
+  }, { threshold: 0.5 });
+  slides.forEach(s => sObs.observe(s));
+
+  function goToSlide(idx) {
+    slides[idx].scrollIntoView({ behavior: 'smooth' });
+  }
+</script>
+
+</body>
+</html>
